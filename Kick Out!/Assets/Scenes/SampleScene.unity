@@ -734,6 +734,7 @@ GameObject:
   - component: {fileID: 1218941276}
   - component: {fileID: 1218941277}
   - component: {fileID: 1218941278}
+  - component: {fileID: 1218941279}
   m_Layer: 3
   m_Name: Fighter
   m_TagString: Untagged
@@ -938,6 +939,20 @@ MonoBehaviour:
   isGrounded: 0
   groundCheck: {fileID: 611815463}
   groundCheckRadius: 0.5
+--- !u!114 &1218941279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218941271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc993bc85cd4264498e5a7ab6196580e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1218941277}
+  jab: {fileID: 7400000, guid: c51321ce3ec25434480f3c960f0eeb64, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
