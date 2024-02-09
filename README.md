@@ -1,1 +1,1 @@
-# kickOut
+# KickOut
