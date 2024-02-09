@@ -731,9 +731,9 @@ GameObject:
   - component: {fileID: 1218941273}
   - component: {fileID: 1218941272}
   - component: {fileID: 1218941275}
-  - component: {fileID: 1218941274}
   - component: {fileID: 1218941276}
   - component: {fileID: 1218941277}
+  - component: {fileID: 1218941278}
   m_Layer: 3
   m_Name: Fighter
   m_TagString: Untagged
@@ -809,30 +809,6 @@ Transform:
   - {fileID: 611815463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1218941274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218941271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43b7f35b010a45c4e958ae87d4708214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sp: {fileID: 1218941272}
-  animator: {fileID: 1218941277}
-  jumpForce: 20
-  gravityScale: 10
-  fallingGravityScale: 40
-  isJumping: 0
-  isGrounded: 0
-  groundCheck: {fileID: 611815463}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  groundCheckRadius: 0.5
 --- !u!50 &1218941275
 Rigidbody2D:
   serializedVersion: 4
@@ -938,6 +914,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1218941278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218941271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dbbac5dd323eb446a2f849604a9e2a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: 1218941272}
+  animator: {fileID: 1218941277}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  jumpForce: 20
+  gravityScale: 10
+  fallingGravityScale: 40
+  isJumping: 0
+  isGrounded: 0
+  groundCheck: {fileID: 611815463}
+  groundCheckRadius: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
