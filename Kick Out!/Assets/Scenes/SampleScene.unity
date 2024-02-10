@@ -735,6 +735,7 @@ GameObject:
   - component: {fileID: 1218941277}
   - component: {fileID: 1218941278}
   - component: {fileID: 1218941279}
+  - component: {fileID: 1218941280}
   m_Layer: 3
   m_Name: Fighter
   m_TagString: Untagged
@@ -932,11 +933,10 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1
+  stats: {fileID: 1218941280}
   jumpForce: 20
   gravityScale: 10
   fallingGravityScale: 40
-  isJumping: 0
-  isGrounded: 0
   groundCheck: {fileID: 611815463}
   groundCheckRadius: 0.5
 --- !u!114 &1218941279
@@ -952,7 +952,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1218941277}
+  stats: {fileID: 1218941280}
   jab: {fileID: 7400000, guid: c51321ce3ec25434480f3c960f0eeb64, type: 2}
+  punch: {fileID: 7400000, guid: f93ff914d80cd4d5993605d05de25785, type: 2}
+--- !u!114 &1218941280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218941271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd0bc76c5c47ae46ba1fd4e08d52471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage:
+    baseValue: 10
+  defense:
+    baseValue: 10
+  attackSpeed:
+    baseValue: 0.5
+  moveSpeed:
+    baseValue: 5
+  blockingSpeed:
+    baseValue: 2.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -7,12 +7,10 @@ public class Movement : MonoBehaviour
     //##############################################################################################################################################
     //UNITY COMPONENTS
     private Rigidbody2D rb;
-
     public SpriteRenderer sp;
-
     public Animator animator;
     public LayerMask collisionLayer;
-
+    public FighterStats stats;
 
     //##############################################################################################################################################
     //to know if the fighter is in blocking position or not
@@ -21,9 +19,9 @@ public class Movement : MonoBehaviour
 
     //##############################################################################################################################################
     //MOVE VARIABLES
-    private float _moveSpeed = 5f;
+    private float _moveSpeed;
+    private float _blockingSpeed;
     float horizontalInput = 0;
-    private float _blockingSpeed = 2.5f;
 
 
     //##############################################################################################################################################
@@ -34,8 +32,8 @@ public class Movement : MonoBehaviour
     public float gravityScale = 10f; //gravity when the fighter is going up (1st part of jump)
     public float fallingGravityScale = 40f; //gravity when the fighter is falling (2n part of jump)
 
-    public bool isJumping = false;
-    public bool isGrounded = false; //check if the player is on the ground to avoid mid-air jumps
+    private bool isJumping = false;
+    private bool isGrounded = false; //check if the player is on the ground to avoid mid-air jumps
 
     //Gestion de collision pour éviter les sauts à l'infini
     public Transform groundCheck; //allows to check the left foot
@@ -48,6 +46,10 @@ public class Movement : MonoBehaviour
         //Get all components that we nned to acces
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        //Initialize the stats
+        _moveSpeed = stats.moveSpeed.GetValue();
+        _blockingSpeed = stats.blockingSpeed.GetValue();
     }
 
     // Update is called once per frame

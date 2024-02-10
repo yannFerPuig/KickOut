@@ -8,15 +8,14 @@ public class Attack : MonoBehaviour
     //##############################################################################################################################################
     //Variable pour savoir le combattant est en train d'attaquer pour éviter qu'il lance plusieurs attaques en même temps
     private bool _isAttacking = false;
-    
     //Le timer pour le délai entre les attaques
     private float _timer = 0;
-
-    public float _attackSpeed;
+    private float _attackSpeed;
 
     //##############################################################################################################################################
     //UNITY COMPONENTS
     public Animator animator;
+    public FighterStats stats;
 
     //##############################################################################################################################################
     //ANIMATION
@@ -28,9 +27,8 @@ public class Attack : MonoBehaviour
 
     void Start()
     {
-
+        _attackSpeed = stats.attackSpeed.GetValue();
     }
-
 
     void Update()
     {
