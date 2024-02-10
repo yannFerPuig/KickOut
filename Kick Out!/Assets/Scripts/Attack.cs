@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -9,7 +10,9 @@ public class Attack : MonoBehaviour
     private bool _isAttacking = false;
     
     //Le timer pour le délai entre les attaques
-    private float _timeBetweenAttacks = 0;
+    private float _timer = 0;
+
+    public float _attackSpeed;
 
     //##############################################################################################################################################
     //UNITY COMPONENTS
@@ -20,8 +23,8 @@ public class Attack : MonoBehaviour
     private bool _punch = false;
     private bool _jab = false;
 
-
     public AnimationClip jab;
+    public AnimationClip punch;
 
     void Start()
     {
@@ -32,27 +35,23 @@ public class Attack : MonoBehaviour
     void Update()
     {
         // Gestion de l'animation
-        jab.wrapMode = WrapMode.Once;
-
-        //animator.SetBool("Jab", _jab);
+        animator.SetBool("Jab", _jab);
         animator.SetBool("Punch", _punch);
 
         //Attaque
         Jab();
         Punch();
 
-        BasicAttack();
+        AttackSpeed(_attackSpeed);
     }
 
     void Jab() 
     {
         if(Input.GetKey(KeyCode.X) && _isAttacking == false)
         {
-            animator.Play(jab.name);
+            _jab = true;
             _isAttacking = true; 
             StartCoroutine(MyFunctionAfterDelay(jab.length));
-            StopCoroutine(MyFunctionAfterDelay(jab.length));
-            //_jab = true;
         }
     }
 
@@ -62,28 +61,25 @@ public class Attack : MonoBehaviour
         {
             _isAttacking = true; 
             _punch = true;
+            StartCoroutine(MyFunctionAfterDelay(punch.length));
         }
     }
 
-    void BasicAttack() 
+
+    void AttackSpeed(float attackSpeed) 
     {
-        //Gére le délai entre les attaques de bases pour éviter de lancer plusieurs attaques à la fois
+        //Gére la notion de vitesse d'attaque
 
-        if(_isAttacking) 
+        if (_isAttacking) 
         {
-            //Si le joueur lance une attaque, alors on lance un timer pour éviter qu'il relance une attaque 
-            _timeBetweenAttacks += Time.deltaTime;
+            //Lance un timer quand le joueur lance une attaque
+            _timer += Time.deltaTime;
 
-            //Dès que le timer atteint une certaine valeur (à modifer selon les combattants)
-            if (_timeBetweenAttacks > .6f)
+            if (_timer > attackSpeed)
             {
-                //On met en place un délai pour indiquer à la fin de l'animation de l'attaque que le combattant est prêt à attaquer à nouveau.
-                //Pour réduire le délai entre les attaques (attaque speed), il faut augmenter les paramètres dans les fonctions suivantes
-                StartCoroutine(MyFunctionAfterDelay(.1f));
-                StopCoroutine(MyFunctionAfterDelay(.3f)); //Modifer ce paramètre pour réduire la vitesse d'attaque
-
-                //On remet le timer à 0
-                _timeBetweenAttacks = 0f;
+                //Lorsque le timer dépasse une certaine valeur, le combattant est marqué comme disponible à attaquer à nouveau
+                _isAttacking = false;
+                _timer = 0; //On reset le timer pour la prochaine attaque
             }
         }
     }
@@ -91,10 +87,11 @@ public class Attack : MonoBehaviour
     IEnumerator MyFunctionAfterDelay(float delay)
     {
         //Cette fonction permet de déclencher une action après un certain temps (en lien avec StartCoroutine())
+        //Gére le délai entre les attaques de bases pour éviter de lancer plusieurs attaques à la fois
 
         yield return new WaitForSeconds(delay);
 
-        _isAttacking = false;
+        //_isAttacking = false;
         _jab = false;
         _punch = false;
     }
