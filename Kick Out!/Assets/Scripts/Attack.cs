@@ -11,6 +11,10 @@ public class Attack : MonoBehaviour
     //Le timer pour le délai entre les attaques
     private float _timer = 0;
     private float _attackSpeed;
+    private float _attackRange;
+
+    public Vector3 attackOffset;
+    public LayerMask attackMask;
 
     //##############################################################################################################################################
     //UNITY COMPONENTS
@@ -28,6 +32,7 @@ public class Attack : MonoBehaviour
     void Start()
     {
         _attackSpeed = stats.attackSpeed.GetValue();
+        _attackRange = stats.attackRange.GetValue();
     }
 
     void Update()

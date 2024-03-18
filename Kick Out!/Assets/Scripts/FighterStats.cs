@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class FighterStats : MonoBehaviour
-{
-    
+{   
     public HealthBar healthBar;
 
     public CapsuleCollider2D capsuleCollider2D;
@@ -16,6 +15,7 @@ public class FighterStats : MonoBehaviour
     public Stat damage;
     public Stat defense;
     public Stat attackSpeed;
+    public Stat attackRange;
     public Stat moveSpeed;
     public Stat blockingSpeed;
 
@@ -31,10 +31,7 @@ public class FighterStats : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-
-
-
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage * (1 - defense.GetValue()/100);
 
