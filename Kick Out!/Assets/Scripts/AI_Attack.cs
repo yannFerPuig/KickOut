@@ -23,7 +23,7 @@ public class AI_Attack : MonoBehaviour
     public void Punch() 
     {
         Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x;
+        pos += transform.right * stats.attackRange.GetValue();
         pos += transform.up * attackOffset.y;
 
         Collider2D colInfo = Physics2D.OverlapCircle(pos, _attackRange, attackMask);

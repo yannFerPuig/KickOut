@@ -17,7 +17,12 @@ public class FighterStats : MonoBehaviour
     public Stat attackSpeed;
     public Stat attackRange;
     public Stat moveSpeed;
+    public Stat jumpForce;
+    public Stat gravityScale;
+    public Stat fallingGravityScale;
     public Stat blockingSpeed;
+    public Stat groundCheckRadius;
+
 
     void Start() 
     {
