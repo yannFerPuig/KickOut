@@ -65,7 +65,10 @@ public class PlayerMovement : MonoBehaviour
         //Movement
         MoveHorizontal();
         Jump();
-        Flip();
+
+        //if the player is attacking, we don't want to allow him to flip
+        if(!attack.isAttacking)
+            Flip();
     }
 
     void MoveHorizontal()

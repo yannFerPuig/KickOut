@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class FighterStats : MonoBehaviour
 {   
+    //COMPONENTS
     public HealthBar healthBar;
-
     public CapsuleCollider2D capsuleCollider2D;
 
+    //DATA
     public float maxHealth;
     public float currentHealth { get; set;}
 
@@ -36,18 +37,19 @@ public class FighterStats : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage * (1 - defense.GetValue()/100);
 
-        healthBar.SetHealth(currentHealth);
+    // public void TakeDamage(float damage)
+    // {
+    //     currentHealth -= damage * (1 - defense.GetValue()/100);
 
-        if (currentHealth <= 0)
-            Die();
-    }
+    //     healthBar.SetHealth(currentHealth);
 
-    public virtual void Die() 
-    {
-        Debug.Log(transform.name + " is dead");
-    }
+    //     if (currentHealth <= 0)
+    //         Die();
+    // }
+
+    // public virtual void Die() 
+    // {
+    //     Debug.Log(transform.name + " is dead");
+    // }
 }

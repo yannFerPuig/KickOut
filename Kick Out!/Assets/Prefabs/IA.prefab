@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2189394316462280561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595928574521473631}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,14 +74,13 @@ GameObject:
   - component: {fileID: 6106308297862931758}
   - component: {fileID: 6718969801361712943}
   - component: {fileID: 3567797433960355159}
-  - component: {fileID: 5480600652406848737}
-  - component: {fileID: 6941074942130178209}
-  - component: {fileID: 6429391254206327418}
-  - component: {fileID: 8746404656458492668}
-  - component: {fileID: 7804050453769998765}
-  m_Layer: 3
-  m_Name: Fighter
-  m_TagString: Player
+  - component: {fileID: 6761377843944245200}
+  - component: {fileID: 8484916330528240087}
+  - component: {fileID: 5862713956453948451}
+  - component: {fileID: 8284542117602426255}
+  m_Layer: 6
+  m_Name: IA
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +95,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.5, y: -2, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: -5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2189394316462280561}
@@ -163,7 +162,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994664286676069799}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -217,7 +216,28 @@ CapsuleCollider2D:
   m_Offset: {x: -0.010204792, y: -0.0826535}
   m_Size: {x: 0.15, y: 0.48}
   m_Direction: 0
---- !u!114 &5480600652406848737
+--- !u!95 &6761377843944245200
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994664286676069799}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e7f3eec3b50e99498bce70a8628b9cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8484916330528240087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,11 +259,11 @@ MonoBehaviour:
   defense:
     baseValue: 0
   attackSpeed:
-    baseValue: 0.2
+    baseValue: 0.5
   attackRange:
     baseValue: 1.7
   moveSpeed:
-    baseValue: 5
+    baseValue: 2.5
   jumpForce:
     baseValue: 20
   gravityScale:
@@ -254,7 +274,7 @@ MonoBehaviour:
     baseValue: 0
   groundCheckRadius:
     baseValue: 0.5
---- !u!114 &6941074942130178209
+--- !u!114 &5862713956453948451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,77 +283,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 6994664286676069799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17eb5a7acaa414f409819d0ba9c428ea, type: 3}
+  m_Script: {fileID: 11500000, guid: b1a6a6ea35e2fda4aad5b17309d6ff1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  attack: {fileID: 6429391254206327418}
-  rb: {fileID: 6718969801361712943}
-  animator: {fileID: 8746404656458492668}
-  sp: {fileID: 6106308297862931758}
-  groundCheck: {fileID: 2189394316462280561}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  isGrounded: 0
-  horizontalInput: 0
---- !u!114 &6429391254206327418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994664286676069799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fc349eb54f67f46a5aa7d9e8ad9f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  move: {fileID: 6941074942130178209}
-  animator: {fileID: 8746404656458492668}
-  attackPoint: {fileID: 595928574521473631}
-  punch: {fileID: 7400000, guid: ada3d4d3e3891c54394252ce2fd14ddf, type: 2}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  attackRange: 0
-  attackSpeed: 0
-  isAttacking: 0
---- !u!95 &8746404656458492668
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994664286676069799}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5344ab65097a1e44979f3a68d3af77b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7804050453769998765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994664286676069799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9ed884def7bef40a457d83b4a848d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
+  stats: {fileID: 8484916330528240087}
+  player: {fileID: 0}
   healthBar: {fileID: 0}
+  isFlipped: 0
   currentHealth: 0
   defense: 0
+--- !u!114 &8284542117602426255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994664286676069799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd6d1b46a1082a4f9e9fa3ce71b2d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 8484916330528240087}
+  attackPoint: {fileID: 595928574521473631}
+  attackDamage: 0
+  attackRange: 0
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 8

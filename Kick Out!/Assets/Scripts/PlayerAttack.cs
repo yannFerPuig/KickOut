@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))    
         {
             move.horizontalInput = 0f;
-            Attack();
+            animator.SetTrigger("Attack");
         }
     }
 
@@ -43,9 +43,6 @@ public class PlayerAttack : MonoBehaviour
 
         StartCoroutine(MyFunctionAfterDelay(punch.length));
 
-        //Play attack animation
-        animator.SetTrigger("Attack");
-
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
@@ -53,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         //Damage the enemy 
         foreach(var enemy in hitEnemy)
         {
-            enemy.GetComponent<FighterStats>().TakeDamage(stats.damage.GetValue());
+            enemy.GetComponent<IA>().TakeDamage(stats.damage.GetValue());
         }
     }
 
