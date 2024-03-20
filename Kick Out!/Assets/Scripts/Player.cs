@@ -21,12 +21,6 @@ public class Player : MonoBehaviour
         defense = stats.defense.GetValue();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-            TakeDamage(10);
-    }
-
     public void TakeDamage(float damage)
     {
         currentHealth -= damage * (1 - defense/100);

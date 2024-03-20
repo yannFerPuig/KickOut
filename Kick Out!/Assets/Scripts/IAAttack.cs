@@ -24,6 +24,8 @@ public class IAAttack : MonoBehaviour
 
     public void Attack()
     {
+        //We create a circle of center the position of the attack point and a radius of the attack range
+        //We save in an array all the colliders that respect the attackMask
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackMask);
 
         //Damage the enemy 
