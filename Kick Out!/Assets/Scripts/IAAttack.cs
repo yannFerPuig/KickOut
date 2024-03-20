@@ -37,6 +37,11 @@ public class IAAttack : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);   
+        //Pour dessiner le cercle d'attaque
+
+        if(attackPoint == null)
+            return;
+
+        Gizmos.DrawCube(attackPoint.position, new Vector3(attackRange, 0.2f, 0));   
     }
 }

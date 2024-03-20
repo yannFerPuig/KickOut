@@ -45,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
+        //Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
         //Damage the enemy 
@@ -56,10 +57,12 @@ public class PlayerAttack : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        //Pour dessiner le cercle d'attaque
+
         if(attackPoint == null)
             return;
 
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);   
+        Gizmos.DrawCube(attackPoint.position, new Vector3(attackRange, 0.2f, 0));   
     }
 
     IEnumerator MyFunctionAfterDelay(float delay)
