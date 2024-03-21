@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 8746404656458492668}
   - component: {fileID: 7804050453769998765}
   m_Layer: 3
-  m_Name: Fighter
+  m_Name: Carmen
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
