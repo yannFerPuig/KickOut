@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Louis.unity
     guid: 8b16ff01275e8b74eae20e7ce95c3654
+  - enabled: 1
+    path: Assets/Scenes/FightScene.unity
+    guid: 9cf278ecc772c284991c1ef72571e87c
   m_configObjects: {}
