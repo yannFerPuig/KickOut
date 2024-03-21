@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public SpriteRenderer sp;
     public Transform groundCheck;
+    public Transform attackPoint;
 
     //EXTRAS
     public LayerMask collisionLayer;
