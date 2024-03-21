@@ -42,6 +42,6 @@ public class IAAttack : MonoBehaviour
         if(attackPoint == null)
             return;
 
-        Gizmos.DrawCube(attackPoint.position, new Vector3(attackRange, 0.2f, 0));   
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

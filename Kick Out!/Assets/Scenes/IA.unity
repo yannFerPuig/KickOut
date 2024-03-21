@@ -643,7 +643,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 595928574521473631, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 595928574521473631, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -858,20 +858,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 595928574521473631, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 595928574521473631, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5480600652406848737, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1276152802}
-    - target: {fileID: 5480600652406848737, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
-      propertyPath: attackRange.baseValue
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_Name
       value: Fighter
@@ -882,7 +874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_LocalPosition.z

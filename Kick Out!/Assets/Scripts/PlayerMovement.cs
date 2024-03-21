@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpForce;
     private float gravityScale;
     private float fallingGravityScale;
-    private float groundCheckRadius;
+    private float groundCheckRadius = 0.5f;
     public float horizontalInput;
 
     // Start is called before the first frame update
@@ -111,5 +111,11 @@ public class PlayerMovement : MonoBehaviour
         {
             sp.flipX = true;
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        //Gizmos.DrawSphere(groundCheck.position, 0.5f);
     }
 }
