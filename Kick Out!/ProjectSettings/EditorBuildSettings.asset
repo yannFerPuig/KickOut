@@ -21,9 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Fighters.unity
     guid: 0af82972f0bc52b49a380f025d5aabf4
   - enabled: 1
-    path: Assets/Scenes/Carmen_pres.unity
+    path: Assets/Scenes/Carmen.unity
     guid: 87cab63ca069a5d4e827f943e1f03f32
   - enabled: 1
-    path: Assets/Scenes/Louis_pres.unity
+    path: Assets/Scenes/Louis.unity
     guid: 8b16ff01275e8b74eae20e7ce95c3654
+  - enabled: 1
+    path: Assets/Scenes/FightScene.unity
+    guid: 9cf278ecc772c284991c1ef72571e87c
   m_configObjects: {}
