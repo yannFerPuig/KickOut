@@ -448,7 +448,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1804451243}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1276152802 stripped
@@ -510,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -558,7 +559,7 @@ RectTransform:
   m_Children:
   - {fileID: 272206362}
   - {fileID: 280647122}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 408369273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -730,7 +731,7 @@ GameObject:
   - component: {fileID: 2129499572}
   - component: {fileID: 2129499574}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -923,7 +924,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 408369273}
   - {fileID: 2129499573}
-  - {fileID: 6748415106446812295}
-  - {fileID: 1804451243}
   - {fileID: 1838048240}
+  - {fileID: 6748415106446812295}
   - {fileID: 1860942560}
