@@ -51,10 +51,13 @@ public class PlayerMovement : MonoBehaviour
 
         //Detect if the players presses the jump button
         if (Input.GetButtonDown("Jump") && isGrounded)
+        { 
             isJumping = true;
 
+        }
+
         //Animation
-        animator.SetBool("IsJumping", !isGrounded);
+        //animator.SetBool("IsJumping", !isGrounded);
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
     }
 
@@ -87,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         if (isJumping && isGrounded)
         {
             animator.SetBool("IsJumping", true);
+            animator.SetTrigger("Jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = false;
             isGrounded = false;
@@ -117,6 +121,6 @@ public class PlayerMovement : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        //Gizmos.DrawSphere(groundCheck.position, 0.5f);
+        Gizmos.DrawSphere(groundCheck.position, 0.5f);
     }
 }
