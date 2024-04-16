@@ -51,10 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Detect if the players presses the jump button
         if (Input.GetButtonDown("Jump") && isGrounded)
-        { 
             isJumping = true;
-
-        }
 
         //Animation
         //animator.SetBool("IsJumping", !isGrounded);
