@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isBlocking;
     private bool isJumping = false;
     public bool isGrounded = false;
-    
+    public bool isFlipped = false;
+
     private float moveSpeed;
     private float jumpForce;
     private float gravityScale;
@@ -107,10 +108,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (horizontalInput > 0.1f) 
         {
+            isFlipped = false;
             sp.flipX = false;
         } 
         else if (horizontalInput < -0.1f) 
         {
+            isFlipped = true;
             sp.flipX = true;
         }
     }
@@ -118,6 +121,6 @@ public class PlayerMovement : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(groundCheck.position, 0.5f);
+        //Gizmos.DrawSphere(groundCheck.position, 0.5f);
     }
 }
