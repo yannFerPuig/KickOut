@@ -71,7 +71,8 @@ public class PlayerAttack : MonoBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+        Vector3 attack = new Vector3(attackPoint.position.x + attackRange / 2, attackPoint.position.y, attackPoint.position.z);
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, new Vector3(attackRange, 0.2f, 0), 90, enemyLayer);
 
         //Damage the enemy 
         foreach(var enemy in hitEnemy)
