@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6718969801361712943, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941074942130178209, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_Name
       value: Fighter
@@ -1215,9 +1223,9 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 426714192}
   - {fileID: 792453301}
   - {fileID: 1215419523}
   - {fileID: 663224624}
   - {fileID: 519420032}
   - {fileID: 922898117}
+  - {fileID: 426714192}
