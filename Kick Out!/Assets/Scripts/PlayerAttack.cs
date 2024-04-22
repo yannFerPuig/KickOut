@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
         Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, new Vector3(attackRange, 0.2f, 0), 90, enemyLayer);
 
         //Damage the enemy 
-        foreach(var enemy in hitEnemy)
+        foreach(var enemy in enemiesHitted)
         {
             enemy.GetComponent<IA>().TakeDamage(stats.damage.GetValue());
         }
