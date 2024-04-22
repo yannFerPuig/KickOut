@@ -99,6 +99,12 @@ public class PlayerAttack : MonoBehaviour
             return;
 
         Vector3 attack = new Vector3(attackPoint.position.x + attackRange / 2, attackPoint.position.y, attackPoint.position.z);
+
+        if(move.isFlipped)
+        {
+            attack.x *= -1f;
+        }
+
         Gizmos.DrawCube(attack, new Vector3(attackRange, 0.2f, 0));
     }
 

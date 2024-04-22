@@ -57,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         //Animation
         //animator.SetBool("IsJumping", !isGrounded);
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
+        Debug.Log(attackPoint.transform.position);
     }
 
     void FixedUpdate() 
@@ -118,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         //Gizmos.DrawSphere(groundCheck.position, 0.5f);
