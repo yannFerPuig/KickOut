@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Detect if player is trying to move
         //Player can move only when he is not attacking
-        if (attack.isAttacking == false)
+        if (!attack.isAttacking)
             horizontalInput = Input.GetAxis("Horizontal");
 
         //Detect if the players presses the jump button
@@ -56,8 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Animation
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
-
-        Debug.Log(attackPoint.transform.position);
     }
 
     void FixedUpdate() 

@@ -21,7 +21,6 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange;
     public float attackSpeed;
     public bool isAttacking;
-    public bool isSpecial;
 
     void Start()
     {
@@ -34,13 +33,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.X))    
         {
-            move.horizontalInput = 0f;
             animator.SetTrigger("Attack");
         }
 
         if(Input.GetKeyDown(KeyCode.Z))    
         {
-            move.horizontalInput = 0f;
             animator.SetTrigger("Special");
         }
     }
@@ -48,6 +45,8 @@ public class PlayerAttack : MonoBehaviour
     void Attack() 
     {
         isAttacking = true;
+
+        move.horizontalInput = 0f;
 
         StartCoroutine(MyFunctionAfterDelay(punch.length));
 
@@ -65,7 +64,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Special() 
     {
-        isSpecial = true;
+        isAttacking = true;
+
+        move.horizontalInput = 0f;
 
         StartCoroutine(MyFunctionAfterDelay(special.length));
 
@@ -89,7 +90,6 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         isAttacking = false;
-        
     }
 
     void OnDrawGizmosSelected()
