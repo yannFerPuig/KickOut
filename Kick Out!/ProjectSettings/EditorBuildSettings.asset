@@ -5,28 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
-    guid: 27d0b8cd1a6c32040afc331f403daa69
-  - enabled: 1
+    guid: ba0214bcd2edbc849aabfeb9dfafd0d6
+  - enabled: 0
     path: Assets/Scenes/CharacterSelect.unity
-    guid: f51a7ea119be96c488a9886610da0d14
-  - enabled: 1
+    guid: cbb8fbd16b035bd47a8f576c43921787
+  - enabled: 0
     path: Assets/Scenes/Options.unity
     guid: 2633b2f4bc94ee44496e6680194be016
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fighters.unity
     guid: 0af82972f0bc52b49a380f025d5aabf4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Carmen.unity
-    guid: 87cab63ca069a5d4e827f943e1f03f32
-  - enabled: 1
+    guid: c5f209dc63387b54d87e870f87e1a0c3
+  - enabled: 0
     path: Assets/Scenes/Louis.unity
-    guid: 8b16ff01275e8b74eae20e7ce95c3654
-  - enabled: 1
+    guid: bb843c87ad8c0284d899c7d61453896a
+  - enabled: 0
     path: Assets/Scenes/FightScene.unity
     guid: 9cf278ecc772c284991c1ef72571e87c
+  - enabled: 1
+    path: Assets/Scenes/ANIMATIONS.unity
+    guid: 7e97e3024010d5d4f8788d31b169b8ab
   m_configObjects: {}

@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     //SCRIPTS
     public FighterStats stats;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return; //Added for network (Ethan) + inheritance -> NetworkBehaviour
         //Detect if player is trying to move
         //Player can move only when he is not attacking
         if (!attack.isAttacking)
