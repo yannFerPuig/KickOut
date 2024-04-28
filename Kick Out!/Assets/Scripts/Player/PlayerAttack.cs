@@ -52,8 +52,20 @@ public class PlayerAttack : MonoBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Vector3 attack = new Vector3(attackPoint.position.x + attackRange / 2, attackPoint.position.y, attackPoint.position.z);
-        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, new Vector3(attackRange, 0.2f, 0), 90, enemyLayer);
+        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
+        Vector3 size = new Vector3(attackRange, 0.2f, 0);
+
+        if (move.isFlipped) 
+        {
+            size.x *= -1;
+            attack.x -= attackRange / 2;
+        }
+        else 
+        {
+            attack.x += attackRange / 2;
+        }
+
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
 
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
@@ -72,8 +84,20 @@ public class PlayerAttack : MonoBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Vector3 attack = new Vector3(attackPoint.position.x + attackRange / 2, attackPoint.position.y, attackPoint.position.z);
-        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, new Vector3(attackRange, 0.2f, 0), 90, enemyLayer);
+        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
+        Vector3 size = new Vector3(attackRange, 0.2f, 0);
+
+        if (move.isFlipped) 
+        {
+            size.x *= -1;
+            attack.x -= attackRange / 2;
+        }
+        else 
+        {
+            attack.x += attackRange / 2;
+        }
+
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
 
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
@@ -99,15 +123,19 @@ public class PlayerAttack : MonoBehaviour
         if(attackPoint == null)
             return;
 
-        Vector3 attack = new Vector3(attackPoint.position.x + attackRange / 2, attackPoint.position.y, attackPoint.position.z);
+        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
+        Vector3 size = new Vector3(attackRange, 0.2f, 0);
 
-        if(move.isFlipped)
+        if (move.isFlipped) 
         {
-            attack.x *= -1f;
+            size.x *= -1;
+            attack.x -= attackRange / 2;
+        }
+        else 
+        {
+            attack.x += attackRange / 2;
         }
 
-        Gizmos.DrawCube(attack, new Vector3(attackRange, 0.2f, 0));
-    }
-
-    
+        Gizmos.DrawCube(attack, size);
+    }    
 }

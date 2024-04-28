@@ -702,6 +702,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3567797433960355159, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5862713956453948451, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: player
       value: 
@@ -716,11 +720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.5
+      value: -6.4
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -941,6 +945,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1265436829}
+    - target: {fileID: 5480600652406848737, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
+      propertyPath: attackRange.baseValue
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136405702857424283, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
+      propertyPath: m_Name
+      value: AttackPointRight
+      objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_Name
       value: Carmen
