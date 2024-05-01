@@ -86,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
         //To jump, the player must press the space bar and be grounded
         if (isJumping && isGrounded)
         {
-            animator.SetBool("IsJumping", true);
             animator.SetTrigger("Jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = false;
