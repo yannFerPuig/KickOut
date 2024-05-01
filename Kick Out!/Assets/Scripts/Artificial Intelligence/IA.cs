@@ -17,11 +17,13 @@ public class IA : MonoBehaviour
     public bool isFlipped = false;
     public float currentHealth;
     public float defense;
+    public int points { get; set; }
 
     void Start()
     {
         currentHealth = stats.currentHealth;
         defense = stats.defense.GetValue();
+        points = 0;
     }
 
     public void LookAtPlayer() 
