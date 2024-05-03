@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     //SCRIPTS
     public FighterStats stats;
     public PlayerAttack attack;
+    public StartRoundTimer startRoundTimer;
 
     //COMPONENTS
     public Rigidbody2D rb;
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
 
         //Animation
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));   
     }
 
     void FixedUpdate() 

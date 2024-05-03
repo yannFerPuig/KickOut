@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     //SCRIPTS
     public FighterStats stats;
     public PlayerMovement move;
+    public StartRoundTimer startRoundTimer;
 
     //COMPONENTS
     public Animator animator;
