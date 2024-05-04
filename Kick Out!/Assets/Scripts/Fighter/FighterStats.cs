@@ -24,6 +24,8 @@ public class FighterStats : MonoBehaviour
     public Stat blockingSpeed;
     public Stat groundCheckRadius;
 
+    public string name;
+
 
     void Start() 
     {
