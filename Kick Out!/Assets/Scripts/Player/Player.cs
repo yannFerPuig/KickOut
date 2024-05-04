@@ -2,39 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Fighter
 {
-    
-    //SCRIPTS
-    public FighterStats stats;
-
-    //COMPONENTS
-    public HealthBar healthBar;
-
-    //DATA
-    public float currentHealth;
-    public float defense;
-    public int points { get; set; }
-
-    void Start()
+    public override void Die()
     {
-        currentHealth = stats.currentHealth;
-        defense = stats.defense.GetValue();
-        points = 0;
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage * (1 - defense/100);
-
-        healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
-            Die();
-    }
-
-    public virtual void Die() 
-    {
-        Debug.Log(transform.name + " is dead");
+        base.Die();
     }
 }

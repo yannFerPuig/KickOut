@@ -9,13 +9,11 @@ public class WinnerScreen : MonoBehaviour
     public EndGame endGame;
     public StartRoundTimer startRoundTimer;
 
-
     public Text roundWinner;
 
     public Player player1;
     public IA player2;
 
-    
     public List<Image> player1Points;
     public List<Image> player2Points;
 
@@ -52,6 +50,9 @@ public class WinnerScreen : MonoBehaviour
 
             player1.currentHealth = 100;
             player2.currentHealth = 100;
+
+            GameObject.FindGameObjectWithTag("HP_P1").GetComponent<HealthBar>().SetHealth(player1.currentHealth);
+            GameObject.FindGameObjectWithTag("HP_P2").GetComponent<HealthBar>().SetHealth(player1.currentHealth);
 
             player1.transform.position = new Vector3(-8.5f, -2f, 0f);
             player2.transform.position = new Vector3(8.5f, -2f, 0f);

@@ -36,10 +36,13 @@ public class StartRoundTimer : MonoBehaviour
         {
             roundStart -= Time.deltaTime;
         }
-        else if (roundStart < 0) 
+        else if (roundStart < 1) 
         {
             //Disbled the start round coutdown
             startText.gameObject.SetActive(false);
+
+            StartCoroutine(Momentum());
+
             //Start the fight	
             fightStarted = true;
             //Start the timer for the fight
@@ -64,5 +67,10 @@ public class StartRoundTimer : MonoBehaviour
         int secondes = Mathf.FloorToInt(remainingTime % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, secondes);
+    }
+
+    IEnumerator Momentum() 
+    {
+        yield return new WaitForSeconds(1f);
     }
 }

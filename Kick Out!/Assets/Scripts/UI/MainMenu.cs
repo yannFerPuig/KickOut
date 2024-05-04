@@ -11,20 +11,68 @@ public class MainMenu : MonoBehaviour
 
     public string gameMode;
 
+
+    GameObject[] menuButtons;
+    GameObject[] modeButtons;
+
+    public void Start()
+    {
+        menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
+        modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
+        Debug.Log(modeButtons.Length);
+
+        foreach (GameObject modeButton in modeButtons)
+        {
+            modeButton.SetActive(false);
+        }
+    }
     
     public void ChangeScene(string scene)
     {
         SceneManager.LoadSceneAsync(scene);
     }
 
-    public void Solo() 
+    public void Exit()
     {
-        gameMode = "solo";
+        Application.Quit();
     }
 
-    public void Duel()
+    public void Computer() 
+    {
+        gameMode = "solo";
+        SceneManager.LoadScene("SoloCharacterSelection");
+    }
+
+    public void Multiplayer()
     {
         gameMode = "duel";
+        SceneManager.LoadScene("MultiplayerCharacterSelection");
+    }
+
+    public void SelectMode() 
+    {
+        foreach (GameObject modeButton in modeButtons)
+        {
+            modeButton.SetActive(true);
+        }
+
+        foreach (GameObject menuButton in menuButtons)
+        {
+            menuButton.SetActive(false);
+        }
+    }
+
+    public void CancelModeSelection() 
+    {
+        foreach (GameObject menuButton in menuButtons)
+        {
+            menuButton.SetActive(true);
+        }
+
+        foreach (GameObject modeButton in modeButtons)
+        {
+            modeButton.SetActive(false);
+        }
     }
 
     public void NextSprite(int index)
