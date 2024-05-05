@@ -39,19 +39,4 @@ public class FighterStats : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-
-    // public void TakeDamage(float damage)
-    // {
-    //     currentHealth -= damage * (1 - defense.GetValue()/100);
-
-    //     healthBar.SetHealth(currentHealth);
-
-    //     if (currentHealth <= 0)
-    //         Die();
-    // }
-
-    // public virtual void Die() 
-    // {
-    //     Debug.Log(transform.name + " is dead");
-    // }
 }
