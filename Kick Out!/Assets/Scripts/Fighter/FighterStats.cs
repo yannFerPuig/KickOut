@@ -23,8 +23,7 @@ public class FighterStats : MonoBehaviour
     public Stat fallingGravityScale;
     public Stat blockingSpeed;
     public Stat groundCheckRadius;
-
-    public string name;
+    //public string name;
 
 
     void Start() 
