@@ -75,15 +75,13 @@ GameObject:
   - component: {fileID: 6718969801361712943}
   - component: {fileID: 3567797433960355159}
   - component: {fileID: 5480600652406848737}
-  - component: {fileID: 2704838066466638415}
+  - component: {fileID: 6878509771975410449}
   - component: {fileID: 6941074942130178209}
   - component: {fileID: 6429391254206327418}
-  - component: {fileID: 8746404656458492668}
   - component: {fileID: 7804050453769998765}
-  - component: {fileID: 5171223354891146104}
-  - component: {fileID: 122361440909892539}
+  - component: {fileID: 7520370164212902581}
   m_Layer: 3
-  m_Name: NetCarmen
+  m_Name: Bob Un
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +145,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 064781bcbe285bd4cb3e05e8154d4474, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d52793f8086cc7d46a417810c669e37e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -257,7 +255,7 @@ MonoBehaviour:
     baseValue: 0
   groundCheckRadius:
     baseValue: 0.5
---- !u!114 &2704838066466638415
+--- !u!114 &6878509771975410449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2231225706
+  GlobalObjectIdHash: 2659519917
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -294,7 +292,7 @@ MonoBehaviour:
   attack: {fileID: 6429391254206327418}
   startRoundTimer: {fileID: 0}
   rb: {fileID: 6718969801361712943}
-  animator: {fileID: 8746404656458492668}
+  animator: {fileID: 0}
   sp: {fileID: 6106308297862931758}
   groundCheck: {fileID: 2189394316462280561}
   attackPoint: {fileID: 595928574521473631}
@@ -319,7 +317,7 @@ MonoBehaviour:
   stats: {fileID: 5480600652406848737}
   move: {fileID: 6941074942130178209}
   startRoundTimer: {fileID: 0}
-  animator: {fileID: 8746404656458492668}
+  animator: {fileID: 0}
   attackPoint: {fileID: 595928574521473631}
   punch: {fileID: 7400000, guid: ada3d4d3e3891c54394252ce2fd14ddf, type: 2}
   special: {fileID: 7400000, guid: 0575a9df6b31ead4ea206016646f257c, type: 2}
@@ -329,27 +327,6 @@ MonoBehaviour:
   attackRange: 0
   attackSpeed: 0
   isAttacking: 0
---- !u!95 &8746404656458492668
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994664286676069799}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 540a4147189f16548ae498d30cd11c96, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7804050453769998765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,76 +344,24 @@ MonoBehaviour:
   currentHealth: 0
   defense: 0
   points: 0
---- !u!114 &5171223354891146104
-MonoBehaviour:
+--- !u!95 &7520370164212902581
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994664286676069799}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseUnreliableDeltas: 0
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 0
-  SyncRotAngleX: 0
-  SyncRotAngleY: 0
-  SyncRotAngleZ: 0
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  UseQuaternionSynchronization: 0
-  UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
-  InLocalSpace: 0
-  Interpolate: 1
-  SlerpPosition: 0
---- !u!114 &122361440909892539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6994664286676069799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e304e3156cf874293957e66f24f953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TransitionStateInfoList:
-  - IsCrossFadeExit: 0
-    Layer: 0
-    OriginatingState: -1254134824
-    DestinationState: -916597365
-    TransitionDuration: 0.25
-    TriggerNameHash: 1080829965
-    TransitionIndex: 0
-  - IsCrossFadeExit: 0
-    Layer: 0
-    OriginatingState: -1254134824
-    DestinationState: 1086462948
-    TransitionDuration: 0
-    TriggerNameHash: -2083125633
-    TransitionIndex: 2
-  - IsCrossFadeExit: 0
-    Layer: 0
-    OriginatingState: -460675944
-    DestinationState: -916597365
-    TransitionDuration: 0
-    TriggerNameHash: 1080829965
-    TransitionIndex: 1
-  - IsCrossFadeExit: 0
-    Layer: 0
-    OriginatingState: -460675944
-    DestinationState: 1086462948
-    TransitionDuration: 0
-    TriggerNameHash: -2083125633
-    TransitionIndex: 2
-  m_Animator: {fileID: 8746404656458492668}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07aa6d9a2b1fd6e4d83897ff565d1fda, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
