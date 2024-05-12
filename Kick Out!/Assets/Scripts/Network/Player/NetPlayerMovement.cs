@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class NetPlayerMovement : NetworkBehaviour
 {
     //SCRIPTS
     public FighterStats stats;
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return; //Added for network (Ethan) + inheritance -> NetworkBehaviour
         //Detect if player is trying to move
         //Player can move only when he is not attacking
         if (!attack.isAttacking)
@@ -57,10 +58,10 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
 
         //Animation
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));   
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         //OverlapArea creates a hitbox between 2 positions and checks if it is in collision with something
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
@@ -70,13 +71,13 @@ public class PlayerMovement : MonoBehaviour
         Jump();
 
         //if the player is attacking, we don't want to allow him to flip
-        if(!attack.isAttacking)
+        if (!attack.isAttacking)
             Flip();
     }
 
     void MoveHorizontal()
     {
-        //Cette fonction permet de déplacer le combattant horizontalement à l'aide des touches qui sont tag "Horizontal" (cf. dans les paramètres du projet)
+        //Cette fonction permet de d�placer le combattant horizontalement � l'aide des touches qui sont tag "Horizontal" (cf. dans les param�tres du projet)
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
     }
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         //Cette fonction permet de faire saute le combattant en appuyant sur la touche espace (modifiable)
-        
+
         //To jump, the player must press the space bar and be grounded
         if (isJumping && isGrounded)
         {
@@ -104,14 +105,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Flip() 
+    void Flip()
     {
-        if (horizontalInput > 0.1f) 
+        if (horizontalInput > 0.1f)
         {
             isFlipped = false;
             sp.flipX = false;
-        } 
-        else if (horizontalInput < -0.1f) 
+        }
+        else if (horizontalInput < -0.1f)
         {
             isFlipped = true;
             sp.flipX = true;

@@ -46,7 +46,7 @@ public class MainMenu : MonoBehaviour
     public void Multiplayer()
     {
         gameMode = "duel";
-        SceneManager.LoadScene("MultiplayerCharacterSelection");
+        SceneManager.LoadScene("NETWORK");
     }
 
     public void SelectMode() 

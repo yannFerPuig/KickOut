@@ -61,6 +61,8 @@ public class StartRoundTimer : MonoBehaviour
         else if (remainingTime < 0) 
         {
             remainingTime = 0;
+
+            
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);
