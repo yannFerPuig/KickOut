@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class IAWalk : StateMachineBehaviour
 {
-
     //SCRIPTS 
     IA ia;
 
     //COMPONENTS
-    Transform player;
+    public Transform player;
     Rigidbody2D rb;
 
     //Data
@@ -25,6 +24,8 @@ public class IAWalk : StateMachineBehaviour
         //COMPONENTS
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
+
+        Debug.Log("" + player.position);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -37,10 +38,10 @@ public class IAWalk : StateMachineBehaviour
     
         rb.MovePosition(newPos);
 
-        if (Vector2.Distance(player.position, rb.position) <= attackRange)
-        {
-            animator.SetTrigger("Punch");
-        }
+        //if (Vector2.Distance(player.position, rb.position) <= attackRange)
+        //{
+        //    animator.SetTrigger("Punch");
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

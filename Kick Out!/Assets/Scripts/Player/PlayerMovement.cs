@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     //SCRIPTS
     public FighterStats stats;
     public PlayerAttack attack;
+    public StartRoundTimer startRoundTimer;
 
     //COMPONENTS
     public Rigidbody2D rb;
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
 
         //Animation
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));   
     }
 
     void FixedUpdate() 
@@ -86,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
         //To jump, the player must press the space bar and be grounded
         if (isJumping && isGrounded)
         {
-            animator.SetBool("IsJumping", true);
             animator.SetTrigger("Jump");
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isJumping = false;

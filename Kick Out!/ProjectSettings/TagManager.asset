@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Fighter
+  - HP_P1
+  - HP_P2
+  - MenuButton
+  - ModeButton
   layers:
   - Default
   - TransparentFX
