@@ -41,10 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7397309447813615640}
   - component: {fileID: 2461723937263275394}
+  - component: {fileID: -3040314521708060330}
+  - component: {fileID: 188713088531348649}
   - component: {fileID: -5151273090061042870}
   - component: {fileID: 282682923582170787}
   - component: {fileID: 5361444378096251611}
-  - component: {fileID: -3346450366077232868}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Player
@@ -62,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 827409767246247821}
@@ -121,6 +122,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &-3040314521708060330
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135560553313622720}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
+--- !u!50 &188713088531348649
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135560553313622720}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &-5151273090061042870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,48 +252,6 @@ MonoBehaviour:
   currentHealth: 0
   defense: 0
   points: 0
---- !u!114 &-3346450366077232868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4135560553313622720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd0bc76c5c47ae46ba1fd4e08d52471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  capsuleCollider2D: {fileID: 0}
-  maxHealth:
-    baseValue: 0
-  currentHealth:
-    baseValue: 0
-  width:
-    baseValue: 0
-  height:
-    baseValue: 0
-  damage:
-    baseValue: 0
-  defense:
-    baseValue: 0
-  attackSpeed:
-    baseValue: 0
-  attackRange:
-    baseValue: 0
-  moveSpeed:
-    baseValue: 0
-  jumpForce:
-    baseValue: 0
-  gravityScale:
-    baseValue: 0
-  fallingGravityScale:
-    baseValue: 0
-  groundCheckRadius:
-    baseValue: 0
-  attackPointPos: {x: 0, y: 0, z: 0}
-  groundCheckPointPos: {x: 0, y: 0, z: 0}
 --- !u!1 &5546684027434143253
 GameObject:
   m_ObjectHideFlags: 0

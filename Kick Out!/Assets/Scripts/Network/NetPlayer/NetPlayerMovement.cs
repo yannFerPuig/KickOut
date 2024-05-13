@@ -37,11 +37,11 @@ public class NetPlayerMovement : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = stats.moveSpeed.GetValue();
-        jumpForce = stats.jumpForce.GetValue();
-        gravityScale = stats.gravityScale.GetValue();
-        fallingGravityScale = stats.fallingGravityScale.GetValue();
-        groundCheckRadius = stats.groundCheckRadius.GetValue();
+        moveSpeed = stats.moveSpeed;
+        jumpForce = stats.jumpForce;
+        gravityScale = stats.gravityScale;
+        fallingGravityScale = stats.fallingGravityScale;
+        groundCheckRadius = stats.groundCheckRadius;
     }
 
     // Update is called once per frame

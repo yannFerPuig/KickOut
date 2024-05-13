@@ -5,23 +5,26 @@ public class FighterStats : MonoBehaviour
     //COMPONENTS
     public HealthBar healthBar;
     public CapsuleCollider2D capsuleCollider2D;
+    public Transform attackPoint;
+    public Transform groundCheck;
 
     //STAT DATA
-    public Stat maxHealth;
-    public Stat currentHealth;
-    public Stat width;
-    public Stat height;
-    public Stat damage;
-    public Stat defense;
-    public Stat attackSpeed;
-    public Stat attackRange;
-    public Stat moveSpeed;
-    public Stat jumpForce;
-    public Stat gravityScale;
-    public Stat fallingGravityScale;
-    public Stat groundCheckRadius;
+    public float maxHealth;
+    public float currentHealth;
+    public float width;
+    public float height;
+    public float damage;
+    public float specialDamage;
+    public float defense;
+    public float attackRange;
+    public float moveSpeed;
+    public float jumpForce;
+    public float gravityScale;
+    public float fallingGravityScale;
+    public float groundCheckRadius;
 
     //ADDITIONNAL DATA
+    public Vector3 spawnPoint;
     public Vector3 attackPointPos;
     public Vector3 groundCheckPointPos;
 
@@ -29,9 +32,7 @@ public class FighterStats : MonoBehaviour
     void Start() 
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth.GetValue());
-
-        capsuleCollider2D.size = new Vector2(width.GetValue(), height.GetValue()); 
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Awake() 

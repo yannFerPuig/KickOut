@@ -26,8 +26,7 @@ public class NetPlayerAttack : NetworkBehaviour
 
     void Start()
     {
-        attackRange = stats.attackRange.GetValue();    
-        attackSpeed = stats.attackSpeed.GetValue();
+        attackRange = stats.attackRange;
     }
 
     // Update is called once per frame
@@ -73,7 +72,7 @@ public class NetPlayerAttack : NetworkBehaviour
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage.GetValue());
+            enemy.GetComponent<IA>().TakeDamage(stats.damage);
         }
     }
 
@@ -105,7 +104,7 @@ public class NetPlayerAttack : NetworkBehaviour
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage.GetValue());
+            enemy.GetComponent<IA>().TakeDamage(stats.damage);
         }
     }
 

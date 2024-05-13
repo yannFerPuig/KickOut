@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5786427244141118802}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.002, y: -0.318, z: -0.6}
+  m_LocalPosition: {x: 0, y: -0.3, z: -0.6}
   m_LocalScale: {x: -0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -231,9 +231,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   capsuleCollider2D: {fileID: 3567797433960355159}
-  maxHealth: 110
-  width: 0.3
-  height: 0.83
+  maxHealth:
+    baseValue: 0
+  currentHealth:
+    baseValue: 0
+  width:
+    baseValue: 0
+  height:
+    baseValue: 0
   damage:
     baseValue: 15
   defense:
@@ -250,10 +255,11 @@ MonoBehaviour:
     baseValue: 10
   fallingGravityScale:
     baseValue: 40
-  blockingSpeed:
-    baseValue: 0
   groundCheckRadius:
     baseValue: 0.5
+  spawnPoint: {x: 0, y: 0, z: 0}
+  attackPointPos: {x: 0, y: 0, z: 0}
+  groundCheckPointPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6941074942130178209
 MonoBehaviour:
   m_ObjectHideFlags: 0

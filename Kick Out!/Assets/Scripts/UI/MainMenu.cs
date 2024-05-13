@@ -20,16 +20,27 @@ public class MainMenu : MonoBehaviour
     //SPRITES
     public Sprite CarmenSprite;
 
+    //ANIMATORS CONTROLLERS
+    public RuntimeAnimatorController carmenController;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
 
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     public void Start()
     {
         img = GameObject.FindGameObjectWithTag("FighterSelected");
-
-        CarmenSprite = Resources.Load<Sprite>("carmenBase.psd");
 
         menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
         modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
@@ -113,8 +124,31 @@ public class MainMenu : MonoBehaviour
             switch (fighterSelected)
             {
                 case "Carmen":
+                    player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Carmen");
+
                     player.gameObject.AddComponent(typeof(CarmenStats));
-                    player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("carmenBase");
+                    Animator animator = player.gameObject.AddComponent(typeof(Animator)) as Animator;
+                    RuntimeAnimatorController runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Carmen/Carmen");
+                    animator.runtimeAnimatorController = runtimeAnimatorController;
+
+
+                    CarmenStats stats = player.GetComponent<CarmenStats>();
+                    stats.Initialize();
+
+                    player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+
+                    stats.groundCheck.position = new Vector3(0, -0.3f, 0);
+
+                    Transform attackPoint = player.transform.Find("AttackPoint");
+                    attackPoint.position = stats.attackPointPos;
+
+                    CapsuleCollider2D capsuleCollider2D = player.GetComponent<CapsuleCollider2D>();
+                    capsuleCollider2D.size = new Vector2(stats.width, stats.height);
+
+                    PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
+                    playerAttack.punch = Resources.Load<AnimationClip>("Animation/Carmen/carmenPunch");
+                    playerAttack.special = Resources.Load<AnimationClip>("Animation/Carmen/carmenSpecial");
+
                     break;
             }
         }

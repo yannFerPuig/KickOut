@@ -28,8 +28,14 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        attackRange = stats.attackRange.GetValue();    
-        attackSpeed = stats.attackSpeed.GetValue();
+        stats = gameObject.GetComponent<FighterStats>();
+        move = gameObject.GetComponent<PlayerMovement>();
+        startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<StartRoundTimer>();
+
+        animator = gameObject.GetComponent<Animator>();
+        attackPoint = gameObject.transform.Find("AttackPoint");
+
+        attackRange = stats.attackRange;
     }
 
     // Update is called once per frame
@@ -74,7 +80,7 @@ public class PlayerAttack : MonoBehaviour
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage.GetValue());
+            enemy.GetComponent<IA>().TakeDamage(stats.damage);
         }
     }
 
@@ -106,7 +112,7 @@ public class PlayerAttack : MonoBehaviour
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage.GetValue());
+            enemy.GetComponent<IA>().TakeDamage(stats.specialDamage);
         }
     }
 

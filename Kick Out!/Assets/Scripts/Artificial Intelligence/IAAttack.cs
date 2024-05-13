@@ -18,8 +18,8 @@ public class IAAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackDamage = stats.damage.GetValue();
-        attackRange = stats.attackRange.GetValue();        
+        attackDamage = stats.damage;
+        attackRange = stats.attackRange;        
     }
 
     public void Attack()

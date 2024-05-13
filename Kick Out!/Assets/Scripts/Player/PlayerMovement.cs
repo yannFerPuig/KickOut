@@ -37,11 +37,21 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = stats.moveSpeed.GetValue();
-        jumpForce = stats.jumpForce.GetValue();
-        gravityScale = stats.gravityScale.GetValue();
-        fallingGravityScale = stats.fallingGravityScale.GetValue();
-        groundCheckRadius = stats.groundCheckRadius.GetValue();
+        stats = gameObject.GetComponent<FighterStats>();
+        attack = gameObject.GetComponent<PlayerAttack>();   
+        startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<StartRoundTimer>();
+
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
+        sp = gameObject.GetComponent<SpriteRenderer>();
+        groundCheck = gameObject.transform.Find("GroundCheck");
+        attackPoint = gameObject.transform.Find("AttackPoint");
+
+        moveSpeed = stats.moveSpeed;
+        jumpForce = stats.jumpForce;
+        gravityScale = stats.gravityScale;
+        fallingGravityScale = stats.fallingGravityScale;
+        groundCheckRadius = stats.groundCheckRadius;
     }
 
     // Update is called once per frame
