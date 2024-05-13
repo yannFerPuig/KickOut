@@ -77,6 +77,8 @@ GameObject:
   - component: {fileID: 5480600652406848737}
   - component: {fileID: 2704838066466638415}
   - component: {fileID: 6941074942130178209}
+  - component: {fileID: 8425502370215708225}
+  - component: {fileID: 5429373629178176599}
   - component: {fileID: 6429391254206327418}
   - component: {fileID: 8746404656458492668}
   - component: {fileID: 7804050453769998765}
@@ -234,9 +236,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   capsuleCollider2D: {fileID: 3567797433960355159}
-  maxHealth: 100
-  width: 0.3
-  height: 0.83
+  maxHealth:
+    baseValue: 0
+  currentHealth:
+    baseValue: 0
+  width:
+    baseValue: 0
+  height:
+    baseValue: 0
   damage:
     baseValue: 10
   defense:
@@ -253,8 +260,6 @@ MonoBehaviour:
     baseValue: 10
   fallingGravityScale:
     baseValue: 40
-  blockingSpeed:
-    baseValue: 0
   groundCheckRadius:
     baseValue: 0.5
 --- !u!114 &2704838066466638415
@@ -269,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2231225706
+  GlobalObjectIdHash: 3476333253
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -285,7 +290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994664286676069799}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17eb5a7acaa414f409819d0ba9c428ea, type: 3}
   m_Name: 
@@ -304,7 +309,7 @@ MonoBehaviour:
   isGrounded: 0
   isFlipped: 0
   horizontalInput: 0
---- !u!114 &6429391254206327418
+--- !u!114 &8425502370215708225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,6 +317,57 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6994664286676069799}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7313f99e46f449945adb3bc280473b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 5480600652406848737}
+  attack: {fileID: 6429391254206327418}
+  startRoundTimer: {fileID: 0}
+  rb: {fileID: 6718969801361712943}
+  animator: {fileID: 8746404656458492668}
+  sp: {fileID: 6106308297862931758}
+  groundCheck: {fileID: 2189394316462280561}
+  attackPoint: {fileID: 595928574521473631}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isGrounded: 0
+  isFlipped: 0
+  horizontalInput: 0
+--- !u!114 &5429373629178176599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994664286676069799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e448f42c58010cf4c843014a512e223c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 5480600652406848737}
+  move: {fileID: 6941074942130178209}
+  startRoundTimer: {fileID: 0}
+  animator: {fileID: 8746404656458492668}
+  attackPoint: {fileID: 595928574521473631}
+  punch: {fileID: 7400000, guid: ada3d4d3e3891c54394252ce2fd14ddf, type: 2}
+  special: {fileID: 7400000, guid: 0575a9df6b31ead4ea206016646f257c, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  attackRange: 0
+  attackSpeed: 0
+  isAttacking: 0
+--- !u!114 &6429391254206327418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6994664286676069799}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50fc349eb54f67f46a5aa7d9e8ad9f09, type: 3}
   m_Name: 
