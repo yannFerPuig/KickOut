@@ -232,9 +232,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   capsuleCollider2D: {fileID: 3567797433960355159}
-  maxHealth: 100
-  width: 0.3
-  height: 0.83
+  maxHealth:
+    baseValue: 0
+  currentHealth:
+    baseValue: 0
+  width:
+    baseValue: 0
+  height:
+    baseValue: 0
   damage:
     baseValue: 10
   defense:
@@ -251,8 +256,6 @@ MonoBehaviour:
     baseValue: 10
   fallingGravityScale:
     baseValue: 40
-  blockingSpeed:
-    baseValue: 0
   groundCheckRadius:
     baseValue: 0.5
 --- !u!114 &-1801578580884871947
@@ -267,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 3405283457
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -337,7 +340,7 @@ Animator:
   m_GameObject: {fileID: 6994664286676069799}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 540a4147189f16548ae498d30cd11c96, type: 2}
+  m_Controller: {fileID: 9100000, guid: b5344ab65097a1e44979f3a68d3af77b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

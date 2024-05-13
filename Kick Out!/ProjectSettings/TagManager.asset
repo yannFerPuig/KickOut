@@ -10,6 +10,8 @@ TagManager:
   - HP_P2
   - MenuButton
   - ModeButton
+  - IA
+  - Canvas
   layers:
   - Default
   - TransparentFX

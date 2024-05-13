@@ -48,11 +48,11 @@ public class WinnerScreen : MonoBehaviour
             //if the winner is the P1
             if (winner.tag == "P1")
             {
-                player1Points[player1.points - 1].GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+                player1Points[player1.points - 1].GetComponent<Image>().color = Color.green;
             }
             else if (winner.tag == "P2")
             {
-                player2Points[player2.points - 1].GetComponent<Image>().color = new Color32(0, 255, 0, 255);
+                player2Points[player2.points - 1].GetComponent<Image>().color = Color.green;
             }
 
             //we reset the health of the fighters
@@ -65,7 +65,7 @@ public class WinnerScreen : MonoBehaviour
 
             //we make the fighters respawn at their original location
             player1.transform.position = new Vector3(-8.5f, -2f, 0f);
-            player2.transform.position = new Vector3(8.5f, -2f, 0f);
+            player2.transform.position = new Vector3(8.5f, -2.43f, 0f);
         }
         else 
         {
@@ -73,51 +73,6 @@ public class WinnerScreen : MonoBehaviour
         }
 
     }
-
-    /**
-    public void Setup(Player winner)
-    {
-        if (winner.points < 3)
-        {
-            gameObject.SetActive(true);
-            roundWinner.text = winner.name;
-            player1Points[player1.points - 1].GetComponent<Image>().color = new Color32(0, 255, 0, 255);
-
-            player1.currentHealth = 100;
-            player2.currentHealth = 100;
-
-            GameObject.FindGameObjectWithTag("HP_P1").GetComponent<HealthBar>().SetHealth(player1.currentHealth);
-            GameObject.FindGameObjectWithTag("HP_P2").GetComponent<HealthBar>().SetHealth(player1.currentHealth);
-
-            player1.transform.position = new Vector3(-8.5f, -2f, 0f);
-            player2.transform.position = new Vector3(8.5f, -2f, 0f);
-        }
-        else
-        { 
-            endGame.Activate(winner); 
-        }
-    }
-
-    public void Setup(IA winner)
-    {
-        if (winner.points < 3)
-        {
-            gameObject.SetActive(true);
-            roundWinner.text = winner.name;
-            player2Points[player1.points - 1].GetComponent<Image>().color = new Color32(0, 255, 0, 255);
-
-            player1.currentHealth = 100;
-            player2.currentHealth = 100;
-
-            player1.transform.position = new Vector3(-8.5f, -2f, 0f);
-            player2.transform.position = new Vector3(8.5f, -2f, 0f);
-        }
-        else
-        { 
-            endGame.Activate(winner); 
-        }
-    }
-    **/
 }
 
 

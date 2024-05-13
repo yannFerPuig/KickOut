@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b57d28fa379b624aa6787c67ba91eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startRoundTimer: {fileID: 0}
+  player: {fileID: 0}
   speed: 2.5
   attackRange: 0.1
 --- !u!1102 &-7204901525758514206

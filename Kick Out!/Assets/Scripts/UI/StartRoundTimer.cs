@@ -19,6 +19,14 @@ public class StartRoundTimer : MonoBehaviour
     //To start the fight
     public bool fightStarted = false;
 
+    //SCRIPTS
+    public MainMenu mainMenu;
+
+    //The players in game
+    public GameObject player1;
+    public GameObject player2;
+    public GameObject iA;
+
     public void Start()
     {
         //TIMERS
@@ -28,6 +36,18 @@ public class StartRoundTimer : MonoBehaviour
         int secondes = Mathf.FloorToInt(remainingTime % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, secondes);
+
+        //Initialize the players so we can disable the scripts
+        if (mainMenu.gameMode == "solo")
+        {
+            player1 = GameObject.FindGameObjectWithTag("Player");
+            iA = GameObject.FindGameObjectWithTag("IA");
+
+            player1.GetComponent<PlayerMovement>().enabled = false;
+            player1.GetComponent<PlayerAttack>().enabled = false;
+
+            iA.GetComponent<IAAttack>().enabled = false;
+        }
     }
 
     public void Update()
@@ -47,6 +67,12 @@ public class StartRoundTimer : MonoBehaviour
             fightStarted = true;
             //Start the timer for the fight
             RoundTimer();
+
+            
+            player1.GetComponent<PlayerMovement>().enabled = true;
+            player1.GetComponent<PlayerAttack>().enabled = true;
+
+            iA.GetComponent<IAAttack>().enabled = true;
         }
 
         startText.text = string.Format("{0}", Mathf.Round(roundStart));        
@@ -61,8 +87,6 @@ public class StartRoundTimer : MonoBehaviour
         else if (remainingTime < 0) 
         {
             remainingTime = 0;
-
-            
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);

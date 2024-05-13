@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class IA : Fighter
 {
+    //SCRIPTS
+    public StartRoundTimer startRoundTimer;
+
     //COMPONENTS
     public Transform player;
 
     //DATA
     public bool isFlipped = false;
+    
     public void LookAtPlayer() 
     {
         Vector3 flipped = transform.localScale;

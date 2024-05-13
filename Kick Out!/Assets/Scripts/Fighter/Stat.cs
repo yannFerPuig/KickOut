@@ -12,4 +12,9 @@ public class Stat
     {
         return baseValue;
     }
+
+    public void SetValue(float value)
+    {
+        baseValue = value;
+    }
 }
