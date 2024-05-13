@@ -6,7 +6,7 @@ public class FighterStats : MonoBehaviour
     public HealthBar healthBar;
     public CapsuleCollider2D capsuleCollider2D;
 
-    //DATA
+    //STAT DATA
     public Stat maxHealth;
     public Stat currentHealth;
     public Stat width;
@@ -20,7 +20,10 @@ public class FighterStats : MonoBehaviour
     public Stat gravityScale;
     public Stat fallingGravityScale;
     public Stat groundCheckRadius;
-    //public string name;
+
+    //ADDITIONNAL DATA
+    public Vector3 attackPointPos;
+    public Vector3 groundCheckPointPos;
 
 
     void Start() 

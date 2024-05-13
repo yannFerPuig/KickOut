@@ -1,22 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject img;
-    public List<Sprite> sprites;
 
-    public string gameMode;
-
-
+    //GameObjects
+    GameObject img;
     GameObject[] menuButtons;
     GameObject[] modeButtons;
 
+
+    public string fighterSelected;
+    public string gameMode;
+
+    //SPRITES
+    public Sprite CarmenSprite;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Start()
     {
+        img = GameObject.FindGameObjectWithTag("FighterSelected");
+
+        CarmenSprite = Resources.Load<Sprite>("carmenBase.psd");
+
         menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
         modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
         Debug.Log(modeButtons.Length);
@@ -75,13 +89,34 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void NextSprite(int index)
+    public void SelectFighterSprite(Sprite sprite)
     {
-        img.GetComponent<Image>().sprite = sprites[index];
+        img.GetComponent<Image>().sprite = sprite;
+    }
+
+    public void SelectFighterName(string name)
+    {
+        fighterSelected = name;
     }
 
     public void StartFight() 
     {
         SceneManager.LoadScene("FightScene");
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "FightScene")
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+            switch (fighterSelected)
+            {
+                case "Carmen":
+                    player.gameObject.AddComponent(typeof(CarmenStats));
+                    player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("carmenBase");
+                    break;
+            }
+        }
     }
 }

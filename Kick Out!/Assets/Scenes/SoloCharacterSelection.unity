@@ -265,45 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328a904fd4633fc41a3e5654322896f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 0}
-  sprites: []
-  gameMode: 
---- !u!1 &194813872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 194813873}
-  m_Layer: 5
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &194813873
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194813872}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1780033512}
-  m_Father: {fileID: 1222035195}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 25}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  fighterSelected: 
+  gameMode: solo
 --- !u!1 &465453188
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,11 +484,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1780033516}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: NextSprite
-        m_Mode: 3
+        m_MethodName: SelectFighter
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 21300000, guid: 958b8a5d2741b184fbe7d724af16b4da, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -732,7 +695,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1983142965}
-  - {fileID: 194813873}
+  - {fileID: 1780033512}
   - {fileID: 1529336404}
   - {fileID: 63503355}
   - {fileID: 465453189}
@@ -891,7 +854,7 @@ GameObject:
   - component: {fileID: 1780033514}
   m_Layer: 5
   m_Name: Selected
-  m_TagString: Untagged
+  m_TagString: FighterSelected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -908,12 +871,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 194813873}
+  m_Father: {fileID: 1222035195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60, y: 90}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 70, y: 64.99999}
+  m_SizeDelta: {x: 120, y: 105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780033514
 MonoBehaviour:
@@ -965,10 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328a904fd4633fc41a3e5654322896f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1780033511}
-  sprites:
-  - {fileID: 21300000, guid: e6f88a2f8e7399a439cf98a81ce9f08c, type: 3}
-  - {fileID: 21300000, guid: dfc3f2c6718d3b1439e162318a14f3f9, type: 3}
+  fighterSelected: 
   gameMode: 
 --- !u!1 &1848102173
 GameObject:
@@ -1318,10 +1278,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1780033516}
+      - m_Target: {fileID: 190815183}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: NextSprite
-        m_Mode: 3
+        m_MethodName: SelectFighterSprite
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 21300000, guid: b6680c400cd822c49895f75dc2f203d0, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Carmen
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 190815183}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SelectFighterName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

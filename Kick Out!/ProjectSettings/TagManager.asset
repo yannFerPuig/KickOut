@@ -12,6 +12,9 @@ TagManager:
   - ModeButton
   - IA
   - Canvas
+  - FighterSelected
+  - GroundCheck
+  - AttackPoint
   layers:
   - Default
   - TransparentFX
