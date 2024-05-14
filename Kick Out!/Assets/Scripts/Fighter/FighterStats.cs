@@ -5,8 +5,8 @@ public class FighterStats : MonoBehaviour
     //COMPONENTS
     public HealthBar healthBar;
     public CapsuleCollider2D capsuleCollider2D;
-    public Transform attackPoint;
-    public Transform groundCheck;
+    public GameObject attackPoint;
+    public GameObject groundCheck;
 
     //STAT DATA
     public float maxHealth;

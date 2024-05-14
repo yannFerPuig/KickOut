@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask collisionLayer;
 
     //DATA
-    private bool isBlocking;
     private bool isJumping = false;
     public bool isGrounded = false;
     public bool isFlipped = false;
@@ -46,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         sp = gameObject.GetComponent<SpriteRenderer>();
         groundCheck = gameObject.transform.Find("GroundCheck");
         attackPoint = gameObject.transform.Find("AttackPoint");
+
+        collisionLayer = 1 << LayerMask.NameToLayer("Default");
 
         moveSpeed = stats.moveSpeed;
         jumpForce = stats.jumpForce;

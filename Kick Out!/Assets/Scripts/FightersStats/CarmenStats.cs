@@ -29,8 +29,8 @@ public class CarmenStats : FighterStats
         attackPointPos = new Vector3(0, 0.26f, 0);
 
         capsuleCollider2D = gameObject.GetComponent<CapsuleCollider2D>();
-        attackPoint = gameObject.transform.Find("AttackPoint");
-        attackPoint.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
-        groundCheck = gameObject.transform.Find("GroundCheck");
+        attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
+        attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
+        groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
     }
 }

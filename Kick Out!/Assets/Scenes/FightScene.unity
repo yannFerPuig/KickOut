@@ -1159,7 +1159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_TagString
@@ -1769,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3259,6 +3259,10 @@ PrefabInstance:
     - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_Name
       value: Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7397309447813615640, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_LocalPosition.x

@@ -136,11 +136,8 @@ public class MainMenu : MonoBehaviour
                     stats.Initialize();
 
                     player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
-
-                    stats.groundCheck.position = new Vector3(0, -0.3f, 0);
-
-                    Transform attackPoint = player.transform.Find("AttackPoint");
-                    attackPoint.position = stats.attackPointPos;
+                    stats.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, stats.attackPointPos.z); 
+                    stats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
 
                     CapsuleCollider2D capsuleCollider2D = player.GetComponent<CapsuleCollider2D>();
                     capsuleCollider2D.size = new Vector2(stats.width, stats.height);

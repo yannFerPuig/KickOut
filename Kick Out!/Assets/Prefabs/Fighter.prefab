@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7281597211086845926}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AttackPoint
   m_TagString: AttackPoint
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: -5151273090061042870}
   - component: {fileID: 282682923582170787}
   - component: {fileID: 5361444378096251611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fighter
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -261,10 +261,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 827409767246247821}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundCheck
   m_TagString: GroundCheck
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
