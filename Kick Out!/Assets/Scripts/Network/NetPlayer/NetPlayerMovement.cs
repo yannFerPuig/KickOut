@@ -70,9 +70,7 @@ public class NetPlayerMovement : NetworkBehaviour
         MoveHorizontal();
         Jump();
 
-        //if the player is attacking, we don't want to allow him to flip
-        if (!attack.isAttacking)
-            Flip();
+        stats.GetComponent<Player>().LookAtEnemy();
     }
 
     void MoveHorizontal()

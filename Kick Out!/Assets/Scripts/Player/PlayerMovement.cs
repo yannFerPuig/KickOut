@@ -79,10 +79,10 @@ public class PlayerMovement : MonoBehaviour
         //Movement
         MoveHorizontal();
         Jump();
+        
+        stats.GetComponent<Player>().LookAtEnemy();
 
-        //if the player is attacking, we don't want to allow him to flip
-        if(!attack.isAttacking)
-            Flip();
+            //Flip();
     }
 
     void MoveHorizontal()

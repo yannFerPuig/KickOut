@@ -34,7 +34,6 @@ public class PlayerAttack : MonoBehaviour
 
         animator = gameObject.GetComponent<Animator>();
         attackPoint = gameObject.transform.Find("AttackPoint");
-
         attackRange = stats.attackRange;
     }
 
