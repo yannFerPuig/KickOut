@@ -17,15 +17,9 @@ public class MainMenu : MonoBehaviour
     public string fighterSelected;
     public string gameMode;
 
-    //SPRITES
-    public Sprite CarmenSprite;
-
-    //ANIMATORS CONTROLLERS
-    public RuntimeAnimatorController carmenController;
-
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+
     }
 
     void OnEnable()
@@ -128,7 +122,9 @@ public class MainMenu : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = new Vector3(-8f, -2f, 0f);
 
-        Animator animator = player.gameObject.AddComponent(typeof(Animator)) as Animator;
+        Animator animator = player.GetComponent<Animator>();
+
+        //Animator animator = player.gameObject.AddComponent(typeof(Animator)) as Animator;
 
         switch (fighterSelected)
         {
