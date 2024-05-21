@@ -12,5 +12,6 @@ public class EndGame : MonoBehaviour
     {
         gameObject.SetActive(true);
         winnerOfTheMatch.text = winner.name + " successfully kicked out his opponent!";
+        
     }
 }

@@ -540,8 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 328a904fd4633fc41a3e5654322896f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 0}
-  sprites: []
+  fighterSelected: 
+  gameMode: 
+  CarmenSprite: {fileID: 0}
+  carmenController: {fileID: 0}
 --- !u!1 &1323570783
 GameObject:
   m_ObjectHideFlags: 0

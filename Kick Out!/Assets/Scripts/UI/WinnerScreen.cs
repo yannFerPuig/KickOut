@@ -8,12 +8,14 @@ public class WinnerScreen : MonoBehaviour
 {
     // DISPLAYS THE ROUND WINNER
     public EndGame endGame;
+    public SoundDesigns audioSource;
     public StartRoundTimer startRoundTimer;
     public TextMeshProUGUI roundWinner;
     public Fighter player1;
     public Fighter player2;
     public List<Image> player1Points;
     public List<Image> player2Points;
+    private bool finished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -66,10 +68,20 @@ public class WinnerScreen : MonoBehaviour
             //we make the fighters respawn at their original location
             player1.transform.position = new Vector3(-8.5f, -2f, 0f);
             player2.transform.position = new Vector3(8.5f, -2.43f, 0f);
+
+            
         }
-        else 
+        else
+        {
+            finished = true;
+            winner.points = 0;
+        }
+        if (finished)
         {
             endGame.Activate(winner);
+            audioSource.PutEndMusic();
+            finished = false;
+            
         }
 
     }
