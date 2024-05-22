@@ -13,6 +13,9 @@ public class Fighter : MonoBehaviour
     public HealthBar healthBar;
     public SpriteRenderer spriteRenderer;
 
+    //GAMEOBJECTS
+    public GameObject enemy;
+
     //DATA
     public float currentHealth;
     public float defense;
@@ -47,8 +50,6 @@ public class Fighter : MonoBehaviour
 
     public void LookAtEnemy()
     {
-        GameObject enemy;
-
         if (mainMenu.gameMode == "solo")
         {
             enemy = GameObject.Find("IA");

@@ -2,8 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
-using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -65,16 +63,6 @@ public class PlayerAttack : MonoBehaviour
         Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
         Vector3 size = new Vector3(attackRange, 0.2f, 0);
 
-        if (move.isFlipped) 
-        {
-            size.x *= -1;
-            attack.x -= attackRange / 2;
-        }
-        else 
-        {
-            attack.x += attackRange / 2;
-        }
-
         Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
 
         //Damage the enemy 
@@ -96,16 +84,6 @@ public class PlayerAttack : MonoBehaviour
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
         Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
         Vector3 size = new Vector3(attackRange, 0.2f, 0);
-
-        if (move.isFlipped) 
-        {
-            size.x *= -1;
-            attack.x -= attackRange / 2;
-        }
-        else 
-        {
-            attack.x += attackRange / 2;
-        }
 
         Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
 
@@ -135,16 +113,6 @@ public class PlayerAttack : MonoBehaviour
 
         Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
         Vector3 size = new Vector3(attackRange, 0.2f, 0);
-
-        if (move.isFlipped) 
-        {
-            size.x *= -1;
-            attack.x -= attackRange / 2;
-        }
-        else 
-        {
-            attack.x += attackRange / 2;
-        }
 
         Gizmos.DrawCube(attack, size);
     }    

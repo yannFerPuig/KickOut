@@ -11,13 +11,22 @@ public class FighterStats : MonoBehaviour
     //STAT DATA
     public float maxHealth;
     public float currentHealth;
+
     public float width;
     public float height;
+    
     public float damage;
     public float specialDamage;
+    
     public float defense;
+    public float blockRadius = 5;
+
     public float attackRange;
+    public float attackSpeed;
+
     public float moveSpeed;
+    public float blockingMoveSpeed;
+    
     public float jumpForce;
     public float gravityScale;
     public float fallingGravityScale;
@@ -33,6 +42,7 @@ public class FighterStats : MonoBehaviour
     {
         currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
+        blockingMoveSpeed = moveSpeed / 2;
     }
 
     void Awake() 

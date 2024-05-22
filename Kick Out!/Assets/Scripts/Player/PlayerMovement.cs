@@ -21,13 +21,14 @@ public class PlayerMovement : MonoBehaviour
 
     //EXTRAS
     public LayerMask collisionLayer;
+    public LayerMask blockLayer;
 
     //DATA
     private bool isJumping = false;
     public bool isGrounded = false;
-    public bool isFlipped = false;
+    public bool canBlock = false;
 
-    private float moveSpeed;
+    public float moveSpeed;
     private float jumpForce;
     private float gravityScale;
     private float fallingGravityScale;
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         attackPoint = gameObject.transform.Find("AttackPoint");
 
         collisionLayer = 1 << LayerMask.NameToLayer("Default");
+        blockLayer = LayerMask.GetMask("IA");
 
         moveSpeed = stats.moveSpeed;
         jumpForce = stats.jumpForce;
@@ -78,15 +80,15 @@ public class PlayerMovement : MonoBehaviour
     {
         //OverlapArea creates a hitbox between 2 positions and checks if it is in collision with something
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
+        canBlock = Physics2D.OverlapCircle(transform.position, stats.blockRadius, blockLayer);
 
         //Movement
         MoveHorizontal();
         Jump();
 
+        Block();
+
         player.LookAtEnemy();
-        //if the player is attacking, we don't want to allow him to flip
-        // if(!attack.isAttacking)
-        //     Flip();
     }
 
     void MoveHorizontal()
@@ -119,23 +121,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // void Flip() 
-    // {
-    //     if (horizontalInput > 0.1f) 
-    //     {
-    //         isFlipped = false;
-    //         sp.flipX = false;
-    //     } 
-    //     else if (horizontalInput < -0.1f) 
-    //     {
-    //         isFlipped = true;
-    //         sp.flipX = true;
-    //     }
-    // }
+    void Block()
+    {
+        //If the player is going backwards and the enemy is in range of blocking
+        if (horizontalInput < 0 && canBlock)
+        {
+            animator.SetBool("IsBlocking", true);
+            moveSpeed = stats.blockingMoveSpeed;
+        }
+        else 
+        {
+            animator.SetBool("IsBlocking", false);
+            moveSpeed = stats.moveSpeed;
+        }
+    }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        //Gizmos.DrawSphere(groundCheck.position, 0.5f);
+        Gizmos.DrawSphere(transform.position, stats.blockRadius);
     }
 }

@@ -1188,11 +1188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1814,6 +1814,10 @@ PrefabInstance:
       value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 5480600652406848737, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
+      propertyPath: blockRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480600652406848737, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 724226173}
@@ -1875,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6994664286676069799, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3122,8 +3126,11 @@ MonoBehaviour:
   damage: 0
   specialDamage: 0
   defense: 0
+  blockRadius: 0
   attackRange: 0
+  attackSpeed: 0
   moveSpeed: 0
+  blockingMoveSpeed: 0
   jumpForce: 0
   gravityScale: 0
   fallingGravityScale: 0
@@ -3429,7 +3436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7397309447813615640, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_LocalPosition.x
