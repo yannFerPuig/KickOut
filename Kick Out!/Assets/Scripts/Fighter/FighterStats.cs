@@ -32,7 +32,7 @@ public class FighterStats : MonoBehaviour
     void Start() 
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
     }
 
     void Awake() 

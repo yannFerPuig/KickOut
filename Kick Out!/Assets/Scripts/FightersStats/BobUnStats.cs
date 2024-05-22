@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class LouisStats : FighterStats
+public class BobUnStats : FighterStats
 {
     public void Initialize()
     {
-        maxHealth = 100;
+        maxHealth = 140;
 
         width = 0.3f;
         height = 0.83f;
 
-        damage = 10;
-        defense = 10;
+        damage = 6;
+        defense = 12;
         attackRange = 1.18f;
 
-        moveSpeed = 5;
+        moveSpeed = 3;
 
-        jumpForce = 30;
+        jumpForce = 28;
         gravityScale = 10;
-        fallingGravityScale = 40;
+        fallingGravityScale = 50;
         groundCheckRadius = 0.5f;
 
         spawnPoint = new Vector3(-8.5f, -2f, 0f);

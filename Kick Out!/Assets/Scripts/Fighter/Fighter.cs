@@ -17,6 +17,8 @@ public class Fighter : MonoBehaviour
 
     void Start()
     {
+        stats = gameObject.GetComponent<FighterStats>();
+
         currentHealth = stats.currentHealth;
         defense = stats.defense;
         points = 0;

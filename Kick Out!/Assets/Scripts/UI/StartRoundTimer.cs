@@ -46,7 +46,7 @@ public class StartRoundTimer : MonoBehaviour
             player1.GetComponent<PlayerMovement>().enabled = false;
             player1.GetComponent<PlayerAttack>().enabled = false;
 
-            iA.GetComponent<IAAttack>().enabled = false;
+            //iA.GetComponent<IAAttack>().enabled = false;
         }
     }
 
@@ -72,7 +72,7 @@ public class StartRoundTimer : MonoBehaviour
             player1.GetComponent<PlayerMovement>().enabled = true;
             player1.GetComponent<PlayerAttack>().enabled = true;
 
-            iA.GetComponent<IAAttack>().enabled = true;
+            //iA.GetComponent<IAAttack>().enabled = true;
         }
 
         startText.text = string.Format("{0}", Mathf.Round(roundStart));        
