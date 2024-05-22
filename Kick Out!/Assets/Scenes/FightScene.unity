@@ -837,7 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winnerOfTheMatch: {fileID: 500693056}
-  music: {fileID: 1166776599}
 --- !u!114 &635138222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &715827297
 RectTransform:
   m_ObjectHideFlags: 0
@@ -939,7 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endGame: {fileID: 635138221}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1166776599}
   startRoundTimer: {fileID: 1874737019}
   roundWinner: {fileID: 0}
   player1: {fileID: 661743438}
