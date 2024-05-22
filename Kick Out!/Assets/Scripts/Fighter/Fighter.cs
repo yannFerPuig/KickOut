@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,11 @@ public class Fighter : MonoBehaviour
 {
     //SCRIPTS
     public FighterStats stats;
+    public MainMenu mainMenu;
 
     //COMPONENTS
     public HealthBar healthBar;
+    public SpriteRenderer spriteRenderer;
 
     //DATA
     public float currentHealth;
@@ -18,6 +21,9 @@ public class Fighter : MonoBehaviour
     void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
+        mainMenu = GameObject.Find("Main Camera").GetComponent<MainMenu>();
+
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         currentHealth = stats.currentHealth;
         defense = stats.defense;
@@ -37,5 +43,28 @@ public class Fighter : MonoBehaviour
     public virtual void Die() 
     {
         Debug.Log(transform.name + " is dead");
+    }
+
+    public void LookAtEnemy()
+    {
+        GameObject enemy;
+
+        if (mainMenu.gameMode == "solo")
+        {
+            enemy = GameObject.Find("IA");
+            LookAt(enemy);
+        }
+    }
+
+    void LookAt(GameObject enemy)
+    {
+        if (transform.position.x > enemy.transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 }

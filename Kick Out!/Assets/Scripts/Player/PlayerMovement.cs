@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public FighterStats stats;
     public PlayerAttack attack;
     public StartRoundTimer startRoundTimer;
+    public Player player;
 
     //COMPONENTS
     public Rigidbody2D rb;
@@ -37,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
+        if (stats is LouisStats louisStats) louisStats.Initialize();
         attack = gameObject.GetComponent<PlayerAttack>();   
         startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<StartRoundTimer>();
+        player = gameObject.GetComponent<Player>();
 
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
@@ -80,9 +83,10 @@ public class PlayerMovement : MonoBehaviour
         MoveHorizontal();
         Jump();
 
+        player.LookAtEnemy();
         //if the player is attacking, we don't want to allow him to flip
-        if(!attack.isAttacking)
-            Flip();
+        // if(!attack.isAttacking)
+        //     Flip();
     }
 
     void MoveHorizontal()
@@ -115,19 +119,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Flip() 
-    {
-        if (horizontalInput > 0.1f) 
-        {
-            isFlipped = false;
-            sp.flipX = false;
-        } 
-        else if (horizontalInput < -0.1f) 
-        {
-            isFlipped = true;
-            sp.flipX = true;
-        }
-    }
+    // void Flip() 
+    // {
+    //     if (horizontalInput > 0.1f) 
+    //     {
+    //         isFlipped = false;
+    //         sp.flipX = false;
+    //     } 
+    //     else if (horizontalInput < -0.1f) 
+    //     {
+    //         isFlipped = true;
+    //         sp.flipX = true;
+    //     }
+    // }
 
     void OnDrawGizmos()
     {
