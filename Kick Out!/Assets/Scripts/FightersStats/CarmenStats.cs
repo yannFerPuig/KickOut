@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class CarmenStats : FighterStats
 {
@@ -32,5 +32,6 @@ public class CarmenStats : FighterStats
         attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
         attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
         groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
+        cdBlock = GameObject.FindGameObjectWithTag("Block");
     }
 }

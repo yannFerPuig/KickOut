@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FighterStats : MonoBehaviour
 {   
-    //COMPONENTS
+    //GAMEOBJECTS
     public HealthBar healthBar;
+    public GameObject cdBlock;
+
+    //COMPONENTS
     public CapsuleCollider2D capsuleCollider2D;
     public GameObject attackPoint;
     public GameObject groundCheck;
@@ -19,7 +23,8 @@ public class FighterStats : MonoBehaviour
     public float specialDamage;
     
     public float defense;
-    public float blockRadius = 5;
+    public float blockRadius = 5f;
+    public float blockCD = 2.5f ;
 
     public float attackRange;
     public float attackSpeed;

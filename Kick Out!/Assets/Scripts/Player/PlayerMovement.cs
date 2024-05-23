@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer sp;
     public Transform groundCheck;
     public Transform attackPoint;
+    public Slider cbBlock;
 
     //EXTRAS
     public LayerMask collisionLayer;
@@ -30,12 +29,12 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
     private float jumpForce;
+    public float blockCD;
     private float gravityScale;
     private float fallingGravityScale;
     private float groundCheckRadius = 0.5f;
     public float horizontalInput;
 
-    // Start is called before the first frame update
     void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
@@ -50,17 +49,19 @@ public class PlayerMovement : MonoBehaviour
         groundCheck = gameObject.transform.Find("GroundCheck");
         attackPoint = gameObject.transform.Find("AttackPoint");
 
+        cbBlock = stats.cdBlock.GetComponent<Slider>();
+
         collisionLayer = 1 << LayerMask.NameToLayer("Default");
         blockLayer = LayerMask.GetMask("IA");
 
         moveSpeed = stats.moveSpeed;
+        blockCD = stats.blockCD;
         jumpForce = stats.jumpForce;
         gravityScale = stats.gravityScale;
         fallingGravityScale = stats.fallingGravityScale;
         groundCheckRadius = stats.groundCheckRadius;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Detect if player is trying to move
@@ -71,6 +72,27 @@ public class PlayerMovement : MonoBehaviour
         //Detect if the players presses the jump button
         if (Input.GetButtonDown("Jump") && isGrounded)
             isJumping = true;
+
+        if (Input.GetKey(KeyCode.B) && blockCD > 0)
+        {
+            moveSpeed = 0;
+            animator.SetBool("IsBlocking", true);
+
+            blockCD -= Time.deltaTime;
+            if (blockCD < 0) blockCD = 0; 
+        }
+        else
+        {
+            moveSpeed = stats.moveSpeed;
+            animator.SetBool("IsBlocking", false);
+
+            blockCD += Time.deltaTime * 0.5f;
+            if (blockCD > stats.blockCD) blockCD = stats.blockCD;  // Prevent blockCD from exceeding its maximum value
+        }
+
+        cbBlock.value = blockCD;
+
+        cbBlock.value = blockCD;
 
         //Animation
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));   
@@ -86,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         MoveHorizontal();
         Jump();
 
-        Block();
+        //Block();
 
         player.LookAtEnemy();
     }
