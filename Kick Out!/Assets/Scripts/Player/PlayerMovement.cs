@@ -5,31 +5,32 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     //SCRIPTS
-    public FighterStats stats;
-    public PlayerAttack attack;
-    public StartRoundTimer startRoundTimer;
-    public Player player;
+    private FighterStats stats;
+    private PlayerAttack attack;
+    private StartRoundTimer startRoundTimer;
+    private Player player;
 
     //COMPONENTS
-    public Rigidbody2D rb;
-    public Animator animator;
-    public SpriteRenderer sp;
-    public Transform groundCheck;
-    public Transform attackPoint;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer sp;
+    private Transform groundCheck;
+    private Transform attackPoint;
     public Slider cbBlock;
 
     //EXTRAS
-    public LayerMask collisionLayer;
-    public LayerMask blockLayer;
+    private LayerMask collisionLayer;
+    private LayerMask blockLayer;
 
     //DATA
     private bool isJumping = false;
-    public bool isGrounded = false;
-    public bool canBlock = false;
+    private bool isGrounded = false;
+    private bool isBlockCooldown = false;
 
-    public float moveSpeed;
+    private float moveSpeed;
     private float jumpForce;
-    public float blockCD;
+    private float blockCD;
+    private float blockCooldownTimer;
     private float gravityScale;
     private float fallingGravityScale;
     private float groundCheckRadius = 0.5f;
@@ -60,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         gravityScale = stats.gravityScale;
         fallingGravityScale = stats.fallingGravityScale;
         groundCheckRadius = stats.groundCheckRadius;
+
+        blockCooldownTimer = 0f;
     }
 
     void Update()
@@ -67,19 +70,38 @@ public class PlayerMovement : MonoBehaviour
         //Detect if player is trying to move
         //Player can move only when he is not attacking
         if (!attack.isAttacking)
+        {
             horizontalInput = Input.GetAxis("Horizontal");
+        }
+
+        if (isBlockCooldown) 
+        {
+            blockCooldownTimer += Time.deltaTime;
+
+            if (blockCooldownTimer > 1.5f)
+            {
+                isBlockCooldown = false;
+                blockCooldownTimer = 0;
+            }
+        }
 
         //Detect if the players presses the jump button
         if (Input.GetButtonDown("Jump") && isGrounded)
+        {
             isJumping = true;
+        }
 
-        if (Input.GetKey(KeyCode.B) && blockCD > 0)
+        if (Input.GetKey(KeyCode.B) && blockCD > 0  && !isBlockCooldown)
         {
             moveSpeed = 0;
             animator.SetBool("IsBlocking", true);
 
             blockCD -= Time.deltaTime;
-            if (blockCD < 0) blockCD = 0; 
+            if (blockCD < 0) 
+            {
+                blockCD = 0; 
+                isBlockCooldown = true;
+            }
         }
         else
         {
@@ -87,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsBlocking", false);
 
             blockCD += Time.deltaTime * 0.5f;
-            if (blockCD > stats.blockCD) blockCD = stats.blockCD;  // Prevent blockCD from exceeding its maximum value
+            if (blockCD > stats.blockCD) blockCD = stats.blockCD; 
         }
 
         cbBlock.value = blockCD;
@@ -102,7 +124,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //OverlapArea creates a hitbox between 2 positions and checks if it is in collision with something
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
-        canBlock = Physics2D.OverlapCircle(transform.position, stats.blockRadius, blockLayer);
 
         //Movement
         MoveHorizontal();
@@ -140,21 +161,6 @@ public class PlayerMovement : MonoBehaviour
         else //when the fighter is falling, increases the gravity so the jump looks more realistic
         {
             rb.gravityScale = fallingGravityScale;
-        }
-    }
-
-    void Block()
-    {
-        //If the player is going backwards and the enemy is in range of blocking
-        if (horizontalInput < 0 && canBlock)
-        {
-            animator.SetBool("IsBlocking", true);
-            moveSpeed = stats.blockingMoveSpeed;
-        }
-        else 
-        {
-            animator.SetBool("IsBlocking", false);
-            moveSpeed = stats.moveSpeed;
         }
     }
 
