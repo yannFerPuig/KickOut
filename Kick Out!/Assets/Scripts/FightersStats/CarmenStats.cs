@@ -24,7 +24,7 @@ public class CarmenStats : FighterStats
         fallingGravityScale = 40f;
         groundCheckRadius = 0.5f;
 
-        spawnPoint = new Vector3(-8.5f, -2f, 0f);
+        spawnPoint = new Vector3(-8f, -2f, 0f);
         groundCheckPointPos = new Vector3(0, -0.3f, 0);
         attackPointPos = new Vector3(0, 0.26f, 0);
 
@@ -32,6 +32,5 @@ public class CarmenStats : FighterStats
         attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
         attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
         groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
-        cdBlock = GameObject.FindGameObjectWithTag("Block");
     }
 }

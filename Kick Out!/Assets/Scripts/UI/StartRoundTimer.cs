@@ -6,18 +6,16 @@ using UnityEngine.UI;
 
 public class StartRoundTimer : MonoBehaviour
 {
-    //#####################################################################################################
     //TIMERS
     //Texts representing the different timers
     public TextMeshProUGUI startText;
     public TextMeshProUGUI timerText;
 
     //The starting time of timers (in seconds)
-    float remainingTime = 120;
-    float roundStart = 3;
+    public float remainingTime = 120;
+    public float roundStart = 3;
 
-    //To start the fight
-    public bool fightStarted = false;
+    public bool fightStarted = false; //To start the fight
 
     //SCRIPTS
     public MainMenu mainMenu;
@@ -31,6 +29,7 @@ public class StartRoundTimer : MonoBehaviour
     {
         //TIMERS
         roundStart = 3;
+        remainingTime = 120;
 
         int minutes = Mathf.FloorToInt(remainingTime / 60); 
         int secondes = Mathf.FloorToInt(remainingTime % 60);

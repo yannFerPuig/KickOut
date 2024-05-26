@@ -15,7 +15,8 @@ TagManager:
   - FighterSelected
   - GroundCheck
   - AttackPoint
-  - Block
+  - Block1
+  - Block2
   layers:
   - Default
   - TransparentFX

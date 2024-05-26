@@ -68,7 +68,15 @@ public class PlayerAttack : MonoBehaviour
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage);
+            enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+            
+            if (enemy.CompareTag("Player"))
+            {
+                if (enemy.GetComponent<PlayerMovement>().isBlocking)
+                {
+                    enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
+                }
+            }
         }
     }
 
@@ -90,7 +98,15 @@ public class PlayerAttack : MonoBehaviour
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.specialDamage);
+            enemy.GetComponent<Fighter>().TakeDamage(stats.specialDamage);
+
+            if (enemy.CompareTag("Player"))
+            {
+                if (enemy.GetComponent<PlayerMovement>().isBlocking)
+                {
+                    enemy.GetComponent<FighterStats>().blockCD -= stats.specialReduceCD;
+                }
+            }
         }
     }
 
@@ -103,17 +119,4 @@ public class PlayerAttack : MonoBehaviour
 
         isAttacking = false;
     }
-
-    void OnDrawGizmosSelected()
-    {
-        //Pour dessiner le cercle d'attaque
-
-        if(attackPoint == null)
-            return;
-
-        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
-        Vector3 size = new Vector3(attackRange, 0.2f, 0);
-
-        Gizmos.DrawCube(attack, size);
-    }    
 }

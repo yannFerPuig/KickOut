@@ -1,41 +1,83 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Fighter : MonoBehaviour
 {
     //SCRIPTS
     public FighterStats stats;
+    public FighterStats enemyStats;
     public MainMenu mainMenu;
 
     //COMPONENTS
     public HealthBar healthBar;
     public SpriteRenderer spriteRenderer;
 
-    //GAMEOBJECTS
+    //GAMEOBJECT
     public GameObject enemy;
+    public GameObject imageRound1;
+    public GameObject imageRound2;
+    public GameObject imageRound3;
 
     //DATA
     public float currentHealth;
-    public float defense;
     public int points;
 
     void Start()
     {
-        stats = gameObject.GetComponent<FighterStats>();
         mainMenu = GameObject.Find("Main Camera").GetComponent<MainMenu>();
+
+        //To define who is the enemy of the current fighter
+        if (mainMenu.gameMode == "solo")
+        {
+            enemy = GameObject.Find("IA");
+
+            if (gameObject.CompareTag("Player"))
+            {
+                imageRound1 = GameObject.Find("P1R1");
+                imageRound2 = GameObject.Find("P1R2");
+                imageRound3 = GameObject.Find("P1R3");    
+            }
+            else 
+            {
+                imageRound1 = GameObject.Find("P2R1");
+                imageRound2 = GameObject.Find("P2R2");
+                imageRound3 = GameObject.Find("P2R3");    
+            }
+        }
+        else 
+        {
+            if (gameObject.CompareTag("Player1"))
+            {
+                enemy = GameObject.Find("Player2");
+
+                imageRound1 = GameObject.Find("P1R1");
+                imageRound2 = GameObject.Find("P1R2");
+                imageRound3 = GameObject.Find("P1R3");  
+            }
+            else 
+            {
+                enemy = GameObject.FindGameObjectWithTag("Player1");
+
+                imageRound1 = GameObject.Find("P2R1");
+                imageRound2 = GameObject.Find("P2R2");
+                imageRound3 = GameObject.Find("P2R3");    
+            }
+        }
+
+        stats = gameObject.GetComponent<FighterStats>();
+        enemyStats = enemy.GetComponent<FighterStats>();
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         currentHealth = stats.currentHealth;
-        defense = stats.defense;
         points = 0;
+
+        
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage * (1 - defense/100);
+        currentHealth -= damage * (1 - stats.defense/100);
 
         healthBar.SetHealth(currentHealth);
 
@@ -44,20 +86,31 @@ public class Fighter : MonoBehaviour
     }
 
     public virtual void Die() 
-    {
-        Debug.Log(transform.name + " is dead");
-    }
+    { 
+        //if the fighter dies, we add 1 to the rounds won by the enemy
+        enemyStats.roundsWon++;
 
-    public void LookAtEnemy()
-    {
-        if (mainMenu.gameMode == "solo")
+        //we color the square representing that the round has been won
+        switch (enemyStats.roundsWon)
         {
-            enemy = GameObject.Find("IA");
-            LookAt(enemy);
+            case 1:
+                imageRound1.GetComponent<Image>().color = Color.green;
+            break;  
+
+            case 2:
+                imageRound2.GetComponent<Image>().color = Color.green;
+            break;
+        
+            case 3:
+                imageRound3.GetComponent<Image>().color = Color.green;
+            break;
+
+            default:
+            break;
         }
     }
 
-    void LookAt(GameObject enemy)
+    public void LookAtEnemy()
     {
         if (transform.position.x > enemy.transform.position.x)
         {
@@ -66,6 +119,18 @@ public class Fighter : MonoBehaviour
         else
         {
             spriteRenderer.flipX = false;
+        }
+    }
+
+    public void GameOver()
+    {
+        if (mainMenu.gameMode == "solo")
+        {
+
+        }
+        else
+        {
+
         }
     }
 }

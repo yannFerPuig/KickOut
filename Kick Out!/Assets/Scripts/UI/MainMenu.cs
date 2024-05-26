@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    //SCRIPTS
+    StartRoundTimer roundTimer;
 
     //GameObjects
     GameObject img;
     GameObject[] menuButtons;
     GameObject[] modeButtons;
+    GameObject roundWinner;
 
-
+    //DATA
     public string fighterSelected;
     public string gameMode;
 
@@ -44,12 +45,13 @@ public class MainMenu : MonoBehaviour
 
         menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
         modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
-        Debug.Log(modeButtons.Length);
 
         foreach (GameObject modeButton in modeButtons)
         {
             modeButton.SetActive(false);
         }
+
+        roundTimer = gameObject.GetComponent<StartRoundTimer>();
     }
     
     public void ChangeScene(string scene)
@@ -119,6 +121,9 @@ public class MainMenu : MonoBehaviour
     {
         if (scene.name == "FightScene")
         {
+            roundWinner = GameObject.Find("RoundWinner");
+            roundWinner.SetActive(false);
+
             GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             switch (fighterSelected)
@@ -135,7 +140,22 @@ public class MainMenu : MonoBehaviour
                     CarmenStats stats = player.GetComponent<CarmenStats>();
                     stats.Initialize();
 
-                    player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+                    if (gameMode == "solo")
+                    {
+                        player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+                    }
+                    else
+                    {
+                        if (player.CompareTag("Player1"))
+                        {
+                            player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+                        }
+                        else 
+                        {
+                            player.transform.position = new Vector3(-stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+                        }
+                    }
+
                     stats.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, stats.attackPointPos.z); 
                     stats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
 
@@ -160,7 +180,22 @@ public class MainMenu : MonoBehaviour
                     LouisStats statsL = player.GetComponent<LouisStats>();
                     statsL.Initialize();
 
-                    player.transform.position = new Vector3(statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
+                    if (gameMode == "solo")
+                    {
+                        player.transform.position = new Vector3(statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
+                    }
+                    else
+                    {
+                        if (player.CompareTag("Player1"))
+                        {
+                            player.transform.position = new Vector3(statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
+                        }
+                        else 
+                        {
+                            player.transform.position = new Vector3(-statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
+                        }
+                    }
+
                     statsL.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, statsL.attackPointPos.z); 
                     statsL.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
 
@@ -185,7 +220,22 @@ public class MainMenu : MonoBehaviour
                     BobUnStats statsB = player.GetComponent<BobUnStats>();
                     statsB.Initialize();
 
-                    player.transform.position = new Vector3(statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
+                    if (gameMode == "solo")
+                    {
+                        player.transform.position = new Vector3(statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
+                    }
+                    else
+                    {
+                        if (player.CompareTag("Player1"))
+                        {
+                            player.transform.position = new Vector3(statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
+                        }
+                        else 
+                        {
+                            player.transform.position = new Vector3(-statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
+                        }
+                    }
+
                     statsB.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, statsB.attackPointPos.z); 
                     statsB.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
 
@@ -199,5 +249,37 @@ public class MainMenu : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void WinRound(Fighter fighter)
+    {
+        roundWinner.SetActive(true);
+        roundWinner.GetComponent<Text>().text = fighter.name;
+
+        if (gameMode == "solo")
+        {
+            if (fighter.CompareTag("Player"))
+            {
+                fighter.transform.position = new Vector3(fighter.stats.spawnPoint.x, fighter.stats.spawnPoint.y, fighter.stats.spawnPoint.z);
+            }
+            else
+            {
+                fighter.transform.position = new Vector3(-fighter.stats.spawnPoint.x, fighter.stats.spawnPoint.y, fighter.stats.spawnPoint.z);    
+            }
+        }
+        else
+        {
+            if (fighter.CompareTag("Player1"))
+            {
+                fighter.transform.position = new Vector3(fighter.stats.spawnPoint.x, fighter.stats.spawnPoint.y, fighter.stats.spawnPoint.z);
+            }
+            else
+            {
+                fighter.transform.position = new Vector3(-fighter.stats.spawnPoint.x, fighter.stats.spawnPoint.y, fighter.stats.spawnPoint.z);    
+            }
+        }
+
+        roundTimer.Start();
+        roundTimer.Update();
     }
 }

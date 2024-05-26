@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 158772334}
   - component: {fileID: 158772333}
   m_Layer: 5
-  m_Name: Round 3
+  m_Name: P2R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 263020791}
   - component: {fileID: 263020790}
   m_Layer: 5
-  m_Name: Round 2
+  m_Name: P1R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 269199171}
   - component: {fileID: 269199170}
   m_Layer: 5
-  m_Name: Round 1
+  m_Name: P2R3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 448310755}
   - component: {fileID: 448310754}
   m_Layer: 5
-  m_Name: Round 3
+  m_Name: P1R3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 504881495}
   m_Layer: 5
   m_Name: Block
-  m_TagString: Block
+  m_TagString: Block1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -976,108 +976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9ed884def7bef40a457d83b4a848d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &715827296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 715827297}
-  - component: {fileID: 715827300}
-  - component: {fileID: 715827299}
-  - component: {fileID: 715827298}
-  m_Layer: 5
-  m_Name: RoundWinner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &715827297
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715827296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1377746529}
-  m_Father: {fileID: 1874737016}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &715827298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715827296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31002461264e0c458bb25a7bc012eaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endGame: {fileID: 635138221}
-  startRoundTimer: {fileID: 1874737019}
-  roundWinner: {fileID: 0}
-  player1: {fileID: 661743438}
-  player2: {fileID: 398608736}
-  player1Points:
-  - {fileID: 1534755190}
-  - {fileID: 263020790}
-  - {fileID: 448310754}
-  player2Points:
-  - {fileID: 269199170}
-  - {fileID: 1735430288}
-  - {fileID: 158772333}
---- !u!114 &715827299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715827296}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &715827300
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715827296}
-  m_CullTransparentMesh: 1
 --- !u!1 &724226173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5786427244141118802, guid: 126862a0438f7de488c88bc86ca83bc0, type: 3}
@@ -1445,7 +1343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &999673835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2537,85 +2435,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!1 &1377746528
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1377746529}
-  - component: {fileID: 1377746531}
-  - component: {fileID: 1377746530}
-  m_Layer: 5
-  m_Name: RoundWinnerAnnouncer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1377746529
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377746528}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 715827297}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1377746530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377746528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 8fd1d11dd6c667d408f742ce38340277, type: 3}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 
---- !u!222 &1377746531
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377746528}
-  m_CullTransparentMesh: 1
 --- !u!1 &1378935935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,7 +2674,7 @@ GameObject:
   - component: {fileID: 1534755191}
   - component: {fileID: 1534755190}
   m_Layer: 5
-  m_Name: Round 1
+  m_Name: P1R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2984,7 +2803,7 @@ GameObject:
   - component: {fileID: 1735430289}
   - component: {fileID: 1735430288}
   m_Layer: 5
-  m_Name: Round 2
+  m_Name: P2R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3222,7 +3041,6 @@ RectTransform:
   - {fileID: 497158483}
   - {fileID: 1547704021}
   - {fileID: 999673835}
-  - {fileID: 715827297}
   - {fileID: 635138220}
   - {fileID: 1003960033}
   m_Father: {fileID: 0}
@@ -3246,6 +3064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startText: {fileID: 1003960034}
   timerText: {fileID: 1043645758}
+  remainingTime: 120
+  roundStart: 3
   fightStarted: 0
   mainMenu: {fileID: 2105810447}
   player1: {fileID: 0}
@@ -3402,17 +3222,20 @@ MonoBehaviour:
   height: 0
   damage: 0
   specialDamage: 0
+  attackRange: 0
+  attackSpeed: 0
   defense: 0
   blockRadius: 0
   blockCD: 0
-  attackRange: 0
-  attackSpeed: 0
+  reduceCD: 0
+  specialReduceCD: 0
   moveSpeed: 0
   blockingMoveSpeed: 0
   jumpForce: 0
   gravityScale: 0
   fallingGravityScale: 0
   groundCheckRadius: 0
+  roundsWon: 0
   spawnPoint: {x: 0, y: 0, z: 0}
   attackPointPos: {x: 0, y: 0, z: 0}
   groundCheckPointPos: {x: 0, y: 0, z: 0}

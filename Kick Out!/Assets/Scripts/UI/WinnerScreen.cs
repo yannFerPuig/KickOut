@@ -15,12 +15,11 @@ public class WinnerScreen : MonoBehaviour
     public List<Image> player1Points;
     public List<Image> player2Points;
 
-    // Start is called before the first frame update
     void Start()
     {
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (player1.currentHealth <= 0 && player2.currentHealth <= 0)

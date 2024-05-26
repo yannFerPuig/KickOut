@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sp;
     private Transform groundCheck;
     private Transform attackPoint;
-    public Slider cbBlock;
+    public Slider blockSlider;
 
     //EXTRAS
     private LayerMask collisionLayer;
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private bool isGrounded = false;
     private bool isBlockCooldown = false;
+    public bool isBlocking = false;
 
     private float moveSpeed;
     private float jumpForce;
@@ -50,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         groundCheck = gameObject.transform.Find("GroundCheck");
         attackPoint = gameObject.transform.Find("AttackPoint");
 
-        cbBlock = stats.cdBlock.GetComponent<Slider>();
+        blockSlider = stats.cdBlock.GetComponent<Slider>();
 
         collisionLayer = 1 << LayerMask.NameToLayer("Default");
         blockLayer = LayerMask.GetMask("IA");
@@ -96,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = 0;
             animator.SetBool("IsBlocking", true);
 
+            isBlocking = true;
+
             blockCD -= Time.deltaTime;
             if (blockCD < 0) 
             {
@@ -108,13 +111,15 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = stats.moveSpeed;
             animator.SetBool("IsBlocking", false);
 
+            isBlocking = false;
+
             blockCD += Time.deltaTime * 0.5f;
             if (blockCD > stats.blockCD) blockCD = stats.blockCD; 
         }
 
-        cbBlock.value = blockCD;
+        blockSlider.value = blockCD;
 
-        cbBlock.value = blockCD;
+        blockSlider.value = blockCD;
 
         //Animation
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));   
@@ -162,11 +167,5 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = fallingGravityScale;
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, stats.blockRadius);
     }
 }
