@@ -27,6 +27,9 @@ public class StartRoundTimer : MonoBehaviour
 
     public void Start()
     {
+        
+        mainMenu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>(); 
+
         //TIMERS
         roundStart = 3;
         remainingTime = 120;
