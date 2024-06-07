@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 504881494}
   - component: {fileID: 504881495}
   m_Layer: 5
-  m_Name: Block
+  m_Name: BlockP1
   m_TagString: Block1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -867,10 +867,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1117435881}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 2.5
+  m_MinValue: 0.1
+  m_MaxValue: 3.5
   m_WholeNumbers: 0
-  m_Value: 2.5
+  m_Value: 3.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3138,7 +3138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2cc936f5eb1915f45a3f51cf8a2f3175, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.5
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2cc936f5eb1915f45a3f51cf8a2f3175, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3212,10 +3212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  cdBlock: {fileID: 0}
-  capsuleCollider2D: {fileID: 0}
+  blockSlider: {fileID: 0}
   attackPoint: {fileID: 0}
   groundCheck: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   width: 0

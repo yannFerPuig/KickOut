@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     StartRoundTimer roundTimer;
 
     //GameObjects
-    GameObject img;
+    GameObject selected;
     GameObject[] menuButtons;
     GameObject[] modeButtons;
     GameObject roundWinner;
@@ -18,11 +18,6 @@ public class MainMenu : MonoBehaviour
     public string fighterSelected;
     public string gameMode;
 
-    //SPRITES
-    public Sprite CarmenSprite;
-
-    //ANIMATORS CONTROLLERS
-    public RuntimeAnimatorController carmenController;
 
     void Awake()
     {
@@ -41,8 +36,6 @@ public class MainMenu : MonoBehaviour
 
     public void Start()
     {
-        img = GameObject.FindGameObjectWithTag("FighterSelected");
-
         menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
         modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
 
@@ -102,16 +95,6 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void SelectFighterSprite(Sprite sprite)
-    {
-        img.GetComponent<Image>().sprite = sprite;
-    }
-
-    public void SelectFighterName(string name)
-    {
-        fighterSelected = name;
-    }
-
     public void StartFight() 
     {
         SceneManager.LoadScene("FightScene");
@@ -119,6 +102,12 @@ public class MainMenu : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "SoloCharacter")
+        {
+            selected = GameObject.FindGameObjectWithTag("FighterSelected");
+
+        }
+
         if (scene.name == "FightScene")
         {
             roundWinner = GameObject.Find("RoundWinner");
@@ -172,13 +161,15 @@ public class MainMenu : MonoBehaviour
                     player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Louis");
 
                     player.gameObject.AddComponent(typeof(LouisStats));
+
+                    LouisStats statsL = player.GetComponent<LouisStats>();
+                    statsL.Initialize();
+
                     Animator animatorL = player.gameObject.AddComponent(typeof(Animator)) as Animator;
                     RuntimeAnimatorController runtimeAnimatorControllerL = Resources.Load<RuntimeAnimatorController>("Animation/Louis/Louis");
                     animatorL.runtimeAnimatorController = runtimeAnimatorControllerL;
 
 
-                    LouisStats statsL = player.GetComponent<LouisStats>();
-                    statsL.Initialize();
 
                     if (gameMode == "solo")
                     {

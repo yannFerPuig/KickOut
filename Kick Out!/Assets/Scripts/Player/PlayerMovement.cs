@@ -51,8 +51,6 @@ public class PlayerMovement : MonoBehaviour
         groundCheck = gameObject.transform.Find("GroundCheck");
         attackPoint = gameObject.transform.Find("AttackPoint");
 
-        blockSlider = stats.cdBlock.GetComponent<Slider>();
-
         collisionLayer = 1 << LayerMask.NameToLayer("Default");
         blockLayer = LayerMask.GetMask("IA");
 
@@ -64,6 +62,15 @@ public class PlayerMovement : MonoBehaviour
         groundCheckRadius = stats.groundCheckRadius;
 
         blockCooldownTimer = 0f;
+
+        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player1"))
+        {
+            blockSlider = GameObject.Find("BlockP1").GetComponent<Slider>();
+        }
+        else 
+        {
+            //cdBlock = GameObject.Find("BlockP2");
+        }
     }
 
     void Update()
@@ -116,8 +123,6 @@ public class PlayerMovement : MonoBehaviour
             blockCD += Time.deltaTime * 0.5f;
             if (blockCD > stats.blockCD) blockCD = stats.blockCD; 
         }
-
-        blockSlider.value = blockCD;
 
         blockSlider.value = blockCD;
 

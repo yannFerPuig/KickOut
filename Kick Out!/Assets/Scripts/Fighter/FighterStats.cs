@@ -5,13 +5,13 @@ public class FighterStats : MonoBehaviour
 {   
     //GAMEOBJECTS
     public HealthBar healthBar;
-    public GameObject cdBlock;
-
-    //COMPONENTS
-    public CapsuleCollider2D capsuleCollider2D;
+    public Slider blockSlider;
     public GameObject attackPoint;
     public GameObject groundCheck;
 
+
+    //COMPONENTS
+    public CapsuleCollider2D capsuleCollider2D;
     //STAT DATA
 
     //Health
@@ -31,7 +31,7 @@ public class FighterStats : MonoBehaviour
     //Defense
     public float defense;
     public float blockRadius = 5f;
-    public float blockCD = 4f;
+    public float blockCD = 3.5f;
 
     //Block cooldowns
     public float reduceCD;
@@ -61,11 +61,11 @@ public class FighterStats : MonoBehaviour
 
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player1"))
         {
-            cdBlock = GameObject.FindGameObjectWithTag("Block1");
+            blockSlider = GameObject.Find("BlockP1").GetComponent<Slider>();
         }
         else 
         {
-            cdBlock = GameObject.FindGameObjectWithTag("Block2");
+            //cdBlock = GameObject.Find("BlockP2");
         }
 
     }

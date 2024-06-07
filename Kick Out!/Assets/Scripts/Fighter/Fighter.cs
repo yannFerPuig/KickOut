@@ -70,9 +70,7 @@ public class Fighter : MonoBehaviour
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         currentHealth = stats.currentHealth;
-        points = 0;
-
-        
+        points = 0;        
     }
 
     public void TakeDamage(float damage)
