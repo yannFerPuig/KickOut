@@ -69,6 +69,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("NETWORK");
     }
 
+    public void Tutorial()
+    {
+        gameMode = "tutorial";
+        SceneManager.LoadScene("Tutorial");
+    }
+
     public void SelectMode() 
     {
         foreach (GameObject modeButton in modeButtons)

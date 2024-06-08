@@ -17,6 +17,9 @@ TagManager:
   - AttackPoint
   - Block1
   - Block2
+  - Player1
+  - Player2
+  - Dummy
   layers:
   - Default
   - TransparentFX

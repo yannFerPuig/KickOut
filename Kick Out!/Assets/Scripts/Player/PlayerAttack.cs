@@ -70,6 +70,8 @@ public class PlayerAttack : MonoBehaviour
         {
             enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
             
+            //SFX
+
             if (enemy.CompareTag("Player"))
             {
                 if (enemy.GetComponent<PlayerMovement>().isBlocking)
@@ -99,6 +101,8 @@ public class PlayerAttack : MonoBehaviour
         foreach(var enemy in enemiesHitted)
         {
             enemy.GetComponent<Fighter>().TakeDamage(stats.specialDamage);
+
+            //SFX
 
             if (enemy.CompareTag("Player"))
             {

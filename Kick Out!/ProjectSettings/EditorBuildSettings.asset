@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Fighters.unity
+    path: Assets/Scenes/FightersPresentation.unity
     guid: 0af82972f0bc52b49a380f025d5aabf4
   - enabled: 1
     path: Assets/Scenes/SoloCharacterSelection.unity
@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Louis.unity
     guid: bb843c87ad8c0284d899c7d61453896a
+  - enabled: 1
+    path: Assets/Scenes/BobUn.unity
+    guid: b401206790306ad4e8f021403e5373f9
   - enabled: 1
     path: Assets/Scenes/MultiplayerCharacterSelection.unity
     guid: 5e1f226abb7463148a1fd306d6d50972
