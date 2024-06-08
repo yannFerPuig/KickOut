@@ -13,13 +13,12 @@ public class MainMenu : MonoBehaviour
     GameObject[] menuButtons;
     GameObject[] modeButtons;
 
-
     public string fighterSelected;
     public string gameMode;
 
     void Awake()
     {
-
+        DontDestroyOnLoad(gameObject);
     }
 
     void OnEnable()

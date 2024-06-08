@@ -388,7 +388,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1024760476}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: SelectFighterName
         m_Mode: 5
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024760475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 328a904fd4633fc41a3e5654322896f3, type: 3}
   m_Name: 
@@ -1171,7 +1171,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1024760476}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: SelectFighterName
         m_Mode: 5
