@@ -7,10 +7,13 @@ public class SoundDesign : MonoBehaviour
 {
     [Header("--------- MUSIQUE -----------")]
     [SerializeField] AudioSource music;
+    [SerializeField] AudioSource SFX;
 
     public Slider sliderMusic;
+    public Slider sliderSFX;
     public AudioClip musicFight;
     public AudioClip musicEndScene;
+    public AudioClip SFXPunch;
     public static float VolumeMusic = 1;
     public static float VolumeSFX = 1;
 
@@ -26,11 +29,31 @@ public class SoundDesign : MonoBehaviour
     }
 
 
-    public void ChangeVolume()
-    {
-        VolumeMusic = sliderMusic.value;
-        music.volume = VolumeMusic;
+    public void ChangeVolume(string param)
+    {if (param == "music")
+        {
+            VolumeMusic = sliderMusic.value;
+            music.volume = VolumeMusic;
+        }
+    else if (param == "SFX")
+        {
+            VolumeSFX = sliderSFX.value;
+            SFX.volume = VolumeSFX;
+            SFX.PlayOneShot(SFXPunch); // Test audio
+        }
     }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFX.PlayOneShot(clip);
+    }
+
+    public void PlaySFX()
+    {
+        SFX.PlayOneShot(SFXPunch);
+    }
+
+
 
     public void PutEndMusic()
     {

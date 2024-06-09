@@ -24,6 +24,9 @@ public class PlayerAttack : MonoBehaviour
     public float attackSpeed;
     public bool isAttacking;
 
+    // PLACE THE SOUND DIRECTORY
+    public SoundDesign soundManager;
+
     void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
@@ -76,6 +79,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
                 }
+                soundManager.PlaySFX();
             }
         }
     }
@@ -105,7 +109,9 @@ public class PlayerAttack : MonoBehaviour
                 if (enemy.GetComponent<PlayerMovement>().isBlocking)
                 {
                     enemy.GetComponent<FighterStats>().blockCD -= stats.specialReduceCD;
+                   
                 }
+                soundManager.PlaySFX();
             }
         }
     }
