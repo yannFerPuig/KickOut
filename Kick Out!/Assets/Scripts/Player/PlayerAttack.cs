@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : Attack
 {
     //SCRIPTS
     public FighterStats stats;
     public PlayerMovement move;
-    public RoundTimer startRoundTimer;
-    public MainMenu menu;
     public Fighter fighter;
 
     //COMPONENTS
@@ -17,8 +15,6 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPoint;
     
     //EXTRAS
-    public AnimationClip punch;
-    public AnimationClip special;
     public LayerMask enemyLayer;
 
     //DATA
@@ -32,14 +28,8 @@ public class PlayerAttack : MonoBehaviour
         move = gameObject.GetComponent<PlayerMovement>();
         fighter = gameObject.GetComponent<Fighter>();
 
-        menu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>();
-        
-        if (menu.gameMode != "tutorial")
-        {
-            startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RoundTimer>();
-        }
-
         animator = gameObject.GetComponent<Animator>();
+
         attackPoint = gameObject.transform.Find("AttackPoint");
 
         attackRange = stats.attackRange;

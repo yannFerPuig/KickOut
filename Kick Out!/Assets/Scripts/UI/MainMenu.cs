@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
@@ -165,84 +167,35 @@ public class MainMenu : MonoBehaviour
 
     public void LoadFighter(GameObject player, string fighter)
     {
+        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
+        Animator animator = player.gameObject.AddComponent(typeof(Animator)) as Animator;
+        
+        Attack playerAttack = player.GetComponent<Attack>();
+
         switch (fighter)
         {
             case "Carmen":
-                player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Carmen");
+                spriteRenderer.sprite = Resources.Load<Sprite>("BaseSprites/Carmen");
 
                 player.gameObject.AddComponent(typeof(CarmenStats));
-                Animator animator = player.gameObject.AddComponent(typeof(Animator)) as Animator;
                 RuntimeAnimatorController runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Carmen/Carmen");
                 animator.runtimeAnimatorController = runtimeAnimatorController;
 
-                CarmenStats stats = player.GetComponent<CarmenStats>();
-                stats.Initialize();
-
-                if (gameMode == "solo" || gameMode == "tutorial")
-                {
-                    player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
-                }
-                else
-                {
-                    if (player.CompareTag("Player1"))
-                    {
-                        player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
-                    }
-                    else 
-                    {
-                        player.transform.position = new Vector3(-stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
-                    }
-                }
-
-                stats.attackPoint.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1.1f, stats.attackPointPos.z); 
-                stats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + stats.groundCheckPointPos.y * 5, player.transform.position.z);
-
-                CapsuleCollider2D capsuleCollider2D = player.GetComponent<CapsuleCollider2D>();
-                capsuleCollider2D.size = new Vector2(stats.width, stats.height);
-
-                PlayerAttack playerAttack = player.GetComponent<PlayerAttack>();
                 playerAttack.punch = Resources.Load<AnimationClip>("Animation/Carmen/carmenAttack");
                 playerAttack.special = Resources.Load<AnimationClip>("Animation/Carmen/carmenSpecial");
 
                 break;
 
             case "Louis":
-                player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Louis");
+                spriteRenderer.sprite = Resources.Load<Sprite>("BaseSprites/Louis");
 
                 player.gameObject.AddComponent(typeof(LouisStats));
 
-                LouisStats statsL = player.GetComponent<LouisStats>();
-                statsL.Initialize();
-
-                Animator animatorL = player.gameObject.AddComponent(typeof(Animator)) as Animator;
                 RuntimeAnimatorController runtimeAnimatorControllerL = Resources.Load<RuntimeAnimatorController>("Animation/Louis/Louis");
-                animatorL.runtimeAnimatorController = runtimeAnimatorControllerL;
+                animator.runtimeAnimatorController = runtimeAnimatorControllerL;
 
-                if (gameMode == "solo" || gameMode == "tutorial")
-                {
-                    player.transform.position = new Vector3(statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
-                }
-                else
-                {
-                    if (player.CompareTag("Player1"))
-                    {
-                        player.transform.position = new Vector3(statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
-                    }
-                    else 
-                    {
-                        player.transform.position = new Vector3(-statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
-                    }
-                }
-
-                statsL.attackPoint.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + statsL.attackPointPos.y * 5, statsL.attackPointPos.z); 
-                statsL.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + statsL.groundCheckPointPos.y * 5, player.transform.position.z);
-
-                CapsuleCollider2D capsuleCollider2DL = player.GetComponent<CapsuleCollider2D>();
-                capsuleCollider2DL.size = new Vector2(statsL.width, statsL.height);
-
-                PlayerAttack playerAttackL = player.GetComponent<PlayerAttack>();
-                playerAttackL.punch = Resources.Load<AnimationClip>("Animation/Louis/louisAttack");
-                playerAttackL.special = Resources.Load<AnimationClip>("Animation/Louis/louisSpecial");
+                playerAttack.punch = Resources.Load<AnimationClip>("Animation/Louis/louisAttack");
+                playerAttack.special = Resources.Load<AnimationClip>("Animation/Louis/louisSpecial");
 
                 break;
             
@@ -250,42 +203,52 @@ public class MainMenu : MonoBehaviour
                 player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Bob Un");
 
                 player.gameObject.AddComponent(typeof(BobUnStats));
-                Animator animatorB = player.gameObject.AddComponent(typeof(Animator)) as Animator;
+
                 RuntimeAnimatorController runtimeAnimatorControllerB = Resources.Load<RuntimeAnimatorController>("Animation/BobUn/Bob Un");
-                animatorB.runtimeAnimatorController = runtimeAnimatorControllerB;
+                animator.runtimeAnimatorController = runtimeAnimatorControllerB;
 
-
-                BobUnStats statsB = player.GetComponent<BobUnStats>();
-                statsB.Initialize();
-
-                if (gameMode == "solo")
-                {
-                    player.transform.position = new Vector3(statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
-                }
-                else
-                {
-                    if (player.CompareTag("Player1"))
-                    {
-                        player.transform.position = new Vector3(statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
-                    }
-                    else 
-                    {
-                        player.transform.position = new Vector3(-statsB.spawnPoint.x, statsB.spawnPoint.y, statsB.spawnPoint.z);
-                    }
-                }
-
-                statsB.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, statsB.attackPointPos.z); 
-                statsB.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
-
-                CapsuleCollider2D capsuleCollider2DB = player.GetComponent<CapsuleCollider2D>();
-                capsuleCollider2DB.size = new Vector2(statsB.width, statsB.height);
-
-                PlayerAttack playerAttackB = player.GetComponent<PlayerAttack>();
-                playerAttackB.punch = Resources.Load<AnimationClip>("Animation/BobUn/bobUnAttack");
-                playerAttackB.special = Resources.Load<AnimationClip>("Animation/BobUn/bobUnSpecial");
+                playerAttack.punch = Resources.Load<AnimationClip>("Animation/BobUn/bobUnAttack");
+                playerAttack.special = Resources.Load<AnimationClip>("Animation/BobUn/bobUnSpecial");
 
                 break;
         }
+
+        FighterStats fighterStats = player.GetComponent<FighterStats>();
+        
+        if (fighterStats is CarmenStats stats)
+        {
+            stats.Initialize();
+        }
+        else if (fighterStats is LouisStats stats1)
+        {
+            stats1.Initialize();
+        }
+        else if (fighterStats is BobUnStats stats2)
+        {
+            stats2.Initialize();
+        }
+
+        if (gameMode == "tutorial")
+        {
+            player.transform.position = new Vector3(fighterStats.spawnPoint.x, fighterStats.spawnPoint.y, fighterStats.spawnPoint.z);
+        }
+        else if (gameMode == "solo" || gameMode == "duel")
+        {
+            if (player.tag == "Player" || player.tag == "Player1")
+            {
+                player.transform.position = new Vector3(fighterStats.spawnPoint.x, fighterStats.spawnPoint.y, fighterStats.spawnPoint.z);
+            }
+            else if (player.tag == "AI" || player.tag == "Player2")
+            {
+                player.transform.position = new Vector3(-fighterStats.spawnPoint.x, fighterStats.spawnPoint.y, fighterStats.spawnPoint.z);
+            }
+        }
+
+        fighterStats.attackPoint.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + fighterStats.attackPointPos.y * 5, fighterStats.attackPointPos.z); 
+        fighterStats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + fighterStats.groundCheckPointPos.y * 5, player.transform.position.z);
+
+        CapsuleCollider2D capsuleCollider2D = player.GetComponent<CapsuleCollider2D>();
+        capsuleCollider2D.size = new Vector2(fighterStats.width, fighterStats.height);
     }
 
     public string ChooseAIFighter()

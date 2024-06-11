@@ -1,24 +1,17 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+public class AIMovement : MonoBehaviour
 {
-    //SCRIPTS
     private FighterStats stats;
     private PlayerAttack attack;
     public Fighter fighter;
 
-    //COMPONENTS
     private Rigidbody2D rb;
     private Animator animator;
     private Transform groundCheck;
-    public Slider blockSlider;
 
-    //EXTRAS
     private LayerMask collisionLayer;
 
-    //DATA
     private bool isJumping = false;
     private bool isGrounded = false;
     private bool isBlockCooldown = false;
@@ -33,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private float fallingGravityScale;
     private float groundCheckRadius = 0.5f;
     public float horizontalInput;
+
+    private GameObject player;
 
     void Start()
     {
@@ -56,25 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
         blockCooldownTimer = 0f;
 
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player1"))
-        {
-            blockSlider = GameObject.Find("BlockP1").GetComponent<Slider>();
-        }
-        else if (gameObject.tag == "AI" || gameObject.tag == "Player2")
-        {
-            blockSlider = GameObject.Find("BlockP2").GetComponent<Slider>();
-        }
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
     {
-        //Detect if player is trying to move
-        //Player can move only when he is not attacking
-        if (!attack.isAttacking && !isCrouching)
-        {
-            horizontalInput = Input.GetAxis("Horizontal");
-        }
-
         if (isBlockCooldown) 
         {
             blockCooldownTimer += Time.deltaTime;
@@ -86,29 +67,49 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            isCrouching = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.C))
-        {
-            isCrouching = false;
-            animator.SetBool("Crouch", false);
-        }
+        HandleMovement();
+        HandleBlocking();
 
-        //Detect if the players presses the jump button
-        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));   
+    }
+
+    void FixedUpdate() 
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
+
+        MoveHorizontal();
+        Jump();
+        Crouch();
+
+        fighter.LookAtEnemy();
+    }
+
+    void HandleMovement()
+    {
+        float distance = player.transform.position.x - transform.position.x;
+
+        if (Mathf.Abs(distance) > 1f)
         {
-            isJumping = true;
+            if (distance > 0)
+            {
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            }
         }
-
-        if (Input.GetKey(KeyCode.B) && blockCD > 0  && !isBlockCooldown)
+        else
         {
-            moveSpeed = 0;
-            animator.SetBool("IsBlocking", true);
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+    }
 
+    void HandleBlocking()
+    {
+        if (blockCD > 0  && !isBlockCooldown)
+        {
             isBlocking = true;
-
             blockCD -= Time.deltaTime;
             if (blockCD < 0) 
             {
@@ -118,46 +119,20 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            moveSpeed = stats.moveSpeed;
-            animator.SetBool("IsBlocking", false);
-
             isBlocking = false;
-
             blockCD += Time.deltaTime * 0.5f;
             if (blockCD > stats.blockCD) blockCD = stats.blockCD; 
         }
-
-        blockSlider.value = blockCD;
-
-        //Animation
-        animator.SetFloat("Speed", Mathf.Abs(horizontalInput));   
-    }
-
-    void FixedUpdate() 
-    {
-        //OverlapArea creates a hitbox between 2 positions and checks if it is in collision with something
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
-
-        //Movement
-        MoveHorizontal();
-        Jump();
-        Crouch();
-
-        fighter.LookAtEnemy();
     }
 
     void MoveHorizontal()
     {
-        //Cette fonction permet de déplacer le combattant horizontalement à l'aide des touches qui sont tag "Horizontal" (cf. dans les paramètres du projet)
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
     }
 
     void Jump()
     {
-        //Cette fonction permet de faire saute le combattant en appuyant sur la touche espace (modifiable)
-        
-        //To jump, the player must press the space bar and be grounded
         if (isJumping && isGrounded)
         {
             animator.SetTrigger("Jump");
@@ -166,11 +141,11 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
 
-        if (rb.velocity.y >= 0) //if the fighter is going up in is jumping, the gravity is normal
+        if (rb.velocity.y >= 0)
         {
             rb.gravityScale = gravityScale;
         }
-        else //when the fighter is falling, increases the gravity so the jump looks more realistic
+        else
         {
             rb.gravityScale = fallingGravityScale;
         }
@@ -181,7 +156,6 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && isCrouching)
         {   
             animator.SetBool("Crouch", true);
-            horizontalInput = 0f;
         }
     }
 }

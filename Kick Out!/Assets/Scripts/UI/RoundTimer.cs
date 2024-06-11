@@ -46,7 +46,7 @@ public class RoundTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, secondes);
 
         //Initialize the players so we can disable the scripts
-        if (mainMenu.gameMode == "solo" || mainMenu.gameMode == "tutorial")
+        if (mainMenu.gameMode == "solo")
         {
             player1 = GameObject.FindGameObjectWithTag("Player");
             player2 = GameObject.FindGameObjectWithTag("AI");
@@ -54,8 +54,8 @@ public class RoundTimer : MonoBehaviour
             player1.GetComponent<PlayerMovement>().enabled = false;
             player1.GetComponent<PlayerAttack>().enabled = false;
 
-            player2.GetComponent<PlayerMovement>().enabled = false;
-            player2.GetComponent<PlayerAttack>().enabled = false;
+            player2.GetComponent<AIMovement>().enabled = false;
+            player2.GetComponent<AIAttack>().enabled = false;
         }
     }
 
@@ -95,11 +95,14 @@ public class RoundTimer : MonoBehaviour
 
         Timer();
 
-        player1.GetComponent<PlayerMovement>().enabled = true;
-        player1.GetComponent<PlayerAttack>().enabled = true;
+        if (mainMenu.gameMode == "solo")
+        {
+            player1.GetComponent<PlayerMovement>().enabled = true;
+            player1.GetComponent<PlayerAttack>().enabled = true;
 
-        player2.GetComponent<PlayerMovement>().enabled = true;
-        player2.GetComponent<PlayerAttack>().enabled = true;
+            player2.GetComponent<AIMovement>().enabled = true;
+            player2.GetComponent<AIAttack>().enabled = true;
+        }
     }
 
     void Timer() 
@@ -131,14 +134,14 @@ public class RoundTimer : MonoBehaviour
             player1.GetComponent<PlayerAttack>().enabled = false;
         }
 
-        if (player2.GetComponent<PlayerMovement>().enabled)
+        if (mainMenu.gameMode == "solo" && player2.GetComponent<AIMovement>().enabled)
         {
-            player2.GetComponent<PlayerMovement>().enabled = false;
+            player2.GetComponent<AIMovement>().enabled = false;
         }
 
-        if (player2.GetComponent<PlayerAttack>().enabled)
+        if (mainMenu.gameMode == "solo" && player2.GetComponent<AIAttack>().enabled)
         {    
-            player2.GetComponent<PlayerAttack>().enabled = false;
+            player2.GetComponent<AIAttack>().enabled = false;
         }
 
 

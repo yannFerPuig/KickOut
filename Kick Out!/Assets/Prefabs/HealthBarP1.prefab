@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3331908946150813500}
   m_Layer: 5
   m_Name: HealthBarP1
-  m_TagString: Untagged
+  m_TagString: HP_P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,6 +178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2107896620108175297}
+  fillImage: {fileID: 5730777775848208064}
+  normalColor: {r: 1, g: 0, b: 0, a: 1}
+  decreasingColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &6607139562032373716
 GameObject:
   m_ObjectHideFlags: 0

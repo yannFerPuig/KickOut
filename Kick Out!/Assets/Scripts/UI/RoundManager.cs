@@ -6,7 +6,7 @@ public class RoundManager : MonoBehaviour
 {
     //SCRIPTS
     public RoundTimer roundTimer;
-    public MainMenu menu;
+    public MainMenu mainMenu;
 
     //GAMEOBJECTS
     public Fighter player1;
@@ -20,31 +20,28 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
-        roundTimer = gameObject.GetComponent<RoundTimer>();        
-        menu = gameObject.GetComponent<MainMenu>();
+        mainMenu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>(); 
+        roundTimer = gameObject.GetComponent<RoundTimer>();     
 
-        if (menu.gameMode == "tutorial")
-        {
-            player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
-            player2 = GameObject.FindGameObjectWithTag("Dummy").GetComponent<Fighter>();
-        }
-        else if (menu.gameMode == "solo")
+        
+        if (mainMenu.gameMode == "solo")
         {
             player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
             player2 = GameObject.FindGameObjectWithTag("AI").GetComponent<Fighter>();
         }
-        else if (menu.gameMode == "duel")
+        else if (mainMenu.gameMode == "tutorial")
         {
-
+            player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
+            player2 = GameObject.FindGameObjectWithTag("Dummy").GetComponent<Fighter>();
         }
     }
 
     void Update()
     {
-        if (menu.gameMode != "tutorial" && roundTimer.remainingTime == 0 && player1.currentHealth > 0 && player2.currentHealth > 0)
-        {
-            VictoryByTime();
-        }
+        // if (menu.gameMode != "tutorial" && roundTimer.remainingTime == 0 )
+        // {
+        //     VictoryByTime();
+        // }
 
         Victory();
         FightVictory();
@@ -124,13 +121,13 @@ public class RoundManager : MonoBehaviour
         {
             fightWinner = player1.stats.Name.ToUpper();
             StartCoroutine(Momentum());
-            menu.EndFight();
+            mainMenu.EndFight();
         }
         else if (player2.points == 3)
         {
             fightWinner = player2.stats.Name.ToUpper();
             StartCoroutine(Momentum());
-            menu.EndFight();
+            mainMenu.EndFight();
         }
     }
 

@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class AIController : MonoBehaviour
 {
     // References to other components and scripts
     private FighterStats stats;
-    private PlayerMovement movement;
-    private PlayerAttack attack;
+    private AIMovement movement;
+    private AIAttack attack;
     private Fighter fighter;
 
     // AI specific data
-    private Transform playerTransform;
+    public Transform playerTransform;
     private float decisionTimer;
     private float decisionCooldown = 1f; // Cooldown between decisions
 
@@ -18,8 +19,8 @@ public class AIController : MonoBehaviour
     {
         // Get references to the necessary components
         stats = GetComponent<FighterStats>();
-        movement = GetComponent<PlayerMovement>();
-        attack = GetComponent<PlayerAttack>();
+        movement = GetComponent<AIMovement>();
+        attack = GetComponent<AIAttack>();
         fighter = GetComponent<Fighter>();
 
         // Find the player transform (assuming there's only one player)
