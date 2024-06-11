@@ -6,7 +6,7 @@ public class IAWalk : StateMachineBehaviour
 {
     //SCRIPTS 
     IA ia;
-    public StartRoundTimer startRoundTimer;
+    public RoundTimer startRoundTimer;
 
     //COMPONENTS
     public Transform player;
@@ -21,7 +21,7 @@ public class IAWalk : StateMachineBehaviour
     {
         //SCRIPTS
         ia = animator.GetComponent<IA>();
-        startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<StartRoundTimer>();
+        startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RoundTimer>();
 
         //COMPONENTS
         player = GameObject.FindGameObjectWithTag("Player").transform;

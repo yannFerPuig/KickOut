@@ -8,7 +8,9 @@ public class PlayerAttack : MonoBehaviour
     //SCRIPTS
     public FighterStats stats;
     public PlayerMovement move;
-    public StartRoundTimer startRoundTimer;
+    public RoundTimer startRoundTimer;
+    public MainMenu menu;
+    public Fighter fighter;
 
     //COMPONENTS
     public Animator animator;
@@ -28,15 +30,23 @@ public class PlayerAttack : MonoBehaviour
     {
         stats = gameObject.GetComponent<FighterStats>();
         move = gameObject.GetComponent<PlayerMovement>();
-        startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<StartRoundTimer>();
+        fighter = gameObject.GetComponent<Fighter>();
+
+        menu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>();
+        
+        if (menu.gameMode != "tutorial")
+        {
+            startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RoundTimer>();
+        }
 
         animator = gameObject.GetComponent<Animator>();
         attackPoint = gameObject.transform.Find("AttackPoint");
 
         attackRange = stats.attackRange;
+        
+        enemyLayer = LayerMask.GetMask(LayerMask.LayerToName(fighter.enemy.layer));
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.X))    
@@ -60,17 +70,17 @@ public class PlayerAttack : MonoBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
-        Vector3 size = new Vector3(attackRange, 0.2f, 0);
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
-        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
+
+        Debug.Log(enemiesHitted.Length);
 
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
             enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
-            
-            //SFX
 
             if (enemy.CompareTag("Player"))
             {
@@ -92,10 +102,10 @@ public class PlayerAttack : MonoBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
-        Vector3 size = new Vector3(attackRange, 0.2f, 0);
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
-        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
 
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
@@ -122,5 +132,18 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         isAttacking = false;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.color = Color.red;
+
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
+
+        Gizmos.DrawCube(center, new Vector3(size.x, size.y, 1)); 
     }
 }

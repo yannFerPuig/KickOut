@@ -5,7 +5,7 @@ using UnityEngine;
 public class IA : Fighter
 {
     //SCRIPTS
-    public StartRoundTimer startRoundTimer;
+    public RoundTimer startRoundTimer;
 
     //COMPONENTS
     public Transform player;

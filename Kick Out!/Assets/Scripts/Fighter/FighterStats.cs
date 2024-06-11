@@ -3,16 +3,22 @@ using UnityEngine.UI;
 
 public class FighterStats : MonoBehaviour
 {   
-    //GAMEOBJECTS
+    //SCRIPTS
     public HealthBar healthBar;
+    public Fighter fighter;
+
+    //GAMEOBJECTS
     public Slider blockSlider;
     public GameObject attackPoint;
     public GameObject groundCheck;
 
-
     //COMPONENTS
     public CapsuleCollider2D capsuleCollider2D;
+
     //STAT DATA
+
+    //Name
+    public string Name;
 
     //Health
     public float maxHealth;
@@ -21,6 +27,14 @@ public class FighterStats : MonoBehaviour
     //Size
     public float width;
     public float height;
+    public float crouchWidth;
+    public float crouchHeight;
+
+    //Offset
+    public float offsetX;
+    public float offsetY;
+    public float crouchOffsetX;
+    public float crouchOffsetY;
 
     //Attack
     public float damage;
@@ -55,17 +69,19 @@ public class FighterStats : MonoBehaviour
 
     void Start() 
     {
-        currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
-        blockingMoveSpeed = moveSpeed / 2;
+        fighter = gameObject.GetComponent<Fighter>();
+        
+        fighter.healthBar.SetMaxHealth(maxHealth);
 
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player1"))
+        currentHealth = maxHealth;
+        
+        if (gameObject.tag == "Player")
         {
             blockSlider = GameObject.Find("BlockP1").GetComponent<Slider>();
         }
-        else 
+        else if (gameObject.tag == "AI")
         {
-            //cdBlock = GameObject.Find("BlockP2");
+            blockSlider = GameObject.Find("BlockP2").GetComponent<Slider>();
         }
 
     }

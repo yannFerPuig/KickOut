@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     //SCRIPTS
     private FighterStats stats;
     private PlayerAttack attack;
-    private StartRoundTimer startRoundTimer;
+    private RoundTimer startRoundTimer;
     private Player player;
+    private MainMenu menu;
 
     //COMPONENTS
     private Rigidbody2D rb;
@@ -20,13 +21,13 @@ public class PlayerMovement : MonoBehaviour
 
     //EXTRAS
     private LayerMask collisionLayer;
-    private LayerMask blockLayer;
 
     //DATA
     private bool isJumping = false;
     private bool isGrounded = false;
     private bool isBlockCooldown = false;
     public bool isBlocking = false;
+    public bool isCrouching = false;
 
     private float moveSpeed;
     private float jumpForce;
@@ -40,19 +41,24 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
-        if (stats is LouisStats louisStats) louisStats.Initialize();
         attack = gameObject.GetComponent<PlayerAttack>();   
-        startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<StartRoundTimer>();
         player = gameObject.GetComponent<Player>();
 
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         sp = gameObject.GetComponent<SpriteRenderer>();
+
+        menu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>();
+
+        if (menu.gameMode != "tutorial")
+        {
+            startRoundTimer = GameObject.FindGameObjectWithTag("Canvas").GetComponent<RoundTimer>();
+        }
+        
         groundCheck = gameObject.transform.Find("GroundCheck");
         attackPoint = gameObject.transform.Find("AttackPoint");
 
         collisionLayer = 1 << LayerMask.NameToLayer("Default");
-        blockLayer = LayerMask.GetMask("IA");
 
         moveSpeed = stats.moveSpeed;
         blockCD = stats.blockCD;
@@ -77,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Detect if player is trying to move
         //Player can move only when he is not attacking
-        if (!attack.isAttacking)
+        if (!attack.isAttacking && !isCrouching)
         {
             horizontalInput = Input.GetAxis("Horizontal");
         }
@@ -93,8 +99,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCrouching = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.C))
+        {
+            isCrouching = false;
+            animator.SetBool("Crouch", false);
+        }
+
         //Detect if the players presses the jump button
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded && !isCrouching)
         {
             isJumping = true;
         }
@@ -138,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         //Movement
         MoveHorizontal();
         Jump();
+        Crouch();
 
         //Block();
 
@@ -171,6 +188,15 @@ public class PlayerMovement : MonoBehaviour
         else //when the fighter is falling, increases the gravity so the jump looks more realistic
         {
             rb.gravityScale = fallingGravityScale;
+        }
+    }
+
+    void Crouch()
+    {
+        if (isGrounded && isCrouching)
+        {   
+            animator.SetBool("Crouch", true);
+            horizontalInput = 0f;
         }
     }
 }

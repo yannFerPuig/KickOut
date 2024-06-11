@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 
 public class Fighter : MonoBehaviour
 {
@@ -26,25 +27,49 @@ public class Fighter : MonoBehaviour
     {
         mainMenu = GameObject.Find("Main Camera").GetComponent<MainMenu>();
 
-        //To define who is the enemy of the current fighter
         if (mainMenu.gameMode == "solo")
         {
-            enemy = GameObject.Find("IA");
-
-            if (gameObject.CompareTag("Player"))
+            if (gameObject.tag == "Player")
             {
+                enemy = GameObject.FindGameObjectWithTag("AI");
+
                 imageRound1 = GameObject.Find("P1R1");
                 imageRound2 = GameObject.Find("P1R2");
                 imageRound3 = GameObject.Find("P1R3");    
+
+                healthBar = GameObject.FindGameObjectWithTag("HP_P1").GetComponent<HealthBar>();
             }
-            else 
+            else if (gameObject.tag == "AI")
             {
+                enemy = GameObject.FindGameObjectWithTag("Player");
+
                 imageRound1 = GameObject.Find("P2R1");
                 imageRound2 = GameObject.Find("P2R2");
-                imageRound3 = GameObject.Find("P2R3");    
+                imageRound3 = GameObject.Find("P2R3");   
+
+                healthBar = GameObject.FindGameObjectWithTag("HP_P2").GetComponent<HealthBar>(); 
             }
         }
-        else 
+        else if (mainMenu.gameMode == "tutorial")
+        {
+            if (gameObject.tag == "Player")
+            {
+                enemy = GameObject.FindGameObjectWithTag("Dummy");
+
+                imageRound1 = GameObject.Find("P1R1");
+                imageRound2 = GameObject.Find("P1R2");
+                imageRound3 = GameObject.Find("P1R3");   
+
+                healthBar = GameObject.FindGameObjectWithTag("HP_P1").GetComponent<HealthBar>();
+            }
+            else if (gameObject.tag == "Dummy")
+            {
+                enemy = GameObject.FindGameObjectWithTag("Player");
+                
+                healthBar = GameObject.FindGameObjectWithTag("HP_P2").GetComponent<HealthBar>();
+            }
+        }
+        else if (mainMenu.gameMode == "duel")
         {
             if (gameObject.CompareTag("Player1"))
             {
@@ -69,7 +94,7 @@ public class Fighter : MonoBehaviour
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        currentHealth = stats.currentHealth;
+        currentHealth = stats.maxHealth;
         points = 0;        
     }
 
@@ -78,34 +103,6 @@ public class Fighter : MonoBehaviour
         currentHealth -= damage * (1 - stats.defense/100);
 
         healthBar.SetHealth(currentHealth);
-
-        if (currentHealth <= 0)
-            Die();
-    }
-
-    public virtual void Die() 
-    { 
-        //if the fighter dies, we add 1 to the rounds won by the enemy
-        enemyStats.roundsWon++;
-
-        //we color the square representing that the round has been won
-        switch (enemyStats.roundsWon)
-        {
-            case 1:
-                imageRound1.GetComponent<Image>().color = Color.green;
-            break;  
-
-            case 2:
-                imageRound2.GetComponent<Image>().color = Color.green;
-            break;
-        
-            case 3:
-                imageRound3.GetComponent<Image>().color = Color.green;
-            break;
-
-            default:
-            break;
-        }
     }
 
     public void LookAtEnemy()
@@ -117,18 +114,6 @@ public class Fighter : MonoBehaviour
         else
         {
             spriteRenderer.flipX = false;
-        }
-    }
-
-    public void GameOver()
-    {
-        if (mainMenu.gameMode == "solo")
-        {
-
-        }
-        else
-        {
-
         }
     }
 }

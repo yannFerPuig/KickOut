@@ -6,13 +6,16 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     //SCRIPTS
-    StartRoundTimer roundTimer;
+    RoundTimer roundTimer;
+    RoundManager roundManager;
 
     //GameObjects
     GameObject selected;
     GameObject[] menuButtons;
     GameObject[] modeButtons;
     GameObject roundWinner;
+
+    public TextMeshProUGUI fightWinner;
 
     //DATA
     public string fighterSelected;
@@ -44,7 +47,7 @@ public class MainMenu : MonoBehaviour
             modeButton.SetActive(false);
         }
 
-        roundTimer = gameObject.GetComponent<StartRoundTimer>();
+        roundTimer = gameObject.GetComponent<RoundTimer>();
     }
     
     public void ChangeScene(string scene)
@@ -72,7 +75,12 @@ public class MainMenu : MonoBehaviour
     public void Tutorial()
     {
         gameMode = "tutorial";
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("SoloCharacterSelection");
+    }
+
+    public void EndFight()
+    {
+        SceneManager.LoadScene("Winner");
     }
 
     public void SelectMode() 
@@ -108,20 +116,56 @@ public class MainMenu : MonoBehaviour
             selected = GameObject.FindGameObjectWithTag("FighterSelected");
         }
 
-        if (scene.name == "FightScene")
+        if (scene.name == "FightScene" || scene.name == "Tutorial") 
         {
-            roundWinner = GameObject.Find("RoundWinner");
-            roundWinner.SetActive(false);
+            gameObject.AddComponent<RoundManager>();
+            gameObject.AddComponent<RoundTimer>();
 
-            LoadFighter();
+            roundWinner = GameObject.Find("RoundWinner");
+
+            if (scene.name == "FightScene")
+            {
+                roundWinner.SetActive(false);
+            }
+
+            if (gameMode == "tutorial")
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+                LoadFighter(player, fighterSelected);
+            }
+            else if (gameMode == "solo")
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                GameObject ai = GameObject.FindGameObjectWithTag("AI");
+                
+                LoadFighter(player, fighterSelected);
+                LoadFighter(ai, ChooseAIFighter());
+            }
+            else if (gameMode == "duel")
+            {
+                GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+                GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
+
+                LoadFighter(player1, fighterSelected);
+                LoadFighter(player2, fighterSelected);
+            }
+        }
+
+        if (scene.name == "Winner")
+        {
+            fightWinner = GameObject.Find("WinnerName").GetComponent<TextMeshProUGUI>();
+
+            fightWinner.text = gameObject.GetComponent<RoundManager>().fightWinner;
+
+            Destroy(gameObject.GetComponent<RoundManager>());
+            Destroy(gameObject.GetComponent<RoundTimer>());
         }
     }
 
-    public void LoadFighter()
+    public void LoadFighter(GameObject player, string fighter)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        switch (fighterSelected)
+        switch (fighter)
         {
             case "Carmen":
                 player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Carmen");
@@ -131,11 +175,10 @@ public class MainMenu : MonoBehaviour
                 RuntimeAnimatorController runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Carmen/Carmen");
                 animator.runtimeAnimatorController = runtimeAnimatorController;
 
-
                 CarmenStats stats = player.GetComponent<CarmenStats>();
                 stats.Initialize();
 
-                if (gameMode == "solo")
+                if (gameMode == "solo" || gameMode == "tutorial")
                 {
                     player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
                 }
@@ -151,8 +194,8 @@ public class MainMenu : MonoBehaviour
                     }
                 }
 
-                stats.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, stats.attackPointPos.z); 
-                stats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
+                stats.attackPoint.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1.1f, stats.attackPointPos.z); 
+                stats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + stats.groundCheckPointPos.y * 5, player.transform.position.z);
 
                 CapsuleCollider2D capsuleCollider2D = player.GetComponent<CapsuleCollider2D>();
                 capsuleCollider2D.size = new Vector2(stats.width, stats.height);
@@ -175,9 +218,7 @@ public class MainMenu : MonoBehaviour
                 RuntimeAnimatorController runtimeAnimatorControllerL = Resources.Load<RuntimeAnimatorController>("Animation/Louis/Louis");
                 animatorL.runtimeAnimatorController = runtimeAnimatorControllerL;
 
-
-
-                if (gameMode == "solo")
+                if (gameMode == "solo" || gameMode == "tutorial")
                 {
                     player.transform.position = new Vector3(statsL.spawnPoint.x, statsL.spawnPoint.y, statsL.spawnPoint.z);
                 }
@@ -193,8 +234,8 @@ public class MainMenu : MonoBehaviour
                     }
                 }
 
-                statsL.attackPoint.transform.position = new Vector3(player.transform.position.x + 0.25f, player.transform.position.y + 1.1f, statsL.attackPointPos.z); 
-                statsL.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 1.8f, player.transform.position.z);
+                statsL.attackPoint.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + statsL.attackPointPos.y * 5, statsL.attackPointPos.z); 
+                statsL.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + statsL.groundCheckPointPos.y * 5, player.transform.position.z);
 
                 CapsuleCollider2D capsuleCollider2DL = player.GetComponent<CapsuleCollider2D>();
                 capsuleCollider2DL.size = new Vector2(statsL.width, statsL.height);
@@ -247,6 +288,22 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public string ChooseAIFighter()
+    {
+        int fighter = Random.Range(0, 2);
+
+        if (fighter == 0)
+        {
+            return "Carmen"; 
+        }
+        else if (fighter == 1)
+        {
+            return "Louis";
+        }
+
+        return "Bob Un";
+    }
+
     public void WinRound(Fighter fighter)
     {
         roundWinner.SetActive(true);
@@ -277,5 +334,10 @@ public class MainMenu : MonoBehaviour
 
         roundTimer.Start();
         roundTimer.Update();
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawCube(new Vector3(0, 0, 0), new Vector3(5, 5, 0));
     }
 }

@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
 
-    public StartRoundTimer startRoundTimer;
+    public RoundTimer startRoundTimer;
 
     public float remainingTime;
 

@@ -651,6 +651,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5862713956453948451, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862713956453948451, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 73454307}
@@ -707,6 +711,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8284542117602426255, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284542117602426255, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -714,7 +722,8 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 280647123}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8484916330528240087, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -10,7 +10,6 @@ TagManager:
   - HP_P2
   - MenuButton
   - ModeButton
-  - IA
   - Canvas
   - FighterSelected
   - GroundCheck
@@ -20,6 +19,7 @@ TagManager:
   - Player1
   - Player2
   - Dummy
+  - AI
   layers:
   - Default
   - TransparentFX
@@ -28,7 +28,7 @@ TagManager:
   - Water
   - UI
   - IA
-  - 
+  - Enemy
   - 
   - 
   - 

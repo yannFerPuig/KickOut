@@ -9,7 +9,7 @@ public class NetPlayerMovement : NetworkBehaviour
     //SCRIPTS
     public FighterStats stats;
     public PlayerAttack attack;
-    public StartRoundTimer startRoundTimer;
+    public RoundTimer startRoundTimer;
 
     //COMPONENTS
     public Rigidbody2D rb;

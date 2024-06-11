@@ -8,7 +8,7 @@ public class NetPlayerAttack : NetworkBehaviour
     //SCRIPTS
     public FighterStats stats;
     public PlayerMovement move;
-    public StartRoundTimer startRoundTimer;
+    public RoundTimer startRoundTimer;
 
     //COMPONENTS
     public Animator animator;

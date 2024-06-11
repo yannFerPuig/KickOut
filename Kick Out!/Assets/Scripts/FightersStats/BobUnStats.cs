@@ -7,6 +7,8 @@ public class BobUnStats : FighterStats
 {
     public void Initialize()
     {
+        Name = "Bob Un";
+
         maxHealth = 140;
 
         width = 0.3f;
