@@ -111,7 +111,7 @@ public class PlayerAttack : MonoBehaviour
                     enemy.GetComponent<FighterStats>().blockCD -= stats.specialReduceCD;
                    
                 }
-                soundManager.PlaySFX();
+                soundManager.PlaySFX(stats.punchSounds[Random.Next(0, stats.punchSounds.Length-1)]);
             }
         }
     }
