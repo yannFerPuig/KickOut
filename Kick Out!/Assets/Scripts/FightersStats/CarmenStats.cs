@@ -33,7 +33,7 @@ public class CarmenStats : FighterStats
         attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
         groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
 
-        punchSounds = new List<AudioClip> { (AudioClip)Resources.Load("Sound/Carmen/punch-7-166700.mp3"), (AudioClip)Resources.Load("Sound/Carmen/punch-1-166694.mp3"), (AudioClip)Resources.Load("Assets/Sound/Carmen/punch-2-166695.mp3") };
-        specialSounds = new List<AudioClip> { (AudioClip)Resources.Load("Sound/Carmen/Special-punch1.mp3"), (AudioClip)Resources.Load("Sound/Carmen/Special-punch2.mp3") };
+        punchSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/Carmen/punch-7-166700"), Resources.Load<AudioClip>("Sound/Carmen/punch-1-166694"), Resources.Load<AudioClip>("Assets/Sound/Carmen/punch-2-166695") };
+        specialSounds = new List<AudioClip> { )Resources.Load<AudioClip>("Sound/Carmen/Special-punch1"), Resources.Load<AudioClip>("Sound/Carmen/Special-punch2") };
     }
 }
