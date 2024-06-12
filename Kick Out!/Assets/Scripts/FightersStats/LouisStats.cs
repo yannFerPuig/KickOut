@@ -31,5 +31,8 @@ public class LouisStats : FighterStats
         attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
         attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
         groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
+
+        punchSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/Louis/hit-swing-sword-small-2-95566"), Resources.Load<AudioClip>("Sound/Louis/sword-sound-2-36274") };
+        specialSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/Louis/knife-slice-41231"), Resources.Load<AudioClip>("Sound/Louis/sword-slash-and-swing-185432") };
     }
 }

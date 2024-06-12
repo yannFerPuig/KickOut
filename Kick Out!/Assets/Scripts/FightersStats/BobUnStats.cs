@@ -31,5 +31,8 @@ public class BobUnStats : FighterStats
         attackPoint = GameObject.FindGameObjectWithTag("AttackPoint");
         attackPoint.transform.position = new Vector3(attackPointPos.x, attackPointPos.y, attackPointPos.z);
         groundCheck = GameObject.FindGameObjectWithTag("GroundCheck");
+
+        punchSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/BobUn/hard-punch-80578"), Resources.Load<AudioClip>("Sound/BobUn/086081_punch-5wav-36765"), Resources.Load<AudioClip>("Sound/BobUn/086084_punch-1wav-36766") };
+        specialSounds = new List<AudioClip> { Resources.Load<AudioClip>("fast-simple-chop-5-6270"), Resources.Load<AudioClip>("Sound/BobUn/fast-simple-chop-6"), Resources.Load<AudioClip>("Sound/BobUn/fast-simple-chop-7"), Resources.Load<AudioClip>("Sound/BobUn/fast-simple-chop-9") };
     }
 }

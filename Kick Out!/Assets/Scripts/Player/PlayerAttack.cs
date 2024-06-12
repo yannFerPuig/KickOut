@@ -58,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
 
         move.horizontalInput = 0f;
+        bool miss = true;
 
         StartCoroutine(MyFunctionAfterDelay(punch.length));
 
@@ -72,23 +73,30 @@ public class PlayerAttack : MonoBehaviour
         foreach(var enemy in enemiesHitted)
         {
             enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
-            
+            miss = false;
             if (enemy.CompareTag("Player"))
             {
                 if (enemy.GetComponent<PlayerMovement>().isBlocking)
                 {
                     enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
                 }
-                soundManager.PlaySFX();
+                soundManager.PlaySFX(stats.punchSounds[UnityEngine.Random.Range(0, stats.punchSounds.Count - 1)]);
             }
+        }
+
+        if (miss)
+        {
+            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
         }
     }
 
     void Special() 
     {
+
         isAttacking = true;
 
         move.horizontalInput = 0f;
+        bool miss = true;
 
         StartCoroutine(MyFunctionAfterDelay(special.length));
 
@@ -103,7 +111,7 @@ public class PlayerAttack : MonoBehaviour
         foreach(var enemy in enemiesHitted)
         {
             enemy.GetComponent<Fighter>().TakeDamage(stats.specialDamage);
-
+            miss = false;
             if (enemy.CompareTag("Player"))
             {
                 if (enemy.GetComponent<PlayerMovement>().isBlocking)
@@ -111,8 +119,13 @@ public class PlayerAttack : MonoBehaviour
                     enemy.GetComponent<FighterStats>().blockCD -= stats.specialReduceCD;
                    
                 }
-                soundManager.PlaySFX(stats.punchSounds[Random.Next(0, stats.punchSounds.Length-1)]);
+                soundManager.PlaySFX(stats.specialSounds[UnityEngine.Random.Range(0, stats.specialSounds.Count-1)]);
             }
+        }
+
+        if (miss)
+        {
+            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
         }
     }
 

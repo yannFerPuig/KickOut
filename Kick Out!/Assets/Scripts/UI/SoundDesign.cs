@@ -13,7 +13,6 @@ public class SoundDesign : MonoBehaviour
     public Slider sliderSFX;
     public AudioClip musicFight;
     public AudioClip musicEndScene;
-    public AudioClip SFXPunch;
     public static float VolumeMusic = 1;
     public static float VolumeSFX = 1;
 
@@ -39,7 +38,7 @@ public class SoundDesign : MonoBehaviour
         {
             VolumeSFX = sliderSFX.value;
             SFX.volume = VolumeSFX;
-            SFX.PlayOneShot(SFXPunch); // Test audio
+            PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
         }
     }
 
@@ -48,10 +47,6 @@ public class SoundDesign : MonoBehaviour
         SFX.PlayOneShot(clip);
     }
 
-    public void PlaySFX()
-    {
-        SFX.PlayOneShot(SFXPunch);
-    }
 
 
 
