@@ -7,62 +7,42 @@ public class HealthBar : MonoBehaviour
     // COMPONENTS
     public Slider slider;
     public Image fillImage; // Reference to the Image component of the fill area
-    public Color normalColor = Color.green; // Normal color of the health 
-    public Color decreasingColor = Color.red; // Color when the health is decreasing
+    public Color normalColor = Color.red; // Normal color of the health 
+    public Color decreasingColor = Color.yellow; // Color when the health is decreasing
     private Coroutine healthCoroutine;
 
-<<<<<<< Updated upstream
-=======
-    // Set the health bar to the max value and initialize the color
->>>>>>> Stashed changes
     public void SetMaxHealth(float health)
     {
         slider.value = health;
-<<<<<<< Updated upstream
         slider.maxValue = health;
         fillImage.color = normalColor;
-=======
-        fillImage.color = normalColor; // Set the initial color to normal
->>>>>>> Stashed changes
     }
 
     // Whenever the health of the character is updated, the health bar is also updated smoothly
     public void SetHealth(float health)
     {
-        // If the current coroutine is running, stop it
         if (healthCoroutine != null)
         {
             StopCoroutine(healthCoroutine);
         }
-
-        // Check if the health is 0, and reset to max if so
-        if (health <= 0)
-        {
-            slider.value = slider.maxValue;
-            fillImage.color = normalColor;
-        }
-        else if (health == slider.maxValue)
-        {
-            // Immediately update the health bar if health is being set to max value
-            slider.value = health;
-            fillImage.color = normalColor;
-        }
-        else
-        {
-            // Start a new coroutine to smoothly change the health value
-            healthCoroutine = StartCoroutine(SmoothHealthChange(health));
-        }
+        healthCoroutine = StartCoroutine(SmoothHealthChange(health));
     }
 
     // Coroutine to smoothly change the health value
     private IEnumerator SmoothHealthChange(float newHealth)
     {
         float currentHealth = slider.value;
-        float duration = 0.3f;
+        float duration = 0.5f; 
         float elapsed = 0f;
 
-        // Set the color based on whether the health is decreasing
-        fillImage.color = (newHealth < currentHealth) ? decreasingColor : normalColor;
+        if (newHealth < currentHealth)
+        {
+            fillImage.color = decreasingColor;
+        }
+        else
+        {
+            fillImage.color = normalColor;
+        }
 
         while (elapsed < duration)
         {
@@ -71,15 +51,7 @@ public class HealthBar : MonoBehaviour
             yield return null;
         }
 
-        // Ensure the final value and color are correctly set
-        slider.value = newHealth;
-        fillImage.color = normalColor;
-
-        // Check if the health is 0 after the transition and reset to max if so
-        if (slider.value <= 0)
-        {
-            slider.value = slider.maxValue;
-            fillImage.color = normalColor;
-        }
+        slider.value = newHealth; // final value is set
+        fillImage.color = normalColor; // Reset to normal
     }
 }
