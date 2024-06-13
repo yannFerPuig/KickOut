@@ -26,9 +26,8 @@ public class DummyStats : FighterStats
         groundCheckRadius = 0;
 
         spawnPoint = new Vector3(4.5f, -3.1f, 0f);
+        fighterCenter = new Vector3(0, 0, 0);
 
-        capsuleCollider2D = gameObject.GetComponent<CapsuleCollider2D>();
-
-        gameObject.GetComponent<Fighter>().currentHealth = maxHealth;
+        currentHealth = maxHealth;
     }
 }

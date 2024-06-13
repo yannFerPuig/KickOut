@@ -123,13 +123,6 @@ public class MainMenu : MonoBehaviour
             gameObject.AddComponent<RoundManager>();
             gameObject.AddComponent<RoundTimer>();
 
-            roundWinner = GameObject.Find("RoundWinner");
-
-            if (scene.name == "FightScene")
-            {
-                roundWinner.SetActive(false);
-            }
-
             if (gameMode == "tutorial")
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -141,8 +134,8 @@ public class MainMenu : MonoBehaviour
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 GameObject ai = GameObject.FindGameObjectWithTag("AI");
                 
-                LoadFighter(player, fighterSelected);
                 LoadFighter(ai, ChooseAIFighter());
+                LoadFighter(player, fighterSelected);
             }
             else if (gameMode == "duel")
             {
@@ -165,44 +158,66 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void LoadFighter(GameObject player, string fighter)
+    public void LoadFighter(GameObject p, string fighter)
     {
-        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
-        Animator animator = player.gameObject.AddComponent(typeof(Animator)) as Animator;
+        SpriteRenderer spriteRenderer = p.GetComponent<SpriteRenderer>();
+        Animator animator = p.gameObject.AddComponent(typeof(Animator)) as Animator;
         
-        Attack playerAttack = player.GetComponent<Attack>();
+        Attack playerAttack = p.GetComponent<Attack>();
 
         switch (fighter)
         {
             case "Carmen":
                 spriteRenderer.sprite = Resources.Load<Sprite>("BaseSprites/Carmen");
 
-                player.gameObject.AddComponent(typeof(CarmenStats));
+                CarmenStats carmenStats = p.gameObject.AddComponent(typeof(CarmenStats)) as CarmenStats;
+                carmenStats.Initialize();
+
                 RuntimeAnimatorController runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animation/Carmen/Carmen");
                 animator.runtimeAnimatorController = runtimeAnimatorController;
 
                 playerAttack.punch = Resources.Load<AnimationClip>("Animation/Carmen/carmenAttack");
                 playerAttack.special = Resources.Load<AnimationClip>("Animation/Carmen/carmenSpecial");
 
+                SetPlayerPosition(p, carmenStats);
+
+                carmenStats.attackPoint.transform.position = new Vector3(p.transform.position.x + carmenStats.attackPointPos.x, p.transform.position.y + carmenStats.attackPointPos.y * 5, carmenStats.attackPointPos.z); 
+                carmenStats.groundCheck.transform.position = new Vector3(p.transform.position.x + carmenStats.attackPointPos.x, p.transform.position.y + carmenStats.groundCheckPointPos.y * 5, p.transform.position.z);
+                carmenStats.center.transform.position = new Vector3(p.transform.position.x + carmenStats.fighterCenter.x, p.transform.position.y + carmenStats.fighterCenter.y, p.transform.position.z + carmenStats.fighterCenter.z);
+
+                CapsuleCollider2D capsuleCollider2DC = p.GetComponent<CapsuleCollider2D>();
+                capsuleCollider2DC.size = new Vector2(carmenStats.width, carmenStats.height);
+
                 break;
 
             case "Louis":
                 spriteRenderer.sprite = Resources.Load<Sprite>("BaseSprites/Louis");
 
-                player.gameObject.AddComponent(typeof(LouisStats));
+                LouisStats louisStats = p.gameObject.AddComponent(typeof(LouisStats)) as LouisStats;
+                louisStats.Initialize();
 
                 RuntimeAnimatorController runtimeAnimatorControllerL = Resources.Load<RuntimeAnimatorController>("Animation/Louis/Louis");
                 animator.runtimeAnimatorController = runtimeAnimatorControllerL;
 
                 playerAttack.punch = Resources.Load<AnimationClip>("Animation/Louis/louisAttack");
                 playerAttack.special = Resources.Load<AnimationClip>("Animation/Louis/louisSpecial");
+                
+                SetPlayerPosition(p, louisStats);
+
+                louisStats.attackPoint.transform.position = new Vector3(p.transform.position.x, p.transform.position.y + louisStats.attackPointPos.y * 5, louisStats.attackPointPos.z); 
+                louisStats.groundCheck.transform.position = new Vector3(p.transform.position.x, p.transform.position.y + louisStats.groundCheckPointPos.y * 5, p.transform.position.z);
+                louisStats.center.transform.position = new Vector3(p.transform.position.x + louisStats.fighterCenter.x * 5, p.transform.position.y + louisStats.fighterCenter.y * 5, p.transform.position.z + louisStats.fighterCenter.z);
+
+                CapsuleCollider2D capsuleCollider2DL = p.GetComponent<CapsuleCollider2D>();
+                capsuleCollider2DL.size = new Vector2(louisStats.width, louisStats.height);
 
                 break;
             
             case "Bob Un":
-                player.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Bob Un");
+                p.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("BaseSprites/Bob Un");
 
-                player.gameObject.AddComponent(typeof(BobUnStats));
+                BobUnStats bobUnStats = p.gameObject.AddComponent(typeof(BobUnStats)) as BobUnStats;
+                bobUnStats.Initialize();
 
                 RuntimeAnimatorController runtimeAnimatorControllerB = Resources.Load<RuntimeAnimatorController>("Animation/BobUn/Bob Un");
                 animator.runtimeAnimatorController = runtimeAnimatorControllerB;
@@ -210,50 +225,51 @@ public class MainMenu : MonoBehaviour
                 playerAttack.punch = Resources.Load<AnimationClip>("Animation/BobUn/bobUnAttack");
                 playerAttack.special = Resources.Load<AnimationClip>("Animation/BobUn/bobUnSpecial");
 
+                SetPlayerPosition(p, bobUnStats);
+
+                bobUnStats.attackPoint.transform.position = new Vector3(p.transform.position.x, p.transform.position.y + bobUnStats.attackPointPos.y * 5, bobUnStats.attackPointPos.z); 
+                bobUnStats.groundCheck.transform.position = new Vector3(p.transform.position.x, p.transform.position.y + bobUnStats.groundCheckPointPos.y * 5, p.transform.position.z);
+
+                CapsuleCollider2D capsuleCollider2DB = p.GetComponent<CapsuleCollider2D>();
+                capsuleCollider2DB.size = new Vector2(bobUnStats.width, bobUnStats.height);
+
                 break;
         }
+    }
 
-        FighterStats fighterStats = player.GetComponent<FighterStats>();
-        
-        if (fighterStats is CarmenStats stats)
-        {
-            stats.Initialize();
-        }
-        else if (fighterStats is LouisStats stats1)
-        {
-            stats1.Initialize();
-        }
-        else if (fighterStats is BobUnStats stats2)
-        {
-            stats2.Initialize();
-        }
-
+    private void SetPlayerPosition(GameObject player, FighterStats stats)
+    {
         if (gameMode == "tutorial")
         {
-            player.transform.position = new Vector3(fighterStats.spawnPoint.x, fighterStats.spawnPoint.y, fighterStats.spawnPoint.z);
+            player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
         }
-        else if (gameMode == "solo" || gameMode == "duel")
+        else if (gameMode == "solo")
         {
-            if (player.tag == "Player" || player.tag == "Player1")
+            if (player.tag == "Player")
             {
-                player.transform.position = new Vector3(fighterStats.spawnPoint.x, fighterStats.spawnPoint.y, fighterStats.spawnPoint.z);
+                player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
             }
-            else if (player.tag == "AI" || player.tag == "Player2")
+            else if (player.tag == "AI")
             {
-                player.transform.position = new Vector3(-fighterStats.spawnPoint.x, fighterStats.spawnPoint.y, fighterStats.spawnPoint.z);
+                player.transform.position = new Vector3(-stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
             }
         }
-
-        fighterStats.attackPoint.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + fighterStats.attackPointPos.y * 5, fighterStats.attackPointPos.z); 
-        fighterStats.groundCheck.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + fighterStats.groundCheckPointPos.y * 5, player.transform.position.z);
-
-        CapsuleCollider2D capsuleCollider2D = player.GetComponent<CapsuleCollider2D>();
-        capsuleCollider2D.size = new Vector2(fighterStats.width, fighterStats.height);
+        else if (gameMode == "duel")
+        {
+            if (player.tag == "Player1")
+            {
+                player.transform.position = new Vector3(stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+            }
+            else if (player.tag == "Player2")
+            {
+                player.transform.position = new Vector3(-stats.spawnPoint.x, stats.spawnPoint.y, stats.spawnPoint.z);
+            }
+        }
     }
 
     public string ChooseAIFighter()
     {
-        int fighter = Random.Range(0, 2);
+        int fighter = Random.Range(0, 0);
 
         if (fighter == 0)
         {

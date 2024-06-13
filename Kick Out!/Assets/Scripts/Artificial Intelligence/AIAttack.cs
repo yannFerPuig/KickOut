@@ -27,7 +27,7 @@ public class AIAttack : Attack
         stats = gameObject.GetComponent<FighterStats>();
         fighter = gameObject.GetComponent<Fighter>();
         animator = gameObject.GetComponent<Animator>();
-        attackPoint = gameObject.transform.Find("AttackPoint");
+        attackPoint = stats.attackPoint.transform;
 
         attackRange = stats.attackRange;
         enemyLayer = LayerMask.GetMask(LayerMask.LayerToName(fighter.enemy.layer));
@@ -61,14 +61,37 @@ public class AIAttack : Attack
 
         foreach (var enemy in enemiesHitted)
         {
-            enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
-
-            if (enemy.CompareTag("Player"))
+            if (!enemy.GetComponent<PlayerMovement>().isBlocking)
             {
-                if (enemy.GetComponent<PlayerMovement>().isBlocking)
-                {
-                    enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
-                }
+                Debug.Log("Caca");
+                enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+            }
+            else 
+            {
+                enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
+            }
+        }
+    }
+
+    void Special() 
+    {
+        isAttacking = true;
+
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
+
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
+
+        foreach (var enemy in enemiesHitted)
+        {
+            if (!enemy.GetComponent<PlayerMovement>().isBlocking)
+            {
+                Debug.Log("Caca");
+                enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+            }
+            else 
+            {
+                enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
             }
         }
     }

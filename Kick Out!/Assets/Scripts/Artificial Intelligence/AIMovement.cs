@@ -127,12 +127,16 @@ public class AIMovement : MonoBehaviour
 
     void MoveHorizontal()
     {
+        //Cette fonction permet de déplacer le combattant horizontalement à l'aide des touches qui sont tag "Horizontal" (cf. dans les paramètres du projet)
         Vector2 movement = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         rb.velocity = movement;
     }
 
     void Jump()
     {
+        //Cette fonction permet de faire saute le combattant en appuyant sur la touche espace (modifiable)
+        
+        //To jump, the player must press the space bar and be grounded
         if (isJumping && isGrounded)
         {
             animator.SetTrigger("Jump");
@@ -141,11 +145,11 @@ public class AIMovement : MonoBehaviour
             isGrounded = false;
         }
 
-        if (rb.velocity.y >= 0)
+        if (rb.velocity.y >= 0) //if the fighter is going up in is jumping, the gravity is normal
         {
             rb.gravityScale = gravityScale;
         }
-        else
+        else //when the fighter is falling, increases the gravity so the jump looks more realistic
         {
             rb.gravityScale = fallingGravityScale;
         }

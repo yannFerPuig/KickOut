@@ -1,6 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class AIController : MonoBehaviour
 {
@@ -15,6 +15,19 @@ public class AIController : MonoBehaviour
     private float decisionTimer;
     private float decisionCooldown = 1f; // Cooldown between decisions
 
+    // Random movement variables
+    private int randomDirection;
+    private float randomMoveDuration;
+    private float moveTimer;
+
+    // Crouch variables
+    private bool isCrouching = false;
+    private float crouchTimer = 0f;
+    private float crouchCooldownTimer = 0f;
+    public float crouchDuration = 2.0f;
+    public float crouchCooldown = 5.0f;
+    public float crouchChance = 0.2f; // 20% chance to crouch
+
     void Start()
     {
         // Get references to the necessary components
@@ -28,6 +41,13 @@ public class AIController : MonoBehaviour
 
         // Initialize decision timer
         decisionTimer = decisionCooldown;
+
+        // Initialize random movement variables
+        randomDirection = 1; // 1 for right, -1 for left
+        randomMoveDuration = Random.Range(0.5f, 2f);
+        moveTimer = randomMoveDuration;      
+
+        stats.attackPoint = GameObject.FindGameObjectWithTag("AttackPoint2");
     }
 
     void Update()
@@ -42,6 +62,12 @@ public class AIController : MonoBehaviour
             decisionTimer = decisionCooldown;
         }
 
+        // Update crouch cooldown timer
+        if (crouchCooldownTimer > 0)
+        {
+            crouchCooldownTimer -= Time.deltaTime;
+        }
+
         // Ensure AI faces the player
         fighter.LookAtEnemy();
     }
@@ -50,8 +76,19 @@ public class AIController : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 
-        // Example decision making based on distance
-        if (distanceToPlayer < attack.attackRange)
+        if (isCrouching)
+        {
+            crouchTimer -= Time.deltaTime;
+            if (crouchTimer <= 0)
+            {
+                EndCrouch();
+            }
+        }
+        else if (crouchCooldownTimer <= 0 && Random.value < crouchChance)
+        {
+            //StartCrouch();
+        }
+        else if (distanceToPlayer < attack.attackRange)
         {
             // Attack or block randomly
             int randomAction = Random.Range(0, 10);
@@ -71,9 +108,40 @@ public class AIController : MonoBehaviour
         }
         else
         {
-            // Move towards the player
-            MoveTowardsPlayer();
+            // Move randomly or towards the player
+            int randomMoveAction = Random.Range(0, 10);
+
+            if (randomMoveAction < 6) // 60% chance to move towards player
+            {
+                MoveTowardsPlayer();
+            }
+            else // 40% chance to move randomly
+            {
+                MoveRandomly();
+            }
         }
+    }
+
+    void StartCrouch()
+    {
+        isCrouching = true;
+        crouchTimer = crouchDuration;
+        crouchCooldownTimer = crouchCooldown;
+
+        // Adjust collider size and offset for crouching
+        stats.capsuleCollider2D.size = new Vector2(stats.crouchWidth, stats.crouchHeight);
+        stats.capsuleCollider2D.offset = new Vector2(stats.crouchOffsetX, stats.crouchOffsetY);
+        movement.isCrouching = true;
+    }
+
+    void EndCrouch()
+    {
+        isCrouching = false;
+
+        // Revert collider size and offset
+        stats.capsuleCollider2D.size = new Vector2(stats.width, stats.height);
+        stats.capsuleCollider2D.offset = new Vector2(stats.offsetX, stats.offsetY);
+        movement.isCrouching = false;
     }
 
     void PerformAttack()
@@ -91,16 +159,18 @@ public class AIController : MonoBehaviour
     void PerformBlock()
     {
         // Start blocking for a short duration
-        StartCoroutine(BlockCoroutine(1f)); // Block for 1 second
+        StartCoroutine(BlockCoroutine(Random.Range(0.5f, 2.5f))); // Block for 0.5 to 2.5 seconds
     }
 
     IEnumerator BlockCoroutine(float duration)
     {
         movement.isBlocking = true;
         attack.isAttacking = true; // Prevent attacking while blocking
+        attack.animator.SetBool("IsBlocking", true);
         yield return new WaitForSeconds(duration);
         movement.isBlocking = false;
         attack.isAttacking = false;
+        attack.animator.SetBool("IsBlocking", false);
     }
 
     void MoveTowardsPlayer()
@@ -115,4 +185,19 @@ public class AIController : MonoBehaviour
             movement.horizontalInput = -1; // Move left
         }
     }
+
+    void MoveRandomly()
+    {
+        // Random movement direction and duration
+        moveTimer -= Time.deltaTime;
+        if (moveTimer <= 0)
+        {
+            randomDirection = Random.Range(0, 2) == 0 ? -1 : 1; // Randomize direction
+            randomMoveDuration = Random.Range(0.5f, 2f); // Randomize duration
+            moveTimer = randomMoveDuration;
+        }
+
+        movement.horizontalInput = randomDirection;
+    }
 }
+

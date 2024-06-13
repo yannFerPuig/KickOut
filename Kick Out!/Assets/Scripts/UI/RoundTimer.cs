@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine.UIElements;
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 
 public class RoundTimer : MonoBehaviour
 {
@@ -22,7 +23,6 @@ public class RoundTimer : MonoBehaviour
     //GAMEOBJECTS
     public GameObject player1;
     public GameObject player2;
-    public GameObject iA;
 
     public TextMeshProUGUI startText;
     public TextMeshProUGUI timerText;
@@ -46,6 +46,14 @@ public class RoundTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, secondes);
 
         //Initialize the players so we can disable the scripts
+        if (mainMenu.gameMode == "tutorial")
+        {
+            player1 = GameObject.FindGameObjectWithTag("Player");
+            player2 = GameObject.FindGameObjectWithTag("Dummy");
+
+            player1.GetComponent<PlayerMovement>().enabled = false;
+            player1.GetComponent<PlayerAttack>().enabled = false;
+        }
         if (mainMenu.gameMode == "solo")
         {
             player1 = GameObject.FindGameObjectWithTag("Player");
@@ -95,7 +103,12 @@ public class RoundTimer : MonoBehaviour
 
         Timer();
 
-        if (mainMenu.gameMode == "solo")
+        if (mainMenu.gameMode == "tutorial")
+        {
+            player1.GetComponent<PlayerMovement>().enabled = true;
+            player1.GetComponent<PlayerAttack>().enabled = true;
+        }
+        else if (mainMenu.gameMode == "solo")
         {
             player1.GetComponent<PlayerMovement>().enabled = true;
             player1.GetComponent<PlayerAttack>().enabled = true;
@@ -144,6 +157,11 @@ public class RoundTimer : MonoBehaviour
             player2.GetComponent<AIAttack>().enabled = false;
         }
 
+        player1.GetComponent<FighterStats>().currentHealth = player1.GetComponent<FighterStats>().maxHealth;
+        player2.GetComponent<FighterStats>().currentHealth = player2.GetComponent<FighterStats>().maxHealth;
+
+        player1.GetComponent<Fighter>().healthBar.SetHealth(player1.GetComponent<FighterStats>().maxHealth);
+        player2.GetComponent<Fighter>().healthBar.SetHealth(player2.GetComponent<FighterStats>().maxHealth);
 
         remainingTime = 120f;
         roundStart = 3f;

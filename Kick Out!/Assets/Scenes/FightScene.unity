@@ -607,7 +607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7371718925006822236, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -746,7 +746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &999673835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -920,10 +920,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
-  m_sharedMaterial: {fileID: -5263517188865804183, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
+  m_sharedMaterial: {fileID: 2135987999403455569, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1054,10 +1054,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 02:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
-  m_sharedMaterial: {fileID: -5263517188865804183, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
+  m_sharedMaterial: {fileID: 2135987999403455569, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1809,7 +1809,6 @@ MonoBehaviour:
   fightStarted: 0
   player1: {fileID: 0}
   player2: {fileID: 0}
-  iA: {fileID: 0}
   startText: {fileID: 1003960034}
   timerText: {fileID: 1043645758}
 --- !u!114 &1874737020
@@ -1837,7 +1836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundTimer: {fileID: 0}
-  menu: {fileID: 0}
+  mainMenu: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
   roundWinner: 
@@ -1968,10 +1967,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fighter
       objectReference: {fileID: 0}
-    - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7397309447813615640, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2012,6 +2007,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7752262629173553593, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

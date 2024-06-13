@@ -518,6 +518,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 192102908996272472, guid: 284852eb4f121a640a160ea5e9a614eb, type: 3}
   m_PrefabInstance: {fileID: 192584222}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &249453419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 249453420}
+  m_Layer: 7
+  m_Name: Center
+  m_TagString: Center2
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &249453420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249453419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 415610221}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &415610219
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +633,8 @@ Transform:
   m_LocalPosition: {x: 4.5, y: -3.1, z: 0}
   m_LocalScale: {x: 4.5, y: 4.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 249453420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &415610222
@@ -661,7 +693,6 @@ MonoBehaviour:
   imageRound1: {fileID: 0}
   imageRound2: {fileID: 0}
   imageRound3: {fileID: 0}
-  currentHealth: 0
   points: 0
 --- !u!114 &415610225
 MonoBehaviour:
@@ -680,11 +711,19 @@ MonoBehaviour:
   blockSlider: {fileID: 0}
   attackPoint: {fileID: 0}
   groundCheck: {fileID: 0}
+  center: {fileID: 249453419}
   capsuleCollider2D: {fileID: 0}
+  Name: 
   maxHealth: 0
   currentHealth: 0
   width: 0
   height: 0
+  crouchWidth: 0
+  crouchHeight: 0
+  offsetX: 0
+  offsetY: 0
+  crouchOffsetX: 0
+  crouchOffsetY: 0
   damage: 0
   specialDamage: 0
   attackRange: 0
@@ -701,6 +740,7 @@ MonoBehaviour:
   fallingGravityScale: 0
   groundCheckRadius: 0
   roundsWon: 0
+  fighterCenter: {x: 0, y: 0, z: 0}
   spawnPoint: {x: 0, y: 0, z: 0}
   attackPointPos: {x: 0, y: 0, z: 0}
   groundCheckPointPos: {x: 0, y: 0, z: 0}

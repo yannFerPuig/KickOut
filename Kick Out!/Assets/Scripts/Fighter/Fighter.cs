@@ -20,7 +20,6 @@ public class Fighter : MonoBehaviour
     public GameObject imageRound3;
 
     //DATA
-    public float currentHealth;
     public int points;
 
     void Start()
@@ -94,25 +93,37 @@ public class Fighter : MonoBehaviour
 
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        currentHealth = stats.maxHealth;
+        stats.currentHealth = stats.maxHealth;
         points = 0;        
     }
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage * (1 - stats.defense/100);
+        stats.currentHealth -= damage * (1 - stats.defense/100);
 
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetHealth(stats.currentHealth);
     }
 
     public void LookAtEnemy()
     {
-        if (transform.position.x > enemy.transform.position.x)
+        if (stats.center.transform.position.x > enemy.GetComponent<FighterStats>().center.transform.position.x)
         {
+            if (stats is LouisStats l)
+            {
+                l.capsuleCollider2D.offset = new Vector2(l.flippedOffsetX, l.offsetY);
+                l.center.transform.position = new Vector3(gameObject.transform.position.x - l.fighterCenter.x * 5, gameObject.transform.position.y + l.fighterCenter.y * 5, gameObject.transform.position.z + l.fighterCenter.z);
+            }
+
             spriteRenderer.flipX = true;
         }
         else
         {
+            if (stats is LouisStats l)
+            {
+                l.capsuleCollider2D.offset = new Vector2(l.offsetX, l.offsetY);
+                l.center.transform.position = new Vector3(gameObject.transform.position.x + l.fighterCenter.x * 5, gameObject.transform.position.y + l.fighterCenter.y * 5, gameObject.transform.position.z + l.fighterCenter.z);
+            }
+
             spriteRenderer.flipX = false;
         }
     }

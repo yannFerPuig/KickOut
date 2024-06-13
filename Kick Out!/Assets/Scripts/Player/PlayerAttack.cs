@@ -72,11 +72,22 @@ public class PlayerAttack : Attack
         {
             enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
 
-            if (enemy.CompareTag("Player"))
+            if (enemy.tag == "Player" || enemy.tag == "Player1" || enemy.tag == "Player2")
             {
-                if (enemy.GetComponent<PlayerMovement>().isBlocking)
+                if (!enemy.GetComponent<PlayerMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                }
+                else 
                 {
                     enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
+                }
+            }
+            else if (enemy.tag == "AI")
+            {
+                if (!enemy.GetComponent<AIMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
                 }
             }
         }
@@ -104,11 +115,18 @@ public class PlayerAttack : Attack
 
             //SFX
 
-            if (enemy.CompareTag("Player"))
+            if (enemy.tag == "Player" || enemy.tag == "Player1" || enemy.tag == "Player2")
             {
-                if (enemy.GetComponent<PlayerMovement>().isBlocking)
+                if (!enemy.GetComponent<PlayerMovement>().isBlocking)
                 {
-                    enemy.GetComponent<FighterStats>().blockCD -= stats.specialReduceCD;
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                }
+            }
+            else if (enemy.tag == "AI")
+            {
+                if (!enemy.GetComponent<AIMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
                 }
             }
         }
@@ -134,6 +152,9 @@ public class PlayerAttack : Attack
         Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
         Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
-        Gizmos.DrawCube(center, new Vector3(size.x, size.y, 1)); 
+        //Gizmos.DrawCube(center, new Vector3(size.x, size.y, 1)); 
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(stats.center.transform.position, new Vector3(1f, 1f, 1f));
     }
 }

@@ -12,14 +12,18 @@ TagManager:
   - ModeButton
   - Canvas
   - FighterSelected
-  - GroundCheck
-  - AttackPoint
   - Block1
   - Block2
   - Player1
   - Player2
   - Dummy
   - AI
+  - GroundCheck1
+  - AttackPoint1
+  - GroundCheck2
+  - AttackPoint2
+  - Center1
+  - Center2
   layers:
   - Default
   - TransparentFX

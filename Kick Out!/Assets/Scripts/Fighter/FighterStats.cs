@@ -11,6 +11,7 @@ public class FighterStats : MonoBehaviour
     public Slider blockSlider;
     public GameObject attackPoint;
     public GameObject groundCheck;
+    public GameObject center;
 
     //COMPONENTS
     public CapsuleCollider2D capsuleCollider2D;
@@ -63,6 +64,7 @@ public class FighterStats : MonoBehaviour
     public float roundsWon = 0;
 
     //ADDITIONNAL DATA
+    public Vector3 fighterCenter;
     public Vector3 spawnPoint;
     public Vector3 attackPointPos;
     public Vector3 groundCheckPointPos;
@@ -89,5 +91,20 @@ public class FighterStats : MonoBehaviour
     void Awake() 
     {
         currentHealth = maxHealth;
+
+        capsuleCollider2D = gameObject.GetComponent<CapsuleCollider2D>();
+
+        if (gameObject.tag == "Player" || gameObject.tag == "Player1")
+        {    
+            attackPoint = GameObject.FindGameObjectWithTag("AttackPoint1");
+            groundCheck = GameObject.FindGameObjectWithTag("GroundCheck1");
+            center = GameObject.FindGameObjectWithTag("Center1");
+        }
+        else if (gameObject.tag == "AI" || gameObject.tag == "Player2")
+        {
+            attackPoint = GameObject.FindGameObjectWithTag("AttackPoint2");
+            groundCheck = GameObject.FindGameObjectWithTag("GroundCheck2");
+            center = GameObject.FindGameObjectWithTag("Center2");
+        }
     }
 }

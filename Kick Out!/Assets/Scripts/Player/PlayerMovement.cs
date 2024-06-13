@@ -138,6 +138,17 @@ public class PlayerMovement : MonoBehaviour
         //OverlapArea creates a hitbox between 2 positions and checks if it is in collision with something
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayer);
 
+        if (isCrouching)
+        {
+            stats.capsuleCollider2D.size = new Vector2(stats.crouchWidth, stats.crouchHeight);
+            stats.capsuleCollider2D.offset = new Vector2(stats.crouchOffsetX, stats.crouchOffsetY);
+        }
+        else 
+        {
+            stats.capsuleCollider2D.size = new Vector2(stats.width, stats.height);
+            stats.capsuleCollider2D.offset = new Vector2(stats.offsetX, stats.offsetY);
+        }
+
         //Movement
         MoveHorizontal();
         Jump();

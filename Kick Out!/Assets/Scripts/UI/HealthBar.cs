@@ -11,15 +11,10 @@ public class HealthBar : MonoBehaviour
     public Color decreasingColor = Color.yellow; // Color when the health is decreasing
     private Coroutine healthCoroutine;
 
-    void Start()
-    {
-        
-    }
-
     public void SetMaxHealth(float health)
     {
-        slider.maxValue = health;
         slider.value = health;
+        slider.maxValue = health;
         fillImage.color = normalColor;
     }
 
