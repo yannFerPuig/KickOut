@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,7 +10,6 @@ public class MainMenu : MonoBehaviour
     RoundManager roundManager;
 
     //GameObjects
-    GameObject selected;
     GameObject[] menuButtons;
     GameObject[] modeButtons;
     GameObject roundWinner;
@@ -113,15 +110,11 @@ public class MainMenu : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "SoloCharacter")
-        {
-            selected = GameObject.FindGameObjectWithTag("FighterSelected");
-        }
-
         if (scene.name == "FightScene" || scene.name == "Tutorial") 
         {
             gameObject.AddComponent<RoundManager>();
             gameObject.AddComponent<RoundTimer>();
+            gameObject.AddComponent<Fight>();
 
             if (gameMode == "tutorial")
             {
@@ -155,6 +148,7 @@ public class MainMenu : MonoBehaviour
 
             Destroy(gameObject.GetComponent<RoundManager>());
             Destroy(gameObject.GetComponent<RoundTimer>());
+            Destroy(gameObject.GetComponent<Fight>());
         }
     }
 
