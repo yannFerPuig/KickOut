@@ -7,14 +7,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NetworkButtons : NetworkBehaviour
+public class NetworkButtons : MonoBehaviour
 {
-    public string sceneToLoad = "YourSceneName";
-
-    private void ChangeScene()
-    {
-        NetworkManager.SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
-    }
 
     void OnGUI()
     {
@@ -24,7 +18,6 @@ public class NetworkButtons : NetworkBehaviour
             if (GUILayout.Button("Host")) 
             {
                 NetworkManager.Singleton.StartHost();
-                ChangeScene();
             }
             if (GUILayout.Button("Client")) NetworkManager.Singleton.StartClient();
         }
