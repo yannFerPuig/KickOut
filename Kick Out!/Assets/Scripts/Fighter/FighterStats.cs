@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,6 +69,9 @@ public class FighterStats : MonoBehaviour
     public Vector3 spawnPoint;
     public Vector3 attackPointPos;
     public Vector3 groundCheckPointPos;
+
+    public List<AudioClip> punchSounds;
+    public List<AudioClip> specialSounds;
 
     void Start() 
     {

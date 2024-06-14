@@ -39,5 +39,7 @@ public class CarmenStats : FighterStats
         groundCheckPointPos = new Vector3(0, -0.36f, 0);
         attackPointPos = new Vector3(0, 0.26f, 0);
         fighterCenter = new Vector3(0, 0, 0);
+        punchSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/Carmen/punch-7-166700"), Resources.Load<AudioClip>("Sound/Carmen/punch-1-166694"), Resources.Load<AudioClip>("Assets/Sound/Carmen/punch-2-166695") };
+        specialSounds = new List<AudioClip> { )Resources.Load<AudioClip>("Sound/Carmen/Special-punch1"), Resources.Load<AudioClip>("Sound/Carmen/Special-punch2") };
     }
 }

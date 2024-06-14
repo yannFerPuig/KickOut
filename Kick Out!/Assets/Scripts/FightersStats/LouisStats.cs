@@ -40,5 +40,8 @@ public class LouisStats : FighterStats
         groundCheckPointPos = new Vector3(0.3f, -0.5f, 0);
         attackPointPos = new Vector3(0, 0.15f, 0);
         fighterCenter = new Vector3(-0.25f, 0, 0);
+
+        punchSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/Louis/hit-swing-sword-small-2-95566"), Resources.Load<AudioClip>("Sound/Louis/sword-sound-2-36274") };
+        specialSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/Louis/knife-slice-41231"), Resources.Load<AudioClip>("Sound/Louis/sword-slash-and-swing-185432") };
     }
 }

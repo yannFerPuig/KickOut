@@ -36,5 +36,10 @@ public class BobUnStats : FighterStats
         groundCheckPointPos = new Vector3(0, -0.3f, 0);
         attackPointPos = new Vector3(0, 0.26f, 0);
         fighterCenter = new Vector3(0, 0, 0);
+
+
+        punchSounds = new List<AudioClip> { Resources.Load<AudioClip>("Sound/BobUn/hard-punch-80578"), Resources.Load<AudioClip>("Sound/BobUn/086081_punch-5wav-36765"), Resources.Load<AudioClip>("Sound/BobUn/086084_punch-1wav-36766") };
+        specialSounds = new List<AudioClip> { Resources.Load<AudioClip>("fast-simple-chop-5-6270"), Resources.Load<AudioClip>("Sound/BobUn/fast-simple-chop-6"), Resources.Load<AudioClip>("Sound/BobUn/fast-simple-chop-7"), Resources.Load<AudioClip>("Sound/BobUn/fast-simple-chop-9") };
+
     }
 }
