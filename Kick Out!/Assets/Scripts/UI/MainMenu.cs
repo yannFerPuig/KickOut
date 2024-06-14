@@ -14,10 +14,14 @@ public class MainMenu : MonoBehaviour
     GameObject[] modeButtons;
     GameObject roundWinner;
 
+    public GameObject player1;
+
     public TextMeshProUGUI fightWinner;
 
     //DATA
     public string fighterSelected;
+    public string fighter1;
+    public string fighter2;
     public string gameMode;
 
 
@@ -68,7 +72,7 @@ public class MainMenu : MonoBehaviour
     public void Multiplayer()
     {
         gameMode = "duel";
-        SceneManager.LoadScene("NETWORK");
+        SceneManager.LoadScene("MultiCharacterSelection");
     }
 
     public void Tutorial()
@@ -130,13 +134,17 @@ public class MainMenu : MonoBehaviour
                 LoadFighter(ai, ChooseAIFighter());
                 LoadFighter(player, fighterSelected);
             }
-            else if (gameMode == "duel")
+        }
+
+        if (scene.name == "FightSceneMultiplayer")
+        {
+            if (gameMode == "duel")
             {
-                GameObject player1 = GameObject.FindGameObjectWithTag("Player1");
+                player1 = GameObject.FindGameObjectWithTag("Player1");
                 GameObject player2 = GameObject.FindGameObjectWithTag("Player2");
 
-                LoadFighter(player1, fighterSelected);
-                LoadFighter(player2, fighterSelected);
+                LoadFighter(player1, fighter1);
+                LoadFighter(player2, fighter2);
             }
         }
 

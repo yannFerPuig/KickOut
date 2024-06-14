@@ -70,17 +70,19 @@ public class Fighter : MonoBehaviour
         }
         else if (mainMenu.gameMode == "duel")
         {
-            if (gameObject.CompareTag("Player1"))
+            if (gameObject.tag == "Player1")
             {
-                enemy = GameObject.Find("Player2");
+                enemy = GameObject.FindGameObjectWithTag("Player2");
+                healthBar = GameObject.FindGameObjectWithTag("HP_P1").GetComponent<HealthBar>();
 
                 imageRound1 = GameObject.Find("P1R1");
                 imageRound2 = GameObject.Find("P1R2");
                 imageRound3 = GameObject.Find("P1R3");  
             }
-            else 
+            else if (gameObject.tag == "Player2")
             {
                 enemy = GameObject.FindGameObjectWithTag("Player1");
+                healthBar = GameObject.FindGameObjectWithTag("HP_P2").GetComponent<HealthBar>();
 
                 imageRound1 = GameObject.Find("P2R1");
                 imageRound2 = GameObject.Find("P2R2");

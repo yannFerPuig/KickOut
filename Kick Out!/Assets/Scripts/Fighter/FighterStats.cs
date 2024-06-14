@@ -81,11 +81,11 @@ public class FighterStats : MonoBehaviour
 
         currentHealth = maxHealth;
         
-        if (gameObject.tag == "Player")
+        if (gameObject.tag == "Player" || gameObject.tag  == "Player1")
         {
             blockSlider = GameObject.Find("BlockP1").GetComponent<Slider>();
         }
-        else if (gameObject.tag == "AI")
+        else if (gameObject.tag == "AI" || gameObject.tag  == "Player2")
         {
             blockSlider = GameObject.Find("BlockP2").GetComponent<Slider>();
         }

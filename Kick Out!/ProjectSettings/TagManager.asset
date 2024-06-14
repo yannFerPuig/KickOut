@@ -26,6 +26,12 @@ TagManager:
   - Center2
   - Image1
   - Image2
+  - FighterSelected1
+  - FighterSelected2
+  - LockButton
+  - StartButton
+  - TextPlayer1
+  - TextPlayer2
   layers:
   - Default
   - TransparentFX
