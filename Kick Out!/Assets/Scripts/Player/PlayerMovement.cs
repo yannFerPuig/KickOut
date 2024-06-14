@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -140,8 +139,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (isCrouching)
         {
+            Vector2 newOffset = new Vector2(stats.crouchOffsetX, stats.crouchOffsetY);
+
             stats.capsuleCollider2D.size = new Vector2(stats.crouchWidth, stats.crouchHeight);
-            stats.capsuleCollider2D.offset = new Vector2(stats.crouchOffsetX, stats.crouchOffsetY);
+            stats.capsuleCollider2D.offset = newOffset;//new Vector2(stats.crouchOffsetX, stats.crouchOffsetY * 5);
         }
         else 
         {
