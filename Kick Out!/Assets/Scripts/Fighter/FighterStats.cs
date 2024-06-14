@@ -73,6 +73,7 @@ public class FighterStats : MonoBehaviour
 
     public AudioClip punchSound;
     public AudioClip specialSound;
+    public AudioClip missShot;
 
     public List<AudioClip> punchSounds;
     public List<AudioClip> specialSounds;

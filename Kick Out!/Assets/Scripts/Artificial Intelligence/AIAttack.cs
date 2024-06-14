@@ -21,6 +21,7 @@ public class AIAttack : Attack
     public bool isAttacking;
     public float attackCooldown = 1f;
     private float attackCooldownTimer;
+    public SoundDesign soundManager;
 
     void Start()
     {
@@ -53,6 +54,7 @@ public class AIAttack : Attack
     void Attack() 
     {
         isAttacking = true;
+        bool miss = true;
 
         Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
         Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
@@ -70,13 +72,19 @@ public class AIAttack : Attack
             {
                 enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
             }
+            miss = false;
+            soundManager.PlaySFX(stats.punchSound);
         }
+        if(miss)
+        {
+            soundManager.PlaySFX(stats.missShot);
+        }    
     }
 
     void Special() 
     {
         isAttacking = true;
-
+        bool miss = true;
         Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
         Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
@@ -93,6 +101,12 @@ public class AIAttack : Attack
             {
                 enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
             }
+            miss = false;
+            soundManager.PlaySFX(stats.specialSound);
+        }
+        if(miss)
+        {
+            soundManager.PlaySFX(stats.missShot);
         }
     }
 

@@ -105,7 +105,7 @@ public class PlayerAttack : Attack
 
         if (miss)
         {
-            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
+            soundManager.PlaySFX(stats.missShot);
         }
 
     }
@@ -156,7 +156,7 @@ public class PlayerAttack : Attack
 
         if (miss)
         {
-            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
+            soundManager.PlaySFX(stats.missShot);
         }
     }
 

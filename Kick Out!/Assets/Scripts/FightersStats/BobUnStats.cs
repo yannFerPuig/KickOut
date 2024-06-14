@@ -10,7 +10,8 @@ public class BobUnStats : FighterStats
         Name = "Bob Un";
 
         punchSound = Resources.Load<AudioClip>("Sound/BobUn/bobUnPunch");
-        punchSound = Resources.Load<AudioClip>("Sound/BobUn/bobUnSpecial");
+        specialSound = Resources.Load<AudioClip>("Sound/BobUn/bobUnSpecial");
+        missShot = Resources.Load<AudioClip>("Sound/missedShot");
 
         maxHealth = 140;
 
