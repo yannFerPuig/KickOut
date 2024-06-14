@@ -10,6 +10,7 @@ public class CarmenStats : FighterStats
 
         punchSound = Resources.Load<AudioClip>("Sound/Carmen/carmenPunch");
         specialSound = Resources.Load<AudioClip>("Sound/Carmen/carmenSpecial");
+        missShot = Resources.Load<AudioClip>("Sound/missedShot");
 
         maxHealth = 100;
 

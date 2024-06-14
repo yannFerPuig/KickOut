@@ -781,6 +781,10 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 5699846915887741040}
+    - target: {fileID: 3074029422532952013, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 90776336}
     - target: {fileID: 6994664286676069799, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: m_Name
       value: AI
