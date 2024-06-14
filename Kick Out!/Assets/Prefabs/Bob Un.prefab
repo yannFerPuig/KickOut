@@ -150,10 +150,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.96, y: 0.63}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &6718969801361712943
@@ -231,22 +231,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  capsuleCollider2D: {fileID: 3567797433960355159}
+  fighter: {fileID: 0}
+  blockSlider: {fileID: 0}
   attackPoint: {fileID: 0}
   groundCheck: {fileID: 0}
+  center: {fileID: 0}
+  capsuleCollider2D: {fileID: 3567797433960355159}
+  Name: 
   maxHealth: 100
   currentHealth: 0
   width: 0.3
   height: 0.83
+  crouchWidth: 0
+  crouchHeight: 0
+  offsetX: 0
+  offsetY: 0
+  crouchOffsetX: 0
+  crouchOffsetY: 0
   damage: 0
   specialDamage: 0
-  defense: 0
   attackRange: 0
+  attackSpeed: 0
+  defense: 0
+  blockRadius: 5
+  blockCD: 3.5
+  reduceCD: 0
+  specialReduceCD: 0
   moveSpeed: 0
+  blockingMoveSpeed: 0
   jumpForce: 0
   gravityScale: 0
   fallingGravityScale: 0
   groundCheckRadius: 0
+  roundsWon: 0
+  fighterCenter: {x: 0, y: 0, z: 0}
   spawnPoint: {x: 0, y: 0, z: 0}
   attackPointPos: {x: 0, y: 0, z: 0}
   groundCheckPointPos: {x: 0, y: 0, z: 0}
@@ -262,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 39186450
+  GlobalObjectIdHash: 1123696213
   InScenePlacedSourceGlobalObjectIdHash: 1123696213
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -283,19 +301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17eb5a7acaa414f409819d0ba9c428ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  attack: {fileID: 6429391254206327418}
-  startRoundTimer: {fileID: 0}
-  rb: {fileID: 6718969801361712943}
-  animator: {fileID: 0}
-  sp: {fileID: 6106308297862931758}
-  groundCheck: {fileID: 2189394316462280561}
-  attackPoint: {fileID: 595928574521473631}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 65
-  isGrounded: 0
-  isFlipped: 0
+  fighter: {fileID: 0}
+  blockSlider: {fileID: 0}
+  isBlocking: 0
+  isCrouching: 0
   horizontalInput: 0
 --- !u!114 &6429391254206327418
 MonoBehaviour:
@@ -309,13 +318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fc349eb54f67f46a5aa7d9e8ad9f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  move: {fileID: 6941074942130178209}
-  startRoundTimer: {fileID: 0}
-  animator: {fileID: 0}
-  attackPoint: {fileID: 595928574521473631}
   punch: {fileID: 7400000, guid: ada3d4d3e3891c54394252ce2fd14ddf, type: 2}
   special: {fileID: 7400000, guid: 0575a9df6b31ead4ea206016646f257c, type: 2}
+  stats: {fileID: 5480600652406848737}
+  move: {fileID: 6941074942130178209}
+  fighter: {fileID: 0}
+  animator: {fileID: 0}
+  attackPoint: {fileID: 595928574521473631}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -335,9 +344,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 5480600652406848737}
+  enemyStats: {fileID: 0}
+  mainMenu: {fileID: 0}
   healthBar: {fileID: 0}
-  currentHealth: 0
-  defense: 0
+  spriteRenderer: {fileID: 0}
+  enemy: {fileID: 0}
+  imageRound1: {fileID: 0}
+  imageRound2: {fileID: 0}
+  imageRound3: {fileID: 0}
   points: 0
 --- !u!95 &7520370164212902581
 Animator:
