@@ -137,14 +137,14 @@ public class RoundManager : MonoBehaviour
         if (player1.points == 3)
         {
             fightWinner = player1.stats.Name.ToLower();
-            tagWinner = player1.tag;
+            tagWinner = player1.tag.ToLower();
             StartCoroutine(Momentum());
             mainMenu.EndFight();
         }
         else if (player2.points == 3)
         {
             fightWinner = player2.stats.Name.ToLower();
-            tagWinner = player2.tag;
+            tagWinner = player2.tag.ToLower();
             StartCoroutine(Momentum());
             mainMenu.EndFight();
         }
