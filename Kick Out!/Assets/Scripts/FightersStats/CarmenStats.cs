@@ -8,8 +8,8 @@ public class CarmenStats : FighterStats
     {
         Name = "Carmen";
 
-        punchSound = Resources.Load<AudioClip>("Sounds/Carmen/carmenPunch");
-        punchSound = Resources.Load<AudioClip>("Sounds/Carmen/carmenSpecial");
+        punchSound = Resources.Load<AudioClip>("Sound/Carmen/carmenPunch");
+        specialSound = Resources.Load<AudioClip>("Sound/Carmen/carmenSpecial");
 
         maxHealth = 100;
 

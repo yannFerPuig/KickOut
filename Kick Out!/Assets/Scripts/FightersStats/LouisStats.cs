@@ -12,8 +12,8 @@ public class LouisStats : FighterStats
     {
         Name = "Louis";
         
-        punchSound = Resources.Load<AudioClip>("Sounds/Louis/louisPunch");
-        punchSound = Resources.Load<AudioClip>("Sounds/Louis/louisSpecial");
+        punchSound = Resources.Load<AudioClip>("Sound/Louis/louisPunch");
+        specialSound = Resources.Load<AudioClip>("Sound/Louis/louisSpecial");
 
         maxHealth = 100;
 

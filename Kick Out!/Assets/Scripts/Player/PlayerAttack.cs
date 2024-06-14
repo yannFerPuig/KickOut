@@ -22,6 +22,7 @@ public class PlayerAttack : Attack
     public float attackRange;
     public float attackSpeed;
     public bool isAttacking;
+   
 
     void Start()
     {
@@ -97,15 +98,14 @@ public class PlayerAttack : Attack
 
             miss = false;
 
-            if (soundManager != null)
-            {
-                soundManager.PlaySFX(stats.punchSound);
-            }
+ 
+            soundManager.PlaySFX(stats.punchSound);
+            
         }
 
         if (miss)
         {
-         //   soundManager.PlaySFX(stats.missSound);
+            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
         }
 
     }
@@ -150,16 +150,13 @@ public class PlayerAttack : Attack
             }
 
             miss = false;
-
-            if (soundManager != null)
-            {
-                soundManager.PlaySFX(stats.specialSound);
-            }
+            soundManager.PlaySFX(stats.specialSound);
+            
         }
 
         if (miss)
         {
-            //soundManager.PlaySFX(stats.missSound);
+            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
         }
     }
 

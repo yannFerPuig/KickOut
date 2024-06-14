@@ -73,7 +73,6 @@ public class FighterStats : MonoBehaviour
 
     public AudioClip punchSound;
     public AudioClip specialSound;
-    public AudioClip missSound;
 
     public List<AudioClip> punchSounds;
     public List<AudioClip> specialSounds;
@@ -96,7 +95,6 @@ public class FighterStats : MonoBehaviour
             blockSlider = GameObject.Find("BlockP2").GetComponent<Slider>();
         }
 
-        missSound = Resources.Load<AudioClip>("Sound/missedShot");
 
     }
 

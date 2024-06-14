@@ -17,10 +17,7 @@ public class SoundDesign : MonoBehaviour
     public static float VolumeSFX = 1;
 
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+
 
     // Start is called before the first frame update
     void Start()
