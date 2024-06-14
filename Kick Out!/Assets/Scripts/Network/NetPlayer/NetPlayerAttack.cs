@@ -1,22 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class NetPlayerAttack : NetworkBehaviour
+public class NetPlayerAttack : NetAttack
 {
     //SCRIPTS
     public FighterStats stats;
     public PlayerMovement move;
-    public RoundTimer startRoundTimer;
+    public Fighter fighter;
 
     //COMPONENTS
     public Animator animator;
     public Transform attackPoint;
     
     //EXTRAS
-    public AnimationClip punch;
-    public AnimationClip special;
     public LayerMask enemyLayer;
 
     //DATA
@@ -26,13 +25,23 @@ public class NetPlayerAttack : NetworkBehaviour
 
     void Start()
     {
+        stats = gameObject.GetComponent<FighterStats>();
+        move = gameObject.GetComponent<PlayerMovement>();
+        fighter = gameObject.GetComponent<Fighter>();
+
+        animator = gameObject.GetComponent<Animator>();
+
+        attackPoint = gameObject.transform.Find("AttackPoint");
+
         attackRange = stats.attackRange;
+        
+        enemyLayer = LayerMask.GetMask(LayerMask.LayerToName(fighter.enemy.layer));
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!IsOwner) return;
+        if(!IsOwner) return;
+
         if(Input.GetKeyDown(KeyCode.X))    
         {
             animator.SetTrigger("Attack");
@@ -54,14 +63,36 @@ public class NetPlayerAttack : NetworkBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
-        Vector3 size = new Vector3(attackRange, 0.2f, 0);
-        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
+
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
+
+        Debug.Log(enemiesHitted.Length);
 
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage);
+            enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+
+            if (enemy.tag == "Player" || enemy.tag == "Player1" || enemy.tag == "Player2")
+            {
+                if (!enemy.GetComponent<PlayerMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                }
+                else 
+                {
+                    enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
+                }
+            }
+            else if (enemy.tag == "AI")
+            {
+                if (!enemy.GetComponent<AIMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                }
+            }
         }
     }
 
@@ -75,15 +106,32 @@ public class NetPlayerAttack : NetworkBehaviour
 
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
-        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
-        Vector3 size = new Vector3(attackRange, 0.2f, 0);
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
-        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(attack, size, 90, enemyLayer);
+        Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
 
         //Damage the enemy 
         foreach(var enemy in enemiesHitted)
         {
-            enemy.GetComponent<IA>().TakeDamage(stats.damage);
+            enemy.GetComponent<Fighter>().TakeDamage(stats.specialDamage);
+
+            //SFX
+
+            if (enemy.tag == "Player" || enemy.tag == "Player1" || enemy.tag == "Player2")
+            {
+                if (!enemy.GetComponent<PlayerMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                }
+            }
+            else if (enemy.tag == "AI")
+            {
+                if (!enemy.GetComponent<AIMovement>().isBlocking)
+                {
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                }
+            }
         }
     }
 
@@ -99,14 +147,17 @@ public class NetPlayerAttack : NetworkBehaviour
 
     void OnDrawGizmosSelected()
     {
-        //Pour dessiner le cercle d'attaque
-
-        if(attackPoint == null)
+        if (attackPoint == null)
             return;
 
-        Vector3 attack = new Vector3(attackPoint.position.x, attackPoint.position.y, attackPoint.position.z);
-        Vector3 size = new Vector3(attackRange, 0.2f, 0);
+        Gizmos.color = Color.red;
 
-        Gizmos.DrawCube(attack, size);
-    }    
+        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
+
+        //Gizmos.DrawCube(center, new Vector3(size.x, size.y, 1)); 
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(stats.center.transform.position, new Vector3(1f, 1f, 1f));
+    }
 }

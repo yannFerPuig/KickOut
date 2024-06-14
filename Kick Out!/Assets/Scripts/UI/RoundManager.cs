@@ -15,6 +15,7 @@ public class RoundManager : MonoBehaviour
     //DATA
     public string roundWinner;
     public string fightWinner;
+    public string tagWinner;
 
     public int roundNumber = 0;
 
@@ -38,10 +39,10 @@ public class RoundManager : MonoBehaviour
 
     void Update()
     {
-        // if (menu.gameMode != "tutorial" && roundTimer.remainingTime == 0 )
-        // {
-        //     VictoryByTime();
-        // }
+        if (mainMenu.gameMode != "tutorial" && roundTimer.remainingTime == 0 )
+        {
+            VictoryByTime();
+        }
 
         Victory();
         FightVictory();
@@ -136,12 +137,14 @@ public class RoundManager : MonoBehaviour
         if (player1.points == 3)
         {
             fightWinner = player1.stats.Name.ToLower();
+            tagWinner = player1.tag;
             StartCoroutine(Momentum());
             mainMenu.EndFight();
         }
         else if (player2.points == 3)
         {
             fightWinner = player2.stats.Name.ToLower();
+            tagWinner = player2.tag;
             StartCoroutine(Momentum());
             mainMenu.EndFight();
         }

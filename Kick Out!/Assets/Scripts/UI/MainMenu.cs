@@ -144,7 +144,7 @@ public class MainMenu : MonoBehaviour
         {
             fightWinner = GameObject.Find("WinnerName").GetComponent<TextMeshProUGUI>();
 
-            fightWinner.text = gameObject.GetComponent<RoundManager>().fightWinner;
+            fightWinner.text = gameObject.GetComponent<RoundManager>().fightWinner + "(" + gameObject.GetComponent<RoundManager>().tagWinner + ")";
 
             Destroy(gameObject.GetComponent<RoundManager>());
             Destroy(gameObject.GetComponent<RoundTimer>());

@@ -11,8 +11,15 @@ public class BobUnStats : FighterStats
 
         maxHealth = 140;
 
-        width = 0.3f;
+        width = 0.5f;
         height = 0.83f;
+        crouchWidth = 0.6f;  
+        crouchHeight = 0.63f;
+
+        offsetX = -0.05f;
+        offsetY = 0;
+        crouchOffsetX = -0.01f;
+        crouchOffsetY = -0.1f; 
 
         damage = 6;
         defense = 12;
