@@ -43,10 +43,10 @@ GameObject:
   - component: {fileID: 2461723937263275394}
   - component: {fileID: -3040314521708060330}
   - component: {fileID: 188713088531348649}
-  - component: {fileID: 5361444378096251611}
   - component: {fileID: 8547945392251015751}
   - component: {fileID: 4872244487528529931}
   - component: {fileID: 8951662243113267949}
+  - component: {fileID: 3179256278740112372}
   m_Layer: 3
   m_Name: NetFighter
   m_TagString: Player
@@ -186,28 +186,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5361444378096251611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4135560553313622720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9ed884def7bef40a457d83b4a848d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  enemyStats: {fileID: 0}
-  mainMenu: {fileID: 0}
-  healthBar: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  enemy: {fileID: 0}
-  imageRound1: {fileID: 0}
-  imageRound2: {fileID: 0}
-  imageRound3: {fileID: 0}
-  points: 0
 --- !u!114 &8547945392251015751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,13 +219,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e448f42c58010cf4c843014a512e223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  move: {fileID: 0}
-  startRoundTimer: {fileID: 0}
-  animator: {fileID: 0}
-  attackPoint: {fileID: 0}
   punch: {fileID: 0}
   special: {fileID: 0}
+  stats: {fileID: 0}
+  move: {fileID: 0}
+  fighter: {fileID: 0}
+  animator: {fileID: 0}
+  attackPoint: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -266,20 +244,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7313f99e46f449945adb3bc280473b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  attack: {fileID: 0}
-  startRoundTimer: {fileID: 0}
-  rb: {fileID: 0}
-  animator: {fileID: 0}
-  sp: {fileID: 0}
-  groundCheck: {fileID: 0}
-  attackPoint: {fileID: 0}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  isGrounded: 0
-  isFlipped: 0
+  fighter: {fileID: 0}
+  blockSlider: {fileID: 0}
+  isBlocking: 0
+  isCrouching: 0
   horizontalInput: 0
+--- !u!114 &3179256278740112372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135560553313622720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4445f2e9665fee6499a3a94491773ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  enemyStats: {fileID: 0}
+  mainMenu: {fileID: 0}
+  healthBar: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  enemy: {fileID: 0}
+  imageRound1: {fileID: 0}
+  imageRound2: {fileID: 0}
+  imageRound3: {fileID: 0}
+  points: 0
 --- !u!1 &5546684027434143253
 GameObject:
   m_ObjectHideFlags: 0
