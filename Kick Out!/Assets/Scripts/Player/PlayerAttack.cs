@@ -22,6 +22,9 @@ public class PlayerAttack : Attack
     public float attackSpeed;
     public bool isAttacking;
 
+    // PLACE THE SOUND DIRECTORY
+    public SoundDesign soundManager;
+
     void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
@@ -55,6 +58,8 @@ public class PlayerAttack : Attack
         isAttacking = true;
 
         move.horizontalInput = 0f;
+
+        bool miss = true;
 
         StartCoroutine(MyFunctionAfterDelay(punch.length));
 
@@ -90,7 +95,15 @@ public class PlayerAttack : Attack
                     enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
                 }
             }
+            miss = false;
+            soundManager.PlaySFX(stats.punchSounds[UnityEngine.Random.Range(0, stats.punchSounds.Count - 1)]);
         }
+
+        if (miss)
+        {
+            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
+        }
+
     }
 
     void Special() 
@@ -98,6 +111,8 @@ public class PlayerAttack : Attack
         isAttacking = true;
 
         move.horizontalInput = 0f;
+
+        bool miss = true;
 
         StartCoroutine(MyFunctionAfterDelay(special.length));
 
@@ -129,6 +144,13 @@ public class PlayerAttack : Attack
                     enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
                 }
             }
+            miss = false;
+            soundManager.PlaySFX(stats.specialSounds[UnityEngine.Random.Range(0, stats.specialSounds.Count - 1)]);
+        }
+
+        if (miss)
+        {
+            soundManager.PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
         }
     }
 
