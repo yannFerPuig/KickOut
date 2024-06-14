@@ -9,6 +9,9 @@ public class BobUnStats : FighterStats
     {
         Name = "Bob Un";
 
+        punchSound = Resources.Load<AudioClip>("Sounds/BobUn/bobUnPunch");
+        punchSound = Resources.Load<AudioClip>("Sounds/BobUn/bobUnSpecial");
+
         maxHealth = 140;
 
         width = 0.5f;

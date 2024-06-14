@@ -65,6 +65,17 @@ public class RoundTimer : MonoBehaviour
             player2.GetComponent<AIMovement>().enabled = false;
             player2.GetComponent<AIAttack>().enabled = false;
         }
+        else if (mainMenu.gameMode == "duel")
+        {
+            player1 = GameObject.FindGameObjectWithTag("Player1");
+            player2 = GameObject.FindGameObjectWithTag("Player2");
+
+            player1.GetComponent<PlayerMovement>().enabled = false;
+            player1.GetComponent<PlayerAttack>().enabled = false;
+
+            player2.GetComponent<PlayerMovement>().enabled = false;
+            player2.GetComponent<PlayerMovement>().enabled = false;
+        }
     }
 
     public void Update()
@@ -116,6 +127,14 @@ public class RoundTimer : MonoBehaviour
             player2.GetComponent<AIMovement>().enabled = true;
             player2.GetComponent<AIAttack>().enabled = true;
         }
+        else if (mainMenu.gameMode == "duel")
+        {
+            player1.GetComponent<PlayerMovement>().enabled = true;
+            player1.GetComponent<PlayerAttack>().enabled = true;
+
+            player2.GetComponent<PlayerMovement>().enabled = true;
+            player2.GetComponent<PlayerAttack>().enabled = true;
+        }
     }
 
     void Timer() 
@@ -155,6 +174,16 @@ public class RoundTimer : MonoBehaviour
         if (mainMenu.gameMode == "solo" && player2.GetComponent<AIAttack>().enabled)
         {    
             player2.GetComponent<AIAttack>().enabled = false;
+        }
+
+        if (mainMenu.gameMode == "duel" && player2.GetComponent<PlayerMovement>().enabled)
+        {
+            player2.GetComponent<PlayerMovement>().enabled = false;
+        }
+
+        if (mainMenu.gameMode == "duel" && player2.GetComponent<PlayerAttack>().enabled)
+        {    
+            player2.GetComponent<PlayerAttack>().enabled = false;
         }
 
         player1.GetComponent<FighterStats>().currentHealth = player1.GetComponent<FighterStats>().maxHealth;

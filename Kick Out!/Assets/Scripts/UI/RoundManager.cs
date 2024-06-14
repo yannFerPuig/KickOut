@@ -35,6 +35,11 @@ public class RoundManager : MonoBehaviour
             player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
             player2 = GameObject.FindGameObjectWithTag("Dummy").GetComponent<Fighter>();
         }
+        else if (mainMenu.gameMode == "duel")
+        {
+            player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Fighter>();
+            player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Fighter>();
+        }
     }
 
     void Update()

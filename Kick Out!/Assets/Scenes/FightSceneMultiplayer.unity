@@ -132,6 +132,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3359757454690191741, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359757454690191741, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_TagString
       value: AttackPoint2
       objectReference: {fileID: 0}
@@ -140,8 +144,16 @@ PrefabInstance:
       value: Fighter (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_TagString
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546684027434143253, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5546684027434143253, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_TagString
@@ -186,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 7397309447813615640, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752262629173553593, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7752262629173553593, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_TagString
@@ -362,13 +378,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3359757454690191741, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_Name
       value: Fighter
       objectReference: {fileID: 0}
     - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_TagString
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546684027434143253, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7397309447813615640, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_LocalPosition.x
@@ -409,6 +437,10 @@ PrefabInstance:
     - target: {fileID: 7397309447813615640, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752262629173553593, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

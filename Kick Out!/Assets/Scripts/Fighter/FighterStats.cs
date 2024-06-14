@@ -70,8 +70,14 @@ public class FighterStats : MonoBehaviour
     public Vector3 attackPointPos;
     public Vector3 groundCheckPointPos;
 
+
+    public AudioClip punchSound;
+    public AudioClip specialSound;
+    public AudioClip missSound;
+
     public List<AudioClip> punchSounds;
     public List<AudioClip> specialSounds;
+
 
     void Start() 
     {
@@ -89,6 +95,8 @@ public class FighterStats : MonoBehaviour
         {
             blockSlider = GameObject.Find("BlockP2").GetComponent<Slider>();
         }
+
+        missSound = Resources.Load<AudioClip>("Sound/missedShot");
 
     }
 

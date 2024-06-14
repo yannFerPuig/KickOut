@@ -9,6 +9,7 @@ public class DummyStats : FighterStats
     {
         Name = "Dummy";
 
+
         maxHealth = 100;
 
         width = 0.3f;

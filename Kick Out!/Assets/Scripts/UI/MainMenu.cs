@@ -114,7 +114,7 @@ public class MainMenu : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "FightScene" || scene.name == "Tutorial") 
+        if (scene.name == "FightScene" || scene.name == "Tutorial" || scene.name == "FightSceneMultiplayer") 
         {
             gameObject.AddComponent<RoundManager>();
             gameObject.AddComponent<RoundTimer>();

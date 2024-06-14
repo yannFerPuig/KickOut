@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +7,9 @@ public class CarmenStats : FighterStats
     public void Initialize()
     {
         Name = "Carmen";
+
+        punchSound = Resources.Load<AudioClip>("Sounds/Carmen/carmenPunch");
+        punchSound = Resources.Load<AudioClip>("Sounds/Carmen/carmenSpecial");
 
         maxHealth = 100;
 
