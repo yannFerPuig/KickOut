@@ -113,6 +113,12 @@ public class Fighter : MonoBehaviour
             if (stats is LouisStats l)
             {
                 l.capsuleCollider2D.offset = new Vector2(l.flippedOffsetX, l.offsetY);
+
+                if (l.GetComponent<PlayerMovement>().isCrouching)
+                {
+                    l.capsuleCollider2D.offset = new Vector2(l.flippedCrouchOffsetX, l.crouchOffsetY);
+                }
+
                 l.center.transform.position = new Vector3(gameObject.transform.position.x - l.fighterCenter.x * 5, gameObject.transform.position.y + l.fighterCenter.y * 5, gameObject.transform.position.z + l.fighterCenter.z);
             }
 
@@ -123,6 +129,12 @@ public class Fighter : MonoBehaviour
             if (stats is LouisStats l)
             {
                 l.capsuleCollider2D.offset = new Vector2(l.offsetX, l.offsetY);
+
+                if (l.GetComponent<PlayerMovement>().isCrouching)
+                {
+                    l.capsuleCollider2D.offset = new Vector2(l.crouchOffsetX, l.crouchOffsetY);
+                }
+
                 l.center.transform.position = new Vector3(gameObject.transform.position.x + l.fighterCenter.x * 5, gameObject.transform.position.y + l.fighterCenter.y * 5, gameObject.transform.position.z + l.fighterCenter.z);
             }
 

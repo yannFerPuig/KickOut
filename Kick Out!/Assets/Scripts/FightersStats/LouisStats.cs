@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class LouisStats : FighterStats
 {
     public float flippedOffsetX = 0.2f;
+    public float flippedCrouchOffsetX = 0.1f;
 
     public void Initialize()
     {
@@ -25,7 +26,7 @@ public class LouisStats : FighterStats
         offsetX = -0.2f;
         offsetY = 0;
         crouchOffsetX = -0.1f;
-        crouchOffsetY = -0.25f; 
+        crouchOffsetY = -0.24f; 
 
         damage = 10;
         defense = 10;
