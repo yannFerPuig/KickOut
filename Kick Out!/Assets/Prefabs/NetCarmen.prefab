@@ -235,33 +235,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
+  fighter: {fileID: 7804050453769998765}
+  blockSlider: {fileID: 0}
+  attackPoint: {fileID: 6136405702857424283}
+  groundCheck: {fileID: 5786427244141118802}
+  center: {fileID: 0}
   capsuleCollider2D: {fileID: 3567797433960355159}
-  maxHealth:
-    baseValue: 0
-  currentHealth:
-    baseValue: 0
-  width:
-    baseValue: 0
-  height:
-    baseValue: 0
-  damage:
-    baseValue: 10
-  defense:
-    baseValue: 0
-  attackSpeed:
-    baseValue: 0.2
-  attackRange:
-    baseValue: 1.15
-  moveSpeed:
-    baseValue: 5
-  jumpForce:
-    baseValue: 30
-  gravityScale:
-    baseValue: 10
-  fallingGravityScale:
-    baseValue: 40
-  groundCheckRadius:
-    baseValue: 0.5
+  Name: 
+  maxHealth: 0
+  currentHealth: 0
+  width: 0
+  height: 0
+  crouchWidth: 0
+  crouchHeight: 0
+  offsetX: 0
+  offsetY: 0
+  crouchOffsetX: 0
+  crouchOffsetY: 0
+  damage: 0
+  specialDamage: 0
+  attackRange: 0
+  attackSpeed: 0
+  defense: 0
+  blockRadius: 5
+  blockCD: 3.5
+  reduceCD: 0
+  specialReduceCD: 0
+  moveSpeed: 0
+  blockingMoveSpeed: 0
+  jumpForce: 0
+  gravityScale: 0
+  fallingGravityScale: 0
+  groundCheckRadius: 0
+  roundsWon: 0
+  fighterCenter: {x: 0, y: 0, z: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
+  attackPointPos: {x: 0, y: 0, z: 0}
+  groundCheckPointPos: {x: 0, y: 0, z: 0}
+  punchSounds: []
+  specialSounds: []
 --- !u!114 &2704838066466638415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,19 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17eb5a7acaa414f409819d0ba9c428ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  attack: {fileID: 6429391254206327418}
-  startRoundTimer: {fileID: 0}
-  rb: {fileID: 6718969801361712943}
-  animator: {fileID: 8746404656458492668}
-  sp: {fileID: 6106308297862931758}
-  groundCheck: {fileID: 2189394316462280561}
-  attackPoint: {fileID: 595928574521473631}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 65
-  isGrounded: 0
-  isFlipped: 0
+  fighter: {fileID: 0}
+  blockSlider: {fileID: 0}
+  isBlocking: 0
+  isCrouching: 0
   horizontalInput: 0
 --- !u!114 &8425502370215708225
 MonoBehaviour:
@@ -321,19 +324,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7313f99e46f449945adb3bc280473b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  attack: {fileID: 6429391254206327418}
-  startRoundTimer: {fileID: 0}
-  rb: {fileID: 6718969801361712943}
-  animator: {fileID: 8746404656458492668}
-  sp: {fileID: 6106308297862931758}
-  groundCheck: {fileID: 2189394316462280561}
-  attackPoint: {fileID: 595928574521473631}
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  isGrounded: 0
-  isFlipped: 0
+  fighter: {fileID: 7804050453769998765}
+  blockSlider: {fileID: 0}
+  isBlocking: 0
+  isCrouching: 0
   horizontalInput: 0
 --- !u!114 &5429373629178176599
 MonoBehaviour:
@@ -347,13 +341,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e448f42c58010cf4c843014a512e223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  move: {fileID: 6941074942130178209}
-  startRoundTimer: {fileID: 0}
-  animator: {fileID: 8746404656458492668}
-  attackPoint: {fileID: 595928574521473631}
   punch: {fileID: 7400000, guid: ada3d4d3e3891c54394252ce2fd14ddf, type: 2}
   special: {fileID: 7400000, guid: 0575a9df6b31ead4ea206016646f257c, type: 2}
+  stats: {fileID: 5480600652406848737}
+  move: {fileID: 6941074942130178209}
+  fighter: {fileID: 0}
+  animator: {fileID: 8746404656458492668}
+  attackPoint: {fileID: 595928574521473631}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -372,19 +366,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fc349eb54f67f46a5aa7d9e8ad9f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 5480600652406848737}
-  move: {fileID: 6941074942130178209}
-  startRoundTimer: {fileID: 0}
-  animator: {fileID: 8746404656458492668}
-  attackPoint: {fileID: 595928574521473631}
   punch: {fileID: 7400000, guid: ada3d4d3e3891c54394252ce2fd14ddf, type: 2}
   special: {fileID: 7400000, guid: 0575a9df6b31ead4ea206016646f257c, type: 2}
+  stats: {fileID: 5480600652406848737}
+  move: {fileID: 6941074942130178209}
+  fighter: {fileID: 0}
+  animator: {fileID: 8746404656458492668}
+  attackPoint: {fileID: 595928574521473631}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   attackRange: 0
   attackSpeed: 0
   isAttacking: 0
+  soundManager: {fileID: 0}
 --- !u!95 &8746404656458492668
 Animator:
   serializedVersion: 5
@@ -419,9 +414,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 5480600652406848737}
+  enemyStats: {fileID: 0}
+  mainMenu: {fileID: 0}
   healthBar: {fileID: 0}
-  currentHealth: 0
-  defense: 0
+  spriteRenderer: {fileID: 0}
+  enemy: {fileID: 0}
+  imageRound1: {fileID: 0}
+  imageRound2: {fileID: 0}
+  imageRound3: {fileID: 0}
   points: 0
 --- !u!114 &5171223354891146104
 MonoBehaviour:
