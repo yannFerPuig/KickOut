@@ -13,7 +13,7 @@ public class BobUnStats : FighterStats
         specialSound = Resources.Load<AudioClip>("Sound/BobUn/bobUnSpecial");
         missShot = Resources.Load<AudioClip>("Sound/missedShot");
 
-        maxHealth = 200;
+        maxHealth = 230;
 
         width = 0.5f;
         height = 0.83f;
@@ -26,8 +26,12 @@ public class BobUnStats : FighterStats
         crouchOffsetY = -0.1f; 
 
         damage = 6;
+        specialDamage = 8;
         defense = 12;
-        attackRange = 1.18f;
+        attackRange = 3f;
+        attackRangeSpe = 4f;
+        attackCooldown = 1f;
+        attackCooldownSpe = 3f;
 
         moveSpeed = 3;
 
@@ -38,7 +42,7 @@ public class BobUnStats : FighterStats
 
         spawnPoint = new Vector3(-8.5f, -2f, 0f);
         groundCheckPointPos = new Vector3(0, -0.3f, 0);
-        attackPointPos = new Vector3(0, 0.26f, 0);
+        attackPointPos = new Vector3(0, 0.05f, 0);
         fighterCenter = new Vector3(0, 0, 0);
 
 

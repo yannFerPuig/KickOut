@@ -28,6 +28,9 @@ public class CarmenStats : FighterStats
         specialDamage = 15;
         defense = 10;
         attackRange = 2.2f;
+        attackRangeSpe = 2.2f;
+        attackCooldown = 0.6f;
+        attackCooldownSpe = 2f;
         reduceCD = 0.08f;
 
         moveSpeed = 5;
