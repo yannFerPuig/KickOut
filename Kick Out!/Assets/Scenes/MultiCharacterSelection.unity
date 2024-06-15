@@ -2034,7 +2034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 594, y: 190}
+  m_AnchoredPosition: {x: 585, y: 330}
   m_SizeDelta: {x: 111.8327, y: 82.6737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361765071
@@ -2900,8 +2900,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 1053369470}
   SFX: {fileID: 0}
-  sliderMusic: {fileID: 0}
-  sliderSFX: {fileID: 0}
   musicFight: {fileID: 8300000, guid: b476515a6354975439f9bdbeffcef447, type: 3}
   musicEndScene: {fileID: 0}
 --- !u!4 &1685081946

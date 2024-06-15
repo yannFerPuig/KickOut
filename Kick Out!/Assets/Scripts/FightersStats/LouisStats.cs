@@ -30,7 +30,7 @@ public class LouisStats : FighterStats
         crouchOffsetY = -0.24f; 
 
         damage = 10;
-        specialDamage = 60f;
+        specialDamage = 50f;
         defense = 10;
         attackRange = 5f;
         attackRangeSpe = 5f;
