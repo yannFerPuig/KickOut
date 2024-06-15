@@ -42,10 +42,7 @@ public class FighterStats : MonoBehaviour
     public float damage;
     public float specialDamage;
     public float attackRange;
-    public float attackRangeSpe;
     public float attackSpeed;
-    public float attackCooldown;
-    public float attackCooldownSpe;
 
     //Defense
     public float defense;

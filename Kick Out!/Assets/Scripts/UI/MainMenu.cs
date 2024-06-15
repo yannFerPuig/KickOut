@@ -251,7 +251,7 @@ public class MainMenu : MonoBehaviour
 
     public string ChooseAIFighter()
     {
-        int fighter = Random.Range(0, 3);
+        int fighter = Random.Range(0, 0);
 
         if (fighter == 0)
         {
@@ -261,10 +261,8 @@ public class MainMenu : MonoBehaviour
         {
             return "Louis";
         }
-        else 
-        {
-            return "Bob Un";
-        }
+
+        return "Bob Un";
     }
 
     public void WinRound(Fighter fighter)

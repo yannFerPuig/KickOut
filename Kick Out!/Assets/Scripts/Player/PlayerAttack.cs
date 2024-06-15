@@ -21,9 +21,6 @@ public class PlayerAttack : Attack
     //DATA
     public float attackRange;
     public float attackSpeed;
-    public float aCD;
-    public float aCDSpe;
-
     public bool isAttacking;
    
 
@@ -41,9 +38,6 @@ public class PlayerAttack : Attack
         attackRange = stats.attackRange;
         
         enemyLayer = LayerMask.GetMask(LayerMask.LayerToName(fighter.enemy.layer));
-
-        aCD = stats.attackCooldown;
-        aCDSpe = stats.attackCooldownSpe;
     }
 
     public void Attack() 
@@ -59,7 +53,7 @@ public class PlayerAttack : Attack
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
         Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
-        Vector3 size = new Vector3(stats.attackRange * 2, 0.25f, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
         Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
 
@@ -114,7 +108,7 @@ public class PlayerAttack : Attack
         //Detect the enemies in range
         //OverlapCircleAll creates a 'circle' around a point (1st parameter) with a certain radius (2nd parameter) and you can apply layers (3rd parameter)
         Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
-        Vector3 size = new Vector3(stats.attackRangeSpe * 2, 0.25f, 0);
+        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
 
         Collider2D[] enemiesHitted = Physics2D.OverlapBoxAll(center, size, 0, enemyLayer);
 
@@ -158,15 +152,5 @@ public class PlayerAttack : Attack
         yield return new WaitForSeconds(delay);
 
         isAttacking = false;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-
-        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
-        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
-
-        Gizmos.DrawCube(center, size);
     }
 }
