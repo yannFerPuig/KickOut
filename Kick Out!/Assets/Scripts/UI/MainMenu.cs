@@ -24,10 +24,28 @@ public class MainMenu : MonoBehaviour
     public string fighter2;
     public string gameMode;
 
+    
+    private static MainMenu instance;
+
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // Check if an instance of SoundDesign already exists
+        if (instance == null)
+        {
+            // If no, this is the instance
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            // If yes and it's not this instance, destroy this instance to prevent duplicates
+            Destroy(gameObject);
+            return;
+        }
+
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnEnable()
@@ -58,62 +76,24 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(scene);
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
-
-    public void Computer() 
-    {
-        gameMode = "solo";
-        SceneManager.LoadScene("SoloCharacterSelection");
-    }
-
-    public void Multiplayer()
-    {
-        gameMode = "duel";
-        SceneManager.LoadScene("MultiCharacterSelection");
-    }
-
-    public void Tutorial()
-    {
-        gameMode = "tutorial";
-        SceneManager.LoadScene("SoloCharacterSelection");
-    }
-
     public void EndFight()
     {
         SceneManager.LoadScene("Winner");
     }
 
-    public void SelectMode() 
-    {
-        foreach (GameObject modeButton in modeButtons)
-        {
-            modeButton.SetActive(true);
-        }
-
-        foreach (GameObject menuButton in menuButtons)
-        {
-            menuButton.SetActive(false);
-        }
-    }
-
-    public void CancelModeSelection() 
-    {
-        foreach (GameObject menuButton in menuButtons)
-        {
-            menuButton.SetActive(true);
-        }
-
-        foreach (GameObject modeButton in modeButtons)
-        {
-            modeButton.SetActive(false);
-        }
-    }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "Menu")
+        {
+            menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
+            modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
+
+            foreach (GameObject modeButton in modeButtons)
+            {
+                modeButton.SetActive(false);
+            }
+        }
+
         if (scene.name == "FightScene" || scene.name == "Tutorial" || scene.name == "FightSceneMultiplayer") 
         {
             gameObject.AddComponent<RoundManager>();

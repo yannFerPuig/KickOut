@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SoundDesign : MonoBehaviour
 {
@@ -17,9 +18,33 @@ public class SoundDesign : MonoBehaviour
     public static float VolumeSFX = 1;
 
 
+    private static SoundDesign instance;
+
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // Check if an instance of SoundDesign already exists
+        if (instance == null)
+        {
+            // If no, this is the instance
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            // If yes and it's not this instance, destroy this instance to prevent duplicates
+            Destroy(gameObject);
+            return;
+        }
+
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        // Unsubscribe from the event when the object is destroyed
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 
@@ -32,7 +57,6 @@ public class SoundDesign : MonoBehaviour
         music.loop = true;
         music.volume = VolumeMusic;
     }
-
 
     public void ChangeVolume(string param)
     {
@@ -54,9 +78,6 @@ public class SoundDesign : MonoBehaviour
         SFX.PlayOneShot(clip);
     }
 
-
-
-
     public void PutEndMusic()
     {
         music.clip = musicEndScene;
@@ -65,9 +86,12 @@ public class SoundDesign : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        // // Check if the loaded scene is the "Menu" scene
+        // if (scene.name == "Menu")
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 }

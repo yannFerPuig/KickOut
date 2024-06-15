@@ -251,8 +251,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Tutorial
         m_Mode: 1
         m_Arguments:
@@ -673,8 +673,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -895,8 +895,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: CancelModeSelection
         m_Mode: 1
         m_Arguments:
@@ -1183,8 +1183,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -1578,8 +1578,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Computer
         m_Mode: 1
         m_Arguments:
@@ -1731,6 +1731,7 @@ GameObject:
   - component: {fileID: 1039446364}
   - component: {fileID: 1039446367}
   - component: {fileID: 1039446368}
+  - component: {fileID: 1039446369}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1856,6 +1857,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94d6f610e2bed64397986e5032d82e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1039446369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039446362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0553d4b6487aa424daf47a718da32bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 0}
+  menuButtons: []
+  modeButtons:
+  - {fileID: 207163671}
+  - {fileID: 992536453}
+  - {fileID: 1046550903}
 --- !u!1 &1046550903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,8 +1959,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Multiplayer
         m_Mode: 1
         m_Arguments:
@@ -2094,8 +2113,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: SelectMode
         m_Mode: 1
         m_Arguments:
@@ -2539,8 +2558,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1576603759}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1039446369}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:

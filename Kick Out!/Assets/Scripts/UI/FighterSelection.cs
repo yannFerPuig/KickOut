@@ -28,13 +28,16 @@ public class FighterSelection : MonoBehaviour
 
     public void StartFight() 
     {
-        if (mainMenu.gameMode == "solo") 
+        if (mainMenu.fighterSelected != "")
         {
-            SceneManager.LoadScene("FightScene");
-        } 
-        else if (mainMenu.gameMode == "tutorial") 
-        {
-            SceneManager.LoadScene("Tutorial");
+            if (mainMenu.gameMode == "solo") 
+            {
+                SceneManager.LoadScene("FightScene");
+            } 
+            else if (mainMenu.gameMode == "tutorial") 
+            {
+                SceneManager.LoadScene("Tutorial");
+            }
         }
     }
 }

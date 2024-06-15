@@ -105,6 +105,9 @@ public class MultiplayerSelection : MonoBehaviour
 
     public void StartFight() 
     {
-        SceneManager.LoadScene("FightSceneMultiplayer");
+        if (menu.fighterSelected != "")
+        {    
+            SceneManager.LoadScene("FightSceneMultiplayer");
+        }
     }
 }
