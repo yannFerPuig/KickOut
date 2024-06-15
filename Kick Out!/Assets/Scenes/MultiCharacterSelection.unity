@@ -2929,7 +2929,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1780033512}
   - component: {fileID: 1780033515}
-  - component: {fileID: 1780033516}
   - component: {fileID: 1780033514}
   m_Layer: 5
   m_Name: Selected1
@@ -2996,24 +2995,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780033511}
   m_CullTransparentMesh: 1
---- !u!114 &1780033516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780033511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 328a904fd4633fc41a3e5654322896f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  fightWinner: {fileID: 0}
-  fighterSelected: 
-  fighter1: 
-  fighter2: 
-  gameMode: 
 --- !u!1 &1834722847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,7 +3005,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1834722848}
   - component: {fileID: 1834722851}
-  - component: {fileID: 1834722850}
   - component: {fileID: 1834722849}
   m_Layer: 5
   m_Name: Selected2
@@ -3083,24 +3063,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1834722850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834722847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 328a904fd4633fc41a3e5654322896f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  fightWinner: {fileID: 0}
-  fighterSelected: 
-  fighter1: 
-  fighter2: 
-  gameMode: 
 --- !u!222 &1834722851
 CanvasRenderer:
   m_ObjectHideFlags: 0
