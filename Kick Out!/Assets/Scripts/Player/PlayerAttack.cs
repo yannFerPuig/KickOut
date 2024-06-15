@@ -84,9 +84,7 @@ public class PlayerAttack : Attack
             }
 
             miss = false;
-
- 
-            soundManager.PlaySFX(stats.punchSound);
+            //soundManager.PlaySFX(stats.punchSound);
             
         }
 
@@ -137,8 +135,7 @@ public class PlayerAttack : Attack
             }
 
             miss = false;
-            soundManager.PlaySFX(stats.specialSound);
-            
+            //soundManager.PlaySFX(stats.specialSound);
         }
 
         if (miss)

@@ -72,12 +72,14 @@ public class AIAttack : Attack
             {
                 enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
             }
+
             miss = false;
-            soundManager.PlaySFX(stats.punchSound);
+            
+            //soundManager.PlaySFX(stats.punchSound);
         }
         if(miss)
         {
-            soundManager.PlaySFX(stats.missShot);
+            //soundManager.PlaySFX(stats.missShot);
         }    
     }
 
@@ -101,12 +103,14 @@ public class AIAttack : Attack
             {
                 enemy.GetComponent<FighterStats>().blockCD -= stats.reduceCD;
             }
+        
             miss = false;
-            soundManager.PlaySFX(stats.specialSound);
+            //soundManager.PlaySFX(stats.specialSound);
         }
+
         if(miss)
         {
-            soundManager.PlaySFX(stats.missShot);
+            //soundManager.PlaySFX(stats.missShot);
         }
     }
 
