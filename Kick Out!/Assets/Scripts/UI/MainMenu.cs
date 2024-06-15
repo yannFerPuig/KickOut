@@ -24,10 +24,27 @@ public class MainMenu : MonoBehaviour
     public string fighter2;
     public string gameMode;
 
+    
+    private static MainMenu instance;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // Check if an instance of SoundDesign already exists
+        if (instance == null)
+        {
+            // If no, this is the instance
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            // If yes and it's not this instance, destroy this instance to prevent duplicates
+            Destroy(gameObject);
+            return;
+        }
+
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnEnable()

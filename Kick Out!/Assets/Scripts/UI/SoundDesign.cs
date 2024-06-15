@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SoundDesign : MonoBehaviour
 {
@@ -16,10 +15,26 @@ public class SoundDesign : MonoBehaviour
     public static float VolumeMusic = 1;
     public static float VolumeSFX = 1;
 
+    private static SoundDesign instance;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // Check if an instance of SoundDesign already exists
+        if (instance == null)
+        {
+            // If no, this is the instance
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            // If yes and it's not this instance, destroy this instance to prevent duplicates
+            Destroy(gameObject);
+            return;
+        }
+
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
 
@@ -70,4 +85,10 @@ public class SoundDesign : MonoBehaviour
     {
 
     }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Check if the loaded scene is the "Menu" scene
+    }
+
 }
