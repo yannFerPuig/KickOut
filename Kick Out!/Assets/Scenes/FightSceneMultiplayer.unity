@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 5361444378096251611, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 283159645}
     - target: {fileID: 5546684027434143253, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -207,11 +211,85 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Center2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5151273090061042870, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+    - {fileID: 597349391132822632, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 106816212}
+    - targetCorrespondingSourceObject: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 106816211}
   m_SourcePrefab: {fileID: 100100000, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+--- !u!1 &106816210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+  m_PrefabInstance: {fileID: 106816209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &106816211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106816210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695228a8e13f689498a1f46c344dc880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  attack: {fileID: 0}
+  fighter: {fileID: 0}
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  groundCheck: {fileID: 0}
+  blockSlider: {fileID: 0}
+  collisionLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isJumping: 0
+  isGrounded: 0
+  isBlockCooldown: 0
+  isBlocking: 0
+  isCrouching: 0
+  moveSpeed: 0
+  jumpForce: 0
+  blockCD: 0
+  blockCooldownTimer: 0
+  gravityScale: 0
+  fallingGravityScale: 0
+  groundCheckRadius: 0.5
+  horizontalInput: 0
+--- !u!114 &106816212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106816210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a515018972e89c44c908f76c51551623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punch: {fileID: 0}
+  special: {fileID: 0}
+  stats: {fileID: 0}
+  move: {fileID: 0}
+  fighter: {fileID: 0}
+  soundManager: {fileID: 0}
+  animator: {fileID: 0}
+  attackPoint: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 0
+  attackSpeed: 0
+  isAttacking: 0
 --- !u!1 &143615664
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +472,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 5361444378096251611, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 106816210}
     - target: {fileID: 5546684027434143253, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -447,6 +529,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+--- !u!1 &283159645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4135560553313622720, guid: 05f49e0c13381154a82aa978fe4ef272, type: 3}
+  m_PrefabInstance: {fileID: 283159644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &497158483 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 192102908996272472, guid: 284852eb4f121a640a160ea5e9a614eb, type: 3}

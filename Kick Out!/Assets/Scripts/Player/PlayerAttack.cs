@@ -24,7 +24,7 @@ public class PlayerAttack : Attack
     public bool isAttacking;
    
 
-    void Start()
+    public void Start()
     {
         stats = gameObject.GetComponent<FighterStats>();
         move = gameObject.GetComponent<PlayerMovement>();
@@ -40,20 +40,7 @@ public class PlayerAttack : Attack
         enemyLayer = LayerMask.GetMask(LayerMask.LayerToName(fighter.enemy.layer));
     }
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.X))    
-        {
-            animator.SetTrigger("Attack");
-        }
-
-        if(Input.GetKeyDown(KeyCode.Z))    
-        {
-            animator.SetTrigger("Special");
-        }
-    }
-
-    void Attack() 
+    public void Attack() 
     {
         isAttacking = true;
 
@@ -105,12 +92,12 @@ public class PlayerAttack : Attack
 
         if (miss)
         {
-            soundManager.PlaySFX(stats.missShot);
+            //soundManager.PlaySFX(stats.missShot);
         }
 
     }
 
-    void Special() 
+    public void Special() 
     {
         isAttacking = true;
 
@@ -145,7 +132,7 @@ public class PlayerAttack : Attack
             {
                 if (!enemy.GetComponent<AIMovement>().isBlocking)
                 {
-                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
+                    enemy.GetComponent<Fighter>().TakeDamage(stats.damage); 
                 }
             }
 
@@ -156,11 +143,11 @@ public class PlayerAttack : Attack
 
         if (miss)
         {
-            soundManager.PlaySFX(stats.missShot);
+            //soundManager.PlaySFX(stats.missShot);
         }
     }
 
-    IEnumerator MyFunctionAfterDelay(float delay)
+    public IEnumerator MyFunctionAfterDelay(float delay)
     {
         //Cette fonction permet de déclencher une action après un certain temps (en lien avec StartCoroutine())
         //Gére le délai entre les attaques de bases pour éviter de lancer plusieurs attaques à la fois
@@ -168,21 +155,5 @@ public class PlayerAttack : Attack
         yield return new WaitForSeconds(delay);
 
         isAttacking = false;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-
-        Gizmos.color = Color.red;
-
-        Vector3 center = new Vector3(attackPoint.position.x, attackPoint.position.y, 0);
-        Vector3 size = new Vector3(attackRange * 2, 0.25f, 0);
-
-        //Gizmos.DrawCube(center, new Vector3(size.x, size.y, 1)); 
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawCube(stats.center.transform.position, new Vector3(1f, 1f, 1f));
     }
 }
