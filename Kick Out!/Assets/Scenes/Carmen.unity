@@ -487,7 +487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -130}
+  m_AnchoredPosition: {x: -15, y: -126}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926543713
@@ -510,15 +510,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Carmen, n\xE9e \xE0 Triana, le quartier gitan de S\xE9ville, a grandi
-    entre la n\xE9cessit\xE9 de se d\xE9fendre et la passion de danser la sevillana.
-    Dans ce labyrinthe de ruelles, elle a d\xE9velopp\xE9 une gr\xE2ce f\xE9roce,
-    fa\xE7onnant son identit\xE9 \xE0 travers la danse et la musique de son quartier.
-    La dualit\xE9 de sa vie s'exprime \xE9galement dans sa pratique de la siesta,
-    un moment de repos quotidien qui recharge son \xE9nergie pour illuminer les soir\xE9es
-    de Triana de sa danse envo\xFBtante, m\xEAlant tradition et innovation. Carmen
-    incarne la force et la gr\xE2ce, la fusion de la tradition et de la modernit\xE9
-    dans le vibrant quartier gitan de S\xE9ville."
+  m_text: Carmen, born in Triana, the gypsy quarter of Seville, grew up between the
+    necessity of defending herself and the passion for dancing the sevillana. In
+    this maze of narrow streets, she developed a fierce grace, shaping her identity
+    through the dance and music of her neighborhood. The duality of her life is also
+    expressed in her practice of the siesta, a daily moment of rest that recharges
+    her energy to illuminate Triana's evenings with her captivating dance, blending
+    tradition and innovation. Carmen embodies strength and grace, the fusion of tradition
+    and modernity in Seville's vibrant gypsy quarter.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eaed3cc92a74c4a4ba049a637c77fc67, type: 2}
   m_sharedMaterial: {fileID: -5263517188865804183, guid: eaed3cc92a74c4a4ba049a637c77fc67, type: 2}
@@ -581,7 +580,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -52.480255, w: -53.93809}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
