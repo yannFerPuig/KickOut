@@ -1,6 +1,4 @@
-using UnityEngine.UI;
 using UnityEngine;
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 
 public class Fighter : MonoBehaviour
 {
