@@ -28,6 +28,7 @@ public class FighterSelection : MonoBehaviour
 
     public void StartFight() 
     {
+        mainMenu.ChangeMusic(Resources.Load<AudioClip>("Sound/KO-NYK BIEN-combat"));
         if (mainMenu.gameMode == "solo") 
         {
             SceneManager.LoadScene("FightScene");

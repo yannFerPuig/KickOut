@@ -5,11 +5,10 @@ using UnityEngine.SceneManagement;
 public class SoundDesign : MonoBehaviour
 {
     [Header("--------- MUSIQUE -----------")]
-    [SerializeField] AudioSource music;
-    [SerializeField] AudioSource SFX;
+    public AudioSource music;
+    public AudioSource SFX;
 
-    public Slider sliderMusic;
-    public Slider sliderSFX;
+    
     public AudioClip musicFight;
     public AudioClip musicEndScene;
     public static float VolumeMusic = 1;
@@ -37,6 +36,22 @@ public class SoundDesign : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void ChangeVolume(string param, float val)
+    {
+        if (param == "music")
+        {
+            VolumeMusic = val;
+            music.volume = val;
+            instance.music.volume = VolumeMusic;
+        }
+        else if (param == "SFX")
+        {
+            VolumeSFX = val;
+            SFX.volume = val;
+            instance.SFX.volume = VolumeSFX;
+            PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,24 +66,9 @@ public class SoundDesign : MonoBehaviour
         music.volume = VolumeMusic;
     }
 
-
-    public void ChangeVolume(string param)
-    {
-        if (param == "music")
-        {
-            VolumeMusic = sliderMusic.value;
-            music.volume = VolumeMusic;
-        }
-        else if (param == "SFX")
-        {
-            VolumeSFX = sliderSFX.value;
-            SFX.volume = VolumeSFX;
-            PlaySFX(Resources.Load<AudioClip>("Sound/missedShot"));
-        }
-    }
-
     public void PlaySFX(AudioClip clip)
     {
+        instance.SFX.PlayOneShot(clip);
         SFX.PlayOneShot(clip);
     }
 

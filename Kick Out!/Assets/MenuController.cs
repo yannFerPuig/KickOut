@@ -11,11 +11,13 @@ public class MenuController : MonoBehaviour
     public GameObject[] menuButtons;
     public GameObject[] modeButtons;
 
+    public SoundDesign soundManager;
 
     // Start is called before the first frame update
     void Awake()
     {
         menu = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MainMenu>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundDesign>();
 
         menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
         modeButtons = GameObject.FindGameObjectsWithTag("ModeButton");
@@ -72,17 +74,23 @@ public class MenuController : MonoBehaviour
     {
         menu.gameMode = "solo";
         SceneManager.LoadScene("SoloCharacterSelection");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 
     public void Multiplayer()
     {
         menu.gameMode = "duel";
         SceneManager.LoadScene("MultiCharacterSelection");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 
     public void Tutorial()
     {
         menu.gameMode = "tutorial";
         SceneManager.LoadScene("SoloCharacterSelection");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 }

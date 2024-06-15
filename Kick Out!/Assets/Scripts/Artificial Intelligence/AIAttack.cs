@@ -29,6 +29,7 @@ public class AIAttack : Attack
         fighter = gameObject.GetComponent<Fighter>();
         animator = gameObject.GetComponent<Animator>();
         attackPoint = stats.attackPoint.transform;
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundDesign>();
 
         attackRange = stats.attackRange;
         enemyLayer = LayerMask.GetMask(LayerMask.LayerToName(fighter.enemy.layer));
@@ -65,7 +66,7 @@ public class AIAttack : Attack
         {
             if (!enemy.GetComponent<PlayerMovement>().isBlocking)
             {
-                Debug.Log("Caca");
+                
                 enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
             }
             else 
@@ -75,11 +76,11 @@ public class AIAttack : Attack
 
             miss = false;
             
-            //soundManager.PlaySFX(stats.punchSound);
+            soundManager.PlaySFX(stats.punchSound);
         }
         if(miss)
         {
-            //soundManager.PlaySFX(stats.missShot);
+            soundManager.PlaySFX(stats.missShot);
         }    
     }
 
@@ -96,7 +97,7 @@ public class AIAttack : Attack
         {
             if (!enemy.GetComponent<PlayerMovement>().isBlocking)
             {
-                Debug.Log("Caca");
+                
                 enemy.GetComponent<Fighter>().TakeDamage(stats.damage);
             }
             else 
@@ -105,12 +106,12 @@ public class AIAttack : Attack
             }
         
             miss = false;
-            //soundManager.PlaySFX(stats.specialSound);
+            soundManager.PlaySFX(stats.specialSound);
         }
 
         if(miss)
         {
-            //soundManager.PlaySFX(stats.missShot);
+            soundManager.PlaySFX(stats.missShot);
         }
     }
 

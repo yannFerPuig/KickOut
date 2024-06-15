@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class MainMenu : MonoBehaviour
     GameObject[] menuButtons;
     GameObject[] modeButtons;
     GameObject roundWinner;
+
+    public SoundDesign soundManager;
 
     public GameObject player1;
     public TextMeshProUGUI fightWinner;
@@ -70,7 +73,32 @@ public class MainMenu : MonoBehaviour
     public void ChangeScene(string scene)
     {
         SceneManager.LoadSceneAsync(scene);
+
+        if (scene == "Menu")
+        {
+            soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drill fivio-menu");
+        }
+        else if (scene == "MultiCharacterSelection" || scene == "SoloCharacterSelection")
+        {
+            soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        }
+        else if(scene == "FightScene" || scene == "FightSceneMultiplayer")
+        {
+            soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-NYK BIEN-combat");
+        }
+        else if(scene == "Winner")
+        {
+            soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-SOUTHSIDE-fin de jeu");
+        }
     }
+
+    public void ChangeMusic(AudioClip clip)
+    {
+        soundManager.music.clip = clip;
+        soundManager.music.Play(); soundManager.music.loop = true;
+    }
+
+ 
 
     public void Exit()
     {
@@ -81,23 +109,31 @@ public class MainMenu : MonoBehaviour
     {
         gameMode = "solo";
         SceneManager.LoadScene("SoloCharacterSelection");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 
     public void Multiplayer()
     {
         gameMode = "duel";
         SceneManager.LoadScene("MultiCharacterSelection");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 
     public void Tutorial()
     {
         gameMode = "tutorial";
         SceneManager.LoadScene("SoloCharacterSelection");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 
     public void EndFight()
     {
         SceneManager.LoadScene("Winner");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-SOUTHSIDE-fin de jeu");
+        soundManager.music.Play(); soundManager.music.loop = true;
     }
 
     public void SelectMode()
@@ -179,11 +215,14 @@ public class MainMenu : MonoBehaviour
         {
             case "Carmen":
                 spriteRenderer.sprite = Resources.Load<Sprite>("BaseSprites/Carmen");
-                CarmenStats carmenStats = AddComponentIfNotExists<CarmenStats>(p);
-                carmenStats.Initialize();
+                if (p.GetComponent<FighterStats>() != null)
+                {
+                    CarmenStats carmenStats = AddComponentIfNotExists<CarmenStats>(p);
+                    carmenStats.Initialize();
+                }
                 SetAnimatorAndAttack(p, "Animation/Carmen/Carmen", "Animation/Carmen/carmenAttack", "Animation/Carmen/carmenSpecial");
-                SetPlayerPosition(p, carmenStats);
-                SetFighterPoints(p, carmenStats);
+                SetPlayerPosition(p, p.GetComponent<CarmenStats>());
+                SetFighterPoints(p, p.GetComponent<CarmenStats>());
                 break;
 
             case "Louis":

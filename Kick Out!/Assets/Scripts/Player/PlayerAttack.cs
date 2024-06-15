@@ -32,7 +32,7 @@ public class PlayerAttack : Attack
         stats = gameObject.GetComponent<FighterStats>();
         move = gameObject.GetComponent<PlayerMovement>();
         fighter = gameObject.GetComponent<Fighter>();
-        soundManager = GameObject.Find("SoundManager").GetComponent<SoundDesign>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundDesign>();
 
         animator = gameObject.GetComponent<Animator>();
 
@@ -90,13 +90,13 @@ public class PlayerAttack : Attack
             }
 
             miss = false;
-            //soundManager.PlaySFX(stats.punchSound);
+            soundManager.PlaySFX(stats.punchSound);
             
         }
 
         if (miss)
         {
-            //soundManager.PlaySFX(stats.missShot);
+           soundManager.PlaySFX(stats.missShot);
         }
 
     }
@@ -141,12 +141,12 @@ public class PlayerAttack : Attack
             }
 
             miss = false;
-            //soundManager.PlaySFX(stats.specialSound);
+            soundManager.PlaySFX(stats.specialSound);
         }
 
         if (miss)
         {
-            //soundManager.PlaySFX(stats.missShot);
+            soundManager.PlaySFX(stats.missShot);
         }
     }
 

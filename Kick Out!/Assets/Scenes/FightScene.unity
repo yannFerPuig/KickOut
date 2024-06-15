@@ -686,6 +686,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5699846915887741040}
     - target: {fileID: 3074029422532952013, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
+      propertyPath: fighter
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3074029422532952013, guid: 2e1c2c4cba9bb564ca8bbf083b89235b, type: 3}
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 0}
