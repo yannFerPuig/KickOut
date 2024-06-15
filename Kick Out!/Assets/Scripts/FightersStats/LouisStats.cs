@@ -17,7 +17,7 @@ public class LouisStats : FighterStats
         specialSound = Resources.Load<AudioClip>("Sound/Louis/louisSpecial");
         missShot = Resources.Load<AudioClip>("Sound/missedShot");
 
-        maxHealth = 100;
+        maxHealth = 180;
 
         width = 0.3f;
         height = 1f;

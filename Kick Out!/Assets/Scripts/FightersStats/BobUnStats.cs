@@ -13,7 +13,7 @@ public class BobUnStats : FighterStats
         specialSound = Resources.Load<AudioClip>("Sound/BobUn/bobUnSpecial");
         missShot = Resources.Load<AudioClip>("Sound/missedShot");
 
-        maxHealth = 140;
+        maxHealth = 200;
 
         width = 0.5f;
         height = 0.83f;

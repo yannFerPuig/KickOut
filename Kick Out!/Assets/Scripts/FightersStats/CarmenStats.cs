@@ -12,7 +12,7 @@ public class CarmenStats : FighterStats
         specialSound = Resources.Load<AudioClip>("Sound/Carmen/carmenSpecial");
         missShot = Resources.Load<AudioClip>("Sound/missedShot");
 
-        maxHealth = 100;
+        maxHealth = 150;
 
         width = 0.3f;
         height = 0.8f;
