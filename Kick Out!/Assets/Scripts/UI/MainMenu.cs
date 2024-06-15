@@ -174,6 +174,7 @@ public class MainMenu : MonoBehaviour
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 LoadFighter(player, fighterSelected);
+                         
             }
             else if (gameMode == "solo")
             {
@@ -205,6 +206,24 @@ public class MainMenu : MonoBehaviour
             Destroy(gameObject.GetComponent<Fight>());
         }
     }
+
+
+    public void SetProfilePicture(string fighter,Image image)
+    {
+        switch(fighter)
+        {
+            case "Carmen":
+                image.sprite = Resources.Load<Sprite>("Portraits/Carmen");
+                break;
+            case "Louis":
+                image.sprite = Resources.Load<Sprite>("Portraits/Louis");
+                break;
+            case "Bob Un":
+                image.sprite = Resources.Load<Sprite>("Portraits/Bob Un");
+                break;
+        }
+    }
+
 
     public void LoadFighter(GameObject p, string fighter)
     {
@@ -371,4 +390,7 @@ public class MainMenu : MonoBehaviour
         }
         return component;
     }
+
+
+
 }

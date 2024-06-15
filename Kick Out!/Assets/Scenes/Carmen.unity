@@ -473,7 +473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743645865
 RectTransform:
   m_ObjectHideFlags: 0
@@ -640,7 +640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 100}
+  m_AnchoredPosition: {x: -15, y: 50}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926543713
@@ -663,14 +663,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Carmen, born in Triana, the gypsy quarter of Seville, grew up between the
-    necessity of defending herself and the passion for dancing the sevillana. In
-    this maze of narrow streets, she developed a fierce grace, shaping her identity
-    through the dance and music of her neighborhood. The duality of her life is also
-    expressed in her practice of the siesta, a daily moment of rest that recharges
-    her energy to illuminate Triana's evenings with her captivating dance, blending
-    tradition and innovation. Carmen embodies strength and grace, the fusion of tradition
-    and modernity in Seville's vibrant gypsy quarter.
+  m_text: 'Carmen, born in the gypsy quarter of Seville, grew up between the necessity
+    of defending herself and the passion for dancing the sevillana. In the maze of
+    narrow streets, she developed a fierce grace, shaping her identity through the
+    dance and music of her neighborhood. Carmen embodies strength and grace, the
+    fusion of tradition and modernity. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eaed3cc92a74c4a4ba049a637c77fc67, type: 2}
   m_sharedMaterial: {fileID: -5263517188865804183, guid: eaed3cc92a74c4a4ba049a637c77fc67, type: 2}
@@ -1138,7 +1135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -415, y: -149}
+  m_AnchoredPosition: {x: -415, y: -120}
   m_SizeDelta: {x: 750, y: 243.7343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775119395
@@ -1167,7 +1164,11 @@ MonoBehaviour:
     attack speed: fast
 
 
-    move speed: fast'
+    move speed: fast
+
+
+    attack
+    power : medium'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
   m_sharedMaterial: {fileID: 2135987999403455569, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
