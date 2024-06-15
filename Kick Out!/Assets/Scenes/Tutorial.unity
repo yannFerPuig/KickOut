@@ -322,8 +322,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 02:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
-  m_sharedMaterial: {fileID: -5263517188865804183, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
+  m_sharedMaterial: {fileID: 2135987999403455569, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -751,7 +751,10 @@ MonoBehaviour:
   damage: 0
   specialDamage: 0
   attackRange: 0
+  attackRangeSpe: 0
   attackSpeed: 0
+  attackCooldown: 0
+  attackCooldownSpe: 0
   defense: 0
   blockRadius: 5
   blockCD: 3.5
@@ -1009,8 +1012,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
-  m_sharedMaterial: {fileID: -5263517188865804183, guid: f1f7c24f67d07594590a5a443fe22f94, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
+  m_sharedMaterial: {fileID: 2135987999403455569, guid: 496ed6cc5d2ffd24ea669e9f11732ec2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
