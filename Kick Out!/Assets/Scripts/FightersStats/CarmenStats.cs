@@ -40,7 +40,7 @@ public class CarmenStats : FighterStats
         fallingGravityScale = 40f;
         groundCheckRadius = 0.5f;
 
-        spawnPoint = new Vector3(-8f, -2f, 0f);
+        spawnPoint = new Vector3(-7f, -2f, 0f);
         groundCheckPointPos = new Vector3(0, -0.36f, 0);
         attackPointPos = new Vector3(0, 0.20f, 0);
         fighterCenter = new Vector3(0, 0, 0);

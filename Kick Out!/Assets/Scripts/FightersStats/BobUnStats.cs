@@ -40,7 +40,7 @@ public class BobUnStats : FighterStats
         fallingGravityScale = 50;
         groundCheckRadius = 0.5f;
 
-        spawnPoint = new Vector3(-8.5f, -2f, 0f);
+        spawnPoint = new Vector3(-7.5f, -2f, 0f);
         groundCheckPointPos = new Vector3(0, -0.3f, 0);
         attackPointPos = new Vector3(0, 0.05f, 0);
         fighterCenter = new Vector3(0, 0, 0);
