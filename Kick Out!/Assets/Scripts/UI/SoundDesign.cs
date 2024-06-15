@@ -41,6 +41,9 @@ public class SoundDesign : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // sliderMusic.maxValue = 100;
+        // sliderSFX.maxValue = 100;
+
         music.volume = VolumeMusic;
         music.clip = musicFight;
         music.Play();
