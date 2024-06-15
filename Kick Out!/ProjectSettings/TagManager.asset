@@ -33,6 +33,7 @@ TagManager:
   - TextPlayer1
   - TextPlayer2
   - SoundManager
+  - winner image
   layers:
   - Default
   - TransparentFX

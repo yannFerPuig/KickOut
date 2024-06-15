@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
-using System;
 
 public class MainMenu : MonoBehaviour
 {
@@ -155,13 +154,11 @@ public class MainMenu : MonoBehaviour
         foreach (GameObject menuButton in menuButtons)
         {
             menuButton.SetActive(true);
-            Console.WriteLine("test1");
         }
 
         foreach (GameObject modeButton in modeButtons)
         {
             modeButton.SetActive(false);
-            Console.WriteLine("test2");
         }
     }
 
@@ -330,7 +327,7 @@ public class MainMenu : MonoBehaviour
 
     public string ChooseAIFighter()
     {
-        int fighter = UnityEngine.Random.Range(0, 3);
+        int fighter = Random.Range(0, 3);
         if (fighter == 0)
         {
             return "Carmen";
