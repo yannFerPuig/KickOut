@@ -86,6 +86,14 @@ public class MenuController : MonoBehaviour
         soundManager.music.Play(); soundManager.music.loop = true;
     }
 
+    public void Network()
+    {
+        menu.gameMode = "network";
+        SceneManager.LoadScene("ANIMATIONS");
+        soundManager.music.clip = Resources.Load<AudioClip>("Sound/KO-drumtrescool-selectionperso");
+        soundManager.music.Play(); soundManager.music.loop = true;
+    }
+
     public void Tutorial()
     {
         menu.gameMode = "tutorial";

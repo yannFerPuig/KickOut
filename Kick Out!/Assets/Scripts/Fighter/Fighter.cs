@@ -87,6 +87,28 @@ public class Fighter : MonoBehaviour
                 imageRound3 = GameObject.Find("P2R3");    
             }
         }
+        else if (mainMenu.gameMode == "network")
+        {
+            if (gameObject.name == "NetCarmen")
+            {
+                //enemy = GameObject.FindGameObjectWithTag("Player2");
+                healthBar = GameObject.FindGameObjectWithTag("HP_P1").GetComponent<HealthBar>();
+
+                // imageRound1 = GameObject.Find("P1R1");
+                // imageRound2 = GameObject.Find("P1R2");
+                // imageRound3 = GameObject.Find("P1R3");  
+            }
+            else if (gameObject.tag == "Player2")
+            {
+                //enemy = GameObject.FindGameObjectWithTag("Player1");
+                healthBar = GameObject.FindGameObjectWithTag("HP_P2").GetComponent<HealthBar>();
+
+                // imageRound1 = GameObject.Find("P2R1");
+                // imageRound2 = GameObject.Find("P2R2");
+                // imageRound3 = GameObject.Find("P2R3");    
+            }
+        }
+
 
         stats = gameObject.GetComponent<FighterStats>();
         enemyStats = enemy.GetComponent<FighterStats>();
